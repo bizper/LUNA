@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LVM">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/artifacts/Model.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

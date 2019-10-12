@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="ExtendTools">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/artifacts/LC.jar!/" />
+      <root url="jar://$PROJECT_DIR$/artifacts/LVM.jar!/" />
+      <root url="jar://$PROJECT_DIR$/artifacts/Model.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
