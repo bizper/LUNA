@@ -17,7 +17,7 @@ public class FileLoader extends Loader {
         }
         File fin = new File(path);
         if(fin.exists()) {
-            return build(true, "", fin);
+            return build(OK, "", fin);
         } else {
             for(String prefix : CONSTANT.path) {
                 Out.info("trying: " + prefix + path);

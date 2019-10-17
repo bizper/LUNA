@@ -1,14 +1,14 @@
 package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
-import com.luna.base.io.Out;
-import com.luna.base.result.Bean;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Token;
 
 import java.util.HashMap;
 import java.util.List;
+
+import static com.luna.compile.constant.STATUS.TOKEN_SYNTAX_ERROR;
 
 public class Preprocessor extends Component {
 
@@ -32,17 +32,15 @@ public class Preprocessor extends Component {
             Token token = list.get(i);
             if(check(token, TOKEN.OPERATOR, "#") && check(next(), TOKEN.SYMBOL, "define")) {
                 if(!checkType(get(2), TOKEN.SYMBOL)) {
-                    context.addErrMsg(String.format("Syntax Error at line %d: Can't set keywords %s as define words.", get(2).getLine(), getValue(2)));
+                    context.addErrMsg(String.format("Syntax Error at line %d: Can't set %s %s as define words.", get(2).getLine(), get(2).getType(), getValue(2)));
                     context.setMsg("Error happened.");
-                    context.setCode(10001);
+                    context.setCode(TOKEN_SYNTAX_ERROR);
                 }
                 if(!checkType(get(3), TOKEN.SYMBOL)) {
-                    context.addErrMsg(String.format("Syntax Error at line %d: Can't set keywords %s as define words.", get(3).getLine(), getValue(3)));
+                    context.addErrMsg(String.format("Syntax Error at line %d: Can't set %s %s as define words.", get(3).getLine(), get(2).getType(), getValue(3)));
                     context.setMsg("Error happened.");
-                    context.setCode(10001);
+                    context.setCode(TOKEN_SYNTAX_ERROR);
                 }
-                System.out.print(get(2).getValue() + " = ");
-                System.out.println(get(3).getValue());
                 defineMap.put(getValue(2), getValue(3));
                 i = i + 2;
             } else {

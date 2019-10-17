@@ -62,8 +62,6 @@ public class Tokenizer extends Component {
             context.setCode(bean.getCode());
             context.setMsg(bean.getMessage());
         }
-        context.setCode(OK);
-        context.setMsg("success");
         return list;
     }
 

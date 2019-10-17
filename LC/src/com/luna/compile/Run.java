@@ -16,7 +16,7 @@ public class Run {
     public static void main(String[] args) {
         if(args.length == 0) {
             Out.info("-------------------------------------");
-            Out.info("lc author: orange  version: 0x00 0x01");
+            Out.info("lc author: orange  version: 0x00.0x01");
             Out.info("for compiling luna code files.");
             Out.info("-------------------------------------");
         } else {
@@ -95,6 +95,11 @@ public class Run {
                 context = component.run(context, config).getContext();
             }
             //animation.dojoin();
+            if(context.getCode() != STATUS.OK) {
+                for(String err : context.getErrMsg()) {
+                    System.err.println(err);
+                }
+            }
             System.out.println(context);
 
         }

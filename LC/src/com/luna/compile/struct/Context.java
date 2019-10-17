@@ -13,6 +13,10 @@ public class Context {
 
     private List<String> errMsg = new ArrayList<>();
 
+    public List<String> getErrMsg() {
+        return errMsg;
+    }
+
     public void addErrMsg(String msg) {
         errMsg.add(msg);
     }
@@ -36,11 +40,6 @@ public class Context {
     }
 
     public String toString() {
-        if(code != 0) {
-            for(String msg : errMsg) {
-                System.err.println(msg);
-            }
-        }
         return code + " " + msg;
     }
 
