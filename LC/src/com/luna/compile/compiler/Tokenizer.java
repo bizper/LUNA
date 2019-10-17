@@ -1,7 +1,7 @@
 package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
-import com.luna.base.io.Out;
+import com.luna.base.io.OUT;
 import com.luna.base.kits.ContextKit;
 import com.luna.base.result.Bean;
 import com.luna.compile.compiler.constant.Keywords;
@@ -42,7 +42,7 @@ public class Tokenizer extends Component {
                 context.setMsg(e.getMessage());
             }
         }
-        Out.info(context.getList());
+        OUT.info(context.getList());
         return this;
     }
 

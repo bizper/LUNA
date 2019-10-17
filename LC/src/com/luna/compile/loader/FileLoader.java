@@ -1,6 +1,6 @@
 package com.luna.compile.loader;
 
-import com.luna.base.io.Out;
+import com.luna.base.io.OUT;
 import com.luna.base.result.Bean;
 import com.luna.compile.constant.CONSTANT;
 
@@ -20,7 +20,7 @@ public class FileLoader extends Loader {
             return build(OK, "", fin);
         } else {
             for(String prefix : CONSTANT.path) {
-                Out.info("trying: " + prefix + path);
+                OUT.info("trying: " + prefix + path);
                 fin = new File(prefix + path);
                 if(fin.exists()) return build(OK, "", fin);
             }

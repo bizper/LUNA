@@ -1,7 +1,7 @@
 package com.luna.compile;
 
 import com.luna.base.config.Config;
-import com.luna.base.io.Out;
+import com.luna.base.io.OUT;
 import com.luna.base.kits.CommandKit;
 import com.luna.base.result.Bean;
 import com.luna.compile.compiler.*;
@@ -15,16 +15,16 @@ public class Run {
 
     public static void main(String[] args) {
         if(args.length == 0) {
-            Out.info("-------------------------------------");
-            Out.info("lc author: orange  version: 0x00.0x01");
-            Out.info("for compiling luna code files.");
-            Out.info("-------------------------------------");
+            OUT.info("-------------------------------------");
+            OUT.info("lc author: orange  version: 0x00.0x01");
+            OUT.info("for compiling luna code files.");
+            OUT.info("-------------------------------------");
         } else {
             Bean<Config> bean = CommandKit.get(args);
             if(bean.isSuccess()) {
                 Finalizer.getInstance().run(bean.getData());
             } else {
-                Out.err(bean.getMessage());
+                OUT.err(bean.getMessage());
             }
         }
     }

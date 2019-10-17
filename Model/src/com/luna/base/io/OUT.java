@@ -2,7 +2,7 @@ package com.luna.base.io;
 
 import com.luna.base.result.Bean;
 
-public class Out {
+public class OUT {
 
     public static void info(Object obj) {
         System.out.println(obj);

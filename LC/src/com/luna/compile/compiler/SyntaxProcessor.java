@@ -1,7 +1,7 @@
 package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
-import com.luna.base.io.Out;
+import com.luna.base.io.OUT;
 import com.luna.compile.constant.Vars;
 import com.luna.compile.struct.Context;
 
@@ -16,7 +16,7 @@ public class SyntaxProcessor extends Component {
     public Component run(Context context, Config config) {
         this.context = context;
         if(!check()) {
-            Out.err("");
+            OUT.err("");
             return this;
         }
         return this;

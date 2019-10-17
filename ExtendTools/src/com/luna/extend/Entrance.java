@@ -1,11 +1,11 @@
 package com.luna.extend;
 
-import com.luna.extend.tools.CommandTool;
+import com.luna.base.kits.CommandKit;
 
 public class Entrance {
 
     public static void main(String[] args) {
-        System.out.println(CommandTool.get(args).getMessage());
+        System.out.println(CommandKit.get(args).getMessage());
     }
 
 }
