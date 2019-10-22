@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/LVM/LVM.iml" filepath="$PROJECT_DIR$/LVM/LVM.iml" />
       <module fileurl="file://$PROJECT_DIR$/Luna.iml" filepath="$PROJECT_DIR$/Luna.iml" />
       <module fileurl="file://$PROJECT_DIR$/Model/Model.iml" filepath="$PROJECT_DIR$/Model/Model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StandardLibrary/StandardLibrary.iml" filepath="$PROJECT_DIR$/StandardLibrary/StandardLibrary.iml" />
     </modules>
   </component>
 </project>

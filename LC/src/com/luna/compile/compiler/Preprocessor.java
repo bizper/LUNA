@@ -28,27 +28,7 @@ public class Preprocessor extends Component {
 
     private void process(final List<Token> list) {
         this.list = list;
-        for(i = 0; i<list.size(); i++) {
-            Token token = list.get(i);
-            if(check(token, TOKEN.OPERATOR, "#") && check(next(), TOKEN.SYMBOL, "define")) {
-                if(!checkType(get(2), TOKEN.SYMBOL)) {
-                    context.addErrMsg(String.format("Syntax Error at line %d: Can't set %s %s as define words.", get(2).getLine(), get(2).getType(), getValue(2)));
-                    context.setMsg("Error happened.");
-                    context.setCode(TOKEN_SYNTAX_ERROR);
-                }
-                if(!checkType(get(3), TOKEN.SYMBOL)) {
-                    context.addErrMsg(String.format("Syntax Error at line %d: Can't set %s %s as define words.", get(3).getLine(), get(2).getType(), getValue(3)));
-                    context.setMsg("Error happened.");
-                    context.setCode(TOKEN_SYNTAX_ERROR);
-                }
-                defineMap.put(getValue(2), getValue(3));
-                i = i + 2;
-            } else {
-                if(checkType(token, TOKEN.SYMBOL) && defineMap.containsKey(token.getValue())) {
-                    token.setValue(defineMap.get(token.getValue()));
-                }
-            }
-        }
+
     }
 
     private boolean check(Token token, TOKEN type, String value) {

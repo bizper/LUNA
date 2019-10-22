@@ -4,6 +4,7 @@ public enum Keywords {
 
     IF("if"),
     ELSE("else"),
+    NAIVE("naive"),
     END("end"),
     DO("do");
 
