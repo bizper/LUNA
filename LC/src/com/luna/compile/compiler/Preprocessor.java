@@ -8,8 +8,6 @@ import com.luna.compile.struct.Token;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.luna.compile.constant.STATUS.TOKEN_SYNTAX_ERROR;
-
 public class Preprocessor extends Component {
 
     @Override
@@ -24,7 +22,6 @@ public class Preprocessor extends Component {
 
     private List<Token> list;
     private int i;
-    private HashMap<String, String> defineMap = new HashMap<>();
 
     private void process(final List<Token> list) {
         this.list = list;
