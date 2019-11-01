@@ -46,11 +46,14 @@ public class Tokenizer extends Component {
         return this;
     }
 
+    private String currentFileName;
+
     private List<Token> parseFile(String path) throws IOException {
         Loader loader = Loader.get();
         Bean<File> bean = loader.load(path, (e0) -> e0.endsWith(".luna"));
         List<Token> list = new ArrayList<>();
         if(bean.isSuccess()) {
+            currentFileName = path;
             File file = bean.getData();
             BufferedReader fr = new BufferedReader(new FileReader(file));
             String code;
@@ -148,17 +151,17 @@ public class Tokenizer extends Component {
      */
     private void pushToList(List<Token> list, int line, int col, String value) {
         if(Keywords.isKeyword(value)) {
-            list.add(Token.get(line, col, TOKEN.KEYWORD, value));
+            list.add(Token.get(line, col, TOKEN.KEYWORD, value, currentFileName));
         } else if(isDigit(value)) {
-            list.add(Token.get(line, col, TOKEN.NUMBER, value));
+            list.add(Token.get(line, col, TOKEN.NUMBER, value, currentFileName));
         } else {
-            list.add(Token.get(line, col, TOKEN.SYMBOL, value));
+            list.add(Token.get(line, col, TOKEN.SYMBOL, value, currentFileName));
         }
         clear();
     }
 
     private void pushToList(List<Token> list, int line, int col, TOKEN type, Object value) {
-        list.add(Token.get(line, col, type, value.toString()));
+        list.add(Token.get(line, col, type, value.toString(), currentFileName));
         clear();
     }
 
@@ -188,6 +191,7 @@ public class Tokenizer extends Component {
                     l.remove(0);//移除第一个token，其为记录位
                     list.removeAll(l);//移除剩下的token
                     list.get(i).setValue(s);//将其设置为多符号操作符
+
                 }
             }
         }

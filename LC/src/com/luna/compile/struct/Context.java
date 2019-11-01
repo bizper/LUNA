@@ -17,8 +17,12 @@ public class Context {
         return errMsg;
     }
 
+    public void addErrMsg(Token token, String msg) {
+        errMsg.add("Error:(" + token.getLine() + "," + token.getCol() + ") at " + token.getFileName() + "\n" + msg);
+    }
+
     public void addErrMsg(String msg) {
-        errMsg.add(msg);
+        errMsg.add("Error:(Unknown Source)\n" + msg);
     }
 
     public int getCode() {
@@ -45,8 +49,8 @@ public class Context {
 
     private List<List<Token>> list = new ArrayList<>();
 
-    public void add(List<Token> list) {
-        this.list.add(list);
+    public void add(List<Token> module) {
+        this.list.add(module);
     }
 
     public List<Token> get(int number) {

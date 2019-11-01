@@ -10,6 +10,8 @@
 
 多行函数的最后一行表达式的左值将被作为函数返回值
 
+如没有返回值将返回Void
+
 或使用return关键字提前返回函数，剩余的语句将被跳过
 
 函数的参数可以有任意个，其使用空格隔开，使用_表示占位符，_不可在函数体中被调用，此参数会被忽视
@@ -32,6 +34,15 @@ end
 
 [function name] ([function name] [param list]) [param list]
 
+文本替换/预定义
+
+[source text] <- [replace text]
+
+example:
+    
+    MIN <- 5 //MIN set as 5
+    
+
 表达式定义
 
 单独的数字和双引号引起的字符都可以作为表达式，
@@ -50,3 +61,5 @@ else 条件判断的分支语句
 end 表明语句块结束
 do 表明语句块开始
 naive 表明此方法被内部实现
+this 表示此模块本身
+link 导入其他模块

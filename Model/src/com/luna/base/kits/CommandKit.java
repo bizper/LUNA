@@ -18,8 +18,11 @@ public class CommandKit extends BaseKit {
                     case "O1":
                         config.setCompileMode(1);
                         break;
-                    case "d":
+                    case "s":
                         config.setGenerateBytecodeFile(false);
+                        break;
+                    case "dp":
+                        config.setGeneratePreprocessFile(false);
                         break;
                     case "l":
                         if(i == args.length - 1) return build(false, getFurtherInfo(args, i, "the argument -l without any path."));

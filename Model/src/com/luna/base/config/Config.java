@@ -23,6 +23,11 @@ public class Config {
     private boolean generateBytecodeFile = true;
 
     /**
+     * start with -dp to disable generation
+     */
+    private boolean generatePreprocessFile = true;
+
+    /**
      * start with -l to add extend library
      */
     private List<String> extendLibrary = new ArrayList<>();
@@ -30,11 +35,21 @@ public class Config {
     @Override
     public String toString() {
         return "Config [" +
-                "compileMode=" + compileMode +
-                ", compileFiles=" + compileFiles +
-                ", generateBytecodeFile=" + generateBytecodeFile +
-                ", extendLibrary=" + extendLibrary +
+                "compileMode=" + compileMode + '\n' +
+                ", compileFiles=" + compileFiles + '\n' +
+                ", generateBytecodeFile=" + generateBytecodeFile + '\n' +
+                ", generatePreprocessFile=" + generatePreprocessFile + '\n' +
+                ", extendLibrary=" + extendLibrary + '\n' +
                 ']';
+    }
+
+    public Config setGeneratePreprocessFile(boolean generatePreprocessFile) {
+        this.generatePreprocessFile = generatePreprocessFile;
+        return this;
+    }
+
+    public boolean isGeneratePreprocessFile() {
+        return generatePreprocessFile;
     }
 
     public Config setExtendLibrary(List<String> extendLibrary) {

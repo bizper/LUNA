@@ -1,0 +1,4 @@
+MIN <- 5
+MAX <- 10
+
+echo MIN

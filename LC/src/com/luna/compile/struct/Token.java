@@ -10,6 +10,8 @@ public class Token {
 
     private int col;
 
+    private String fileName;
+
     @Override
     public String toString() {
         return "Token [" +
@@ -18,6 +20,15 @@ public class Token {
                 ", type=" + type +
                 ", value='" + value + '\'' +
                 ']';
+    }
+
+    public Token setFileName(String fileName) {
+        this.fileName = fileName;
+        return this;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 
     private TOKEN type;
@@ -62,6 +73,10 @@ public class Token {
 
     public static Token get(int line, int col, TOKEN type, String value) {
         return new Token().setLine(line).setCol(col).setType(type).setValue(value);
+    }
+
+    public static Token get(int line, int col, TOKEN type, String value, String fileName) {
+        return new Token().setLine(line).setCol(col).setType(type).setValue(value).setFileName(fileName);
     }
 
     public static Token get(int line, int col, TOKEN type, char value) {

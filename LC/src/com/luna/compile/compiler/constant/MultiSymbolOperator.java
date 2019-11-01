@@ -3,9 +3,10 @@ package com.luna.compile.compiler.constant;
 public enum MultiSymbolOperator {
 
     COMMENT("//"),
-    SELF_PLUS("++"),
+    DOUBLE_PLUS("++"),
     NOT_EQUALS("!="),
-    SELF_MINUS("--");
+    DOUBLE_MINUS("--"),
+    LEFT_ARROW("<-");
 
     private String value;
 

@@ -6,6 +6,8 @@ public enum Keywords {
     ELSE("else"),
     NAIVE("naive"),
     END("end"),
+    LINK("link"),
+    THIS("this"),
     DO("do");
 
     private String value;

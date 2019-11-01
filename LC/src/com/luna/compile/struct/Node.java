@@ -1,13 +1,17 @@
 package com.luna.compile.struct;
 
+import com.luna.compile.constant.NODE;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Node {
 
-    private String name;
+    private NODE name;
 
     private Object value;
+
+    private Node parent;
 
     private List<Node> list;
 
@@ -17,6 +21,7 @@ public class Node {
 
     public void addNode(Node node) {
         list.add(node);
+        node.setParent(this);
     }
 
     public Node head() {
@@ -27,9 +32,18 @@ public class Node {
         return list.get(list.size() - 1 < 0 ? 0 : list.size() - 1);
     }
 
-    public Node setName(String name) {
+    public Node setName(NODE name) {
         this.name = name;
         return this;
+    }
+
+    public Node setParent(Node parent) {
+        this.parent = parent;
+        return this;
+    }
+
+    public Node getParent() {
+        return parent;
     }
 
     public Node setValue(Object value) {
@@ -42,7 +56,7 @@ public class Node {
         return this;
     }
 
-    public String getName() {
+    public NODE getName() {
         return name;
     }
 
@@ -52,5 +66,19 @@ public class Node {
 
     public List<Node> getList() {
         return list;
+    }
+
+    @Override
+    public String toString() {
+        String self =  "|--<" + name + ":" + value + ">\n";
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Node node : list) {
+            stringBuilder.append("  ").append(node);
+        }
+        return self + stringBuilder.toString();
+    }
+
+    public static Node create() {
+        return new Node();
     }
 }

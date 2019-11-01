@@ -79,6 +79,7 @@ public class Run {
             path.add(new TokenStreamChecker());
             path.add(new Preprocessor());
             path.add(new SyntaxProcessor());
+            path.add(new Linker());
             if(config.isGenerateBytecodeFile()) {
                 path.add(new CodeGenerator());
             } else {
@@ -97,10 +98,10 @@ public class Run {
             //animation.dojoin();
             if(context.getCode() != STATUS.OK) {
                 for(String err : context.getErrMsg()) {
-                    System.err.println(err);
+                    OUT.err(err);
                 }
             }
-            System.out.println(context);
+            OUT.info(context);
 
         }
 

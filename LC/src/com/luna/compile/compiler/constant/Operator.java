@@ -8,6 +8,12 @@ public enum Operator {
     MULTI('*'),
     DIV('/'),
     NOT('!'),
+    LT('<'),
+    GT('>'),
+    LP('('),
+    RP(')'),
+    QM('?'),
+    COLON(':'),
     DEFINE('#');
 
     private char value;
