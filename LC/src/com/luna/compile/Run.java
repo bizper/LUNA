@@ -85,6 +85,7 @@ public class Run {
             } else {
                 path.add(new Printer());
             }
+            OUT.openDebug();
         }
 
         private void run(Config config) {

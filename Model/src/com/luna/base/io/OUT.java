@@ -4,6 +4,8 @@ import com.luna.base.result.Bean;
 
 public class OUT {
 
+    private static boolean debug = false;
+
     public static void info(Object obj) {
         System.out.println(obj);
     }
@@ -14,6 +16,18 @@ public class OUT {
 
     public static void err(Object obj) {
         System.err.println(obj);
+    }
+
+    public static void openDebug() {
+        OUT.debug = true;
+    }
+
+    public static void closeDebug() {
+        OUT.debug = false;
+    }
+
+    public static void debug(Object obj) {
+        if(debug) info(obj);
     }
 
     public static void output(Bean bean) {

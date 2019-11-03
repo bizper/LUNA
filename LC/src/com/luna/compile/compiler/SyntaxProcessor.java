@@ -20,7 +20,7 @@ public class SyntaxProcessor extends Component {
     public Component run(Context context, Config config) {
         this.context = context;
         for(final List<Token> list : context.getList()) {
-            generate(list);
+            //generate(list);
         }
         return this;
     }
@@ -52,7 +52,7 @@ public class SyntaxProcessor extends Component {
                 }
             }
         }
-        OUT.info(cache);
+        OUT.debug(cache);
     }
 
     private boolean check(Token token, TOKEN type, String value) {

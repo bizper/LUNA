@@ -2,7 +2,7 @@ package com.luna.compile.struct;
 
 import com.luna.compile.constant.TOKEN;
 
-public class Token {
+public class Token implements Mode {
 
     private Token() { }
 
@@ -81,5 +81,10 @@ public class Token {
 
     public static Token get(int line, int col, TOKEN type, char value) {
         return get(line, col, type, String.valueOf(value));
+    }
+
+    @Override
+    public String mode() {
+        return type.name();
     }
 }

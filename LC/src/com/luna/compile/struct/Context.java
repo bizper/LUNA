@@ -21,6 +21,10 @@ public class Context {
         errMsg.add("Error:(" + token.getLine() + "," + token.getCol() + ") at " + token.getFileName() + "\n" + msg);
     }
 
+    public void addErrMsg(Token token, boolean offset, String msg) {
+        errMsg.add("Error:(" + token.getLine() + "," + (offset ? token.getCol() + token.getValue().length() : token.getCol()) + ") at " + token.getFileName() + "\n" + msg);
+    }
+
     public void addErrMsg(String msg) {
         errMsg.add("Error:(Unknown Source)\n" + msg);
     }

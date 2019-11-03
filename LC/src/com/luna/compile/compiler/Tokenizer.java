@@ -42,7 +42,7 @@ public class Tokenizer extends Component {
                 context.setMsg(e.getMessage());
             }
         }
-        OUT.info(context.getList());
+        OUT.debug(context.getList());
         return this;
     }
 
