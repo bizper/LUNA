@@ -1,10 +1,10 @@
 package com.luna.compile.utils;
 
+import com.luna.base.io.OUT;
 import com.luna.compile.struct.Mode;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.function.Function;
 
 /**
  * 对输入的token流进行模式匹配
@@ -23,7 +23,7 @@ public class ModeMatcher {
             root = root.getNext();
         }
         if(root.getType() == null) root.getParent().setNext(null);
-        System.out.println(cache);
+        OUT.debug(cache);
         return cache;
     }
 
@@ -34,7 +34,7 @@ public class ModeMatcher {
         private String type;
 
         public String toString() {
-            return next != null ? type + " -> " + next.toString() : type;
+            return next != null ? type + " => " + next.toString() : type;
         }
 
         public Atom setNext(Atom next) {
@@ -57,6 +57,16 @@ public class ModeMatcher {
             return this;
         }
 
+        public int getLength() {
+            int i = 1;
+            Atom node = this;
+            while(node.next != null) {
+                i++;
+                node = node.next;
+            }
+            return i;
+        }
+
         public String getType() {
             return type;
         }
@@ -67,12 +77,28 @@ public class ModeMatcher {
 
         public <T extends Mode> boolean match(List<T> list) {
             if(list.isEmpty()) return false;
+            if(list.size() != getLength()) return false;
             if(!list.get(0).mode().equals(type) && !type.equals("*")) return false;
             Atom root = this;
             for(int i = 1; i<list.size(); i++) {
                 T t = list.get(i);
                 Atom cache = root.getNext(t);
                 if(cache == null) return false;
+                root = cache;
+            }
+            return true;
+        }
+
+        public <T extends Mode, R> boolean action(List<T> list, Function<T, R> function) {
+            if(list.isEmpty()) return false;
+            if(list.size() != getLength()) return false;
+            if(!list.get(0).mode().equals(type) && !type.equals("*")) return false;
+            Atom root = this;
+            for(int i = 1; i<list.size(); i++) {
+                T t = list.get(i);
+                Atom cache = root.getNext(t);
+                if(cache == null) return false;
+                if(function != null) function.apply(t);
                 root = cache;
             }
             return true;

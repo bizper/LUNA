@@ -74,6 +74,7 @@ public class Run {
         }
 
         private void init(Config config) {
+            OUT.openDebug();
             path.clear();
             path.add(new Tokenizer());
             path.add(new TokenStreamChecker());
@@ -85,7 +86,6 @@ public class Run {
             } else {
                 path.add(new Printer());
             }
-            OUT.openDebug();
         }
 
         private void run(Config config) {

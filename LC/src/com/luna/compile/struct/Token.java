@@ -87,4 +87,12 @@ public class Token implements Mode {
     public String mode() {
         return type.name();
     }
+
+    public boolean check(TOKEN type, String value) {
+        return this.getType() == type && this.getValue().equals(value);
+    }
+
+    public boolean check(TOKEN type) {
+        return this.getType() == type;
+    }
 }
