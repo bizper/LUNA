@@ -77,36 +77,32 @@ public class ModeMatcher {
 
         public <T extends Mode> boolean match(List<T> list) {
             if(list.isEmpty()) return false;
-            if(list.size() != getLength()) return false;
+            if(list.size() < getLength()) return false;
             if(!list.get(0).mode().equals(type) && !type.equals("*")) return false;
-            Atom root = this;
+            Atom root = this.getNext();
             for(int i = 1; i<list.size(); i++) {
                 T t = list.get(i);
-                Atom cache = root.getNext(t);
-                if(cache == null) return false;
-                root = cache;
+                if(root == null) return true;
+                if(!root.type.equals(t.mode()) && !root.type.equals("*")) return false;
+                root = root.getNext();
             }
             return true;
         }
 
         public <T extends Mode, R> boolean action(List<T> list, Function<T, R> function) {
             if(list.isEmpty()) return false;
-            if(list.size() != getLength()) return false;
+            if(list.size() < getLength()) return false;
             if(!list.get(0).mode().equals(type) && !type.equals("*")) return false;
-            Atom root = this;
+            if(function != null) function.apply(list.get(0));
+            Atom root = this.getNext();
             for(int i = 1; i<list.size(); i++) {
                 T t = list.get(i);
-                Atom cache = root.getNext(t);
-                if(cache == null) return false;
+                if(root == null) return true;
+                if(!root.type.equals(t.mode()) && !root.type.equals("*")) return false;
                 if(function != null) function.apply(t);
-                root = cache;
+                root = root.getNext();
             }
             return true;
-        }
-
-        public <T extends Mode> Atom getNext(T t) {
-            if(next != null && (next.type.equals(t.mode()) || next.type.equals("*"))) return next;
-            return null;
         }
     }
 

@@ -29,37 +29,6 @@ public class Run {
         }
     }
 
-    private static class Animation extends Thread {
-
-        private final char[] symbols = new char[]{'\\', '|', '/', '-'};
-
-        private int index = 0;
-
-        private boolean flag = true;
-
-        private char get() {
-            if(index == symbols.length) index = 0;
-            return symbols[index++];
-        }
-
-        public void dojoin() {
-            flag = false;
-        }
-
-        @Override
-        public void run() {
-            while(flag) {
-                try {
-                    System.out.print("\rcompiling... " + get());
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            System.out.print("\rcompile finished.");
-        }
-    }
-
     private static class Finalizer {
 
         private final List<Component> path = new ArrayList<>();
@@ -89,14 +58,11 @@ public class Run {
         }
 
         private void run(Config config) {
-            //Animation animation = new Animation();
-            //animation.start();
             init(config);
             Context context = Context.get();
             for(Component component : path) {
                 context = component.run(context, config).getContext();
             }
-            //animation.dojoin();
             if(context.getCode() != STATUS.OK) {
                 for(String err : context.getErrMsg()) {
                     OUT.err(err);

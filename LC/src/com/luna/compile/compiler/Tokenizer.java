@@ -7,6 +7,7 @@ import com.luna.base.result.Bean;
 import com.luna.compile.compiler.constant.Keywords;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.compiler.constant.Operator;
+import com.luna.compile.constant.STATUS;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.loader.Loader;
 import com.luna.compile.struct.Context;
@@ -42,6 +43,8 @@ public class Tokenizer extends Component {
                 context.setMsg(e.getMessage());
             }
         }
+        context.setCode(OK);
+        context.setMsg("SUCCESS");
         OUT.debug(context.getList());
         return this;
     }
@@ -151,17 +154,17 @@ public class Tokenizer extends Component {
      */
     private void pushToList(List<Token> list, int line, int col, String value) {
         if(Keywords.isKeyword(value)) {
-            list.add(Token.get(line, col, TOKEN.KEYWORD, value, currentFileName));
+            list.add(Token.get(line, col, TOKEN.KEYWORD, value, currentFileName, Keywords.getKeyword(value)));
         } else if(isDigit(value)) {
-            list.add(Token.get(line, col, TOKEN.NUMBER, value, currentFileName));
+            list.add(Token.get(line, col, TOKEN.NUMBER, value, currentFileName, null));
         } else {
-            list.add(Token.get(line, col, TOKEN.SYMBOL, value, currentFileName));
+            list.add(Token.get(line, col, TOKEN.SYMBOL, value, currentFileName, null));
         }
         clear();
     }
 
     private void pushToList(List<Token> list, int line, int col, TOKEN type, Object value) {
-        list.add(Token.get(line, col, type, value.toString(), currentFileName));
+        list.add(Token.get(line, col, type, value.toString(), currentFileName, Operator.getOperator(value.toString())));
         clear();
     }
 
@@ -191,7 +194,7 @@ public class Tokenizer extends Component {
                     l.remove(0);//移除第一个token，其为记录位
                     list.removeAll(l);//移除剩下的token
                     list.get(i).setValue(s);//将其设置为多符号操作符
-
+                    list.get(i).setSig(MultiSymbolOperator.getMultiSymbolOperator(s));
                 }
             }
         }

@@ -1,6 +1,6 @@
 package com.luna.compile.compiler.constant;
 
-public enum Keywords {
+public enum Keywords implements SIG {
 
     IF("if"),
     ELSE("else"),
