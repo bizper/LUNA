@@ -7,7 +7,6 @@ import com.luna.base.result.Bean;
 import com.luna.compile.compiler.constant.Keywords;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.compiler.constant.Operator;
-import com.luna.compile.constant.STATUS;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.loader.Loader;
 import com.luna.compile.struct.Context;
@@ -27,6 +26,15 @@ import static com.luna.compile.constant.STATUS.*;
  * 提取词组，并进行分类
  */
 public class Tokenizer extends Component {
+
+    private static Component instance;
+
+    public static Component getInstance() {
+        if(instance == null) instance = new Tokenizer();
+        return instance;
+    }
+
+    private Tokenizer() {}
 
     private static final int def_col = 1;
     private static final int def_lin = 1;
@@ -145,11 +153,15 @@ public class Tokenizer extends Component {
         return merge(list);
     }
 
+//    public List<Token> parseLine(int line, String code) {
+//        return parseInside(line, code);
+//    }
+
     /**
      * 将缓存区的字符压入列表
      * @param list  目标列表
      * @param line  行号
-     * @param  col  列号
+     * @param col   列号
      * @param value 字符
      */
     private void pushToList(List<Token> list, int line, int col, String value) {

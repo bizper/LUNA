@@ -8,6 +8,15 @@ import java.util.List;
 
 public class TokenStreamChecker extends Component {
 
+    private static Component instance;
+
+    public static Component getInstance() {
+        if(instance == null) instance = new TokenStreamChecker();
+        return instance;
+    }
+
+    private TokenStreamChecker() {}
+
     @Override
     public Component run(Context context, Config config) {
         this.context = context;

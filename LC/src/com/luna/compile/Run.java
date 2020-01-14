@@ -45,16 +45,20 @@ public class Run {
         private void init(Config config) {
             OUT.openDebug();
             path.clear();
-            path.add(new Tokenizer());
-            path.add(new TokenStreamChecker());
-            path.add(new Preprocessor());
-            path.add(new SyntaxProcessor());
-            path.add(new Linker());
+            path.add(Tokenizer.getInstance());
+            path.add(TokenStreamChecker.getInstance());
+            path.add(Preprocessor.getInstance());
+            path.add(SyntaxProcessor.getInstance());
+            path.add(Linker.getInstance());
             if(config.isGenerateBytecodeFile()) {
-                path.add(new CodeGenerator());
+                path.add(CodeGenerator.getInstance());
             } else {
-                path.add(new Printer());
+                path.add(Printer.getInstance());
             }
+        }
+
+        private void close() {
+            path.clear();
         }
 
         private void run(Config config) {
@@ -62,6 +66,13 @@ public class Run {
             Context context = Context.get();
             for(Component component : path) {
                 context = component.run(context, config).getContext();
+                if(context.getCode() != STATUS.OK) {
+                    for(String err : context.getErrMsg()) {
+                        OUT.err(err);
+                    }
+                    OUT.info(context);
+                    return;
+                }
             }
             if(context.getCode() != STATUS.OK) {
                 for(String err : context.getErrMsg()) {
@@ -69,7 +80,7 @@ public class Run {
                 }
             }
             OUT.info(context);
-
+            close();
         }
 
     }

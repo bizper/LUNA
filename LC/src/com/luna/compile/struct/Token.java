@@ -6,7 +6,7 @@ import com.luna.compile.constant.TOKEN;
 
 import java.util.StringJoiner;
 
-public class Token implements Mode {
+public class Token implements Mode, StringElement{
 
     private Token() { }
 
@@ -111,5 +111,14 @@ public class Token implements Mode {
 
     public boolean check(TOKEN type) {
         return this.getType() == type;
+    }
+
+    public boolean check(TOKEN token, SIG sig) {
+        return this.getType() == token && this.getSig() == sig;
+    }
+
+    @Override
+    public String getElement() {
+        return value;
     }
 }

@@ -17,6 +17,15 @@ import java.util.List;
  */
 public class SyntaxProcessor extends Component {
 
+    private SyntaxProcessor() {}
+
+    private static Component instance;
+
+    public static Component getInstance() {
+        if(instance == null) instance = new SyntaxProcessor();
+        return instance;
+    }
+
     @Override
     public Component run(Context context, Config config) {
         this.context = context;

@@ -1,5 +1,6 @@
 package com.luna.compile.utils;
 
+import com.luna.compile.compiler.constant.SIG;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Token;
 
@@ -9,6 +10,10 @@ import java.util.stream.Collectors;
 public class TokenUtil {
 
     public static boolean check(Token token, TOKEN type, String value) {
+        return token != null && token.check(type, value);
+    }
+
+    public static boolean check(Token token, TOKEN type, SIG value) {
         return token != null && token.check(type, value);
     }
 
