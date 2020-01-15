@@ -10,30 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b54e2a15-c9eb-4c15-bc6c-3cf28da3a132" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/StringElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/TypeFinalizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/Run$Finalizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/Run$Finalizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/CodeGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Printer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/SyntaxProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/SyntaxProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/base/kits/CommandKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/base/kits/CommandKit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/base/kits/StringKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/base/kits/StringKit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Linker.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Linker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Printer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/TokenStreamChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/TokenStreamChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/TokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/TokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.luna" beforeDir="false" afterPath="$PROJECT_DIR$/test.luna" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -61,7 +42,7 @@
         <counts>
           <entry key="class" value="4" />
           <entry key="iml" value="1" />
-          <entry key="java" value="89" />
+          <entry key="java" value="92" />
           <entry key="luna" value="6" />
           <entry key="md" value="2" />
           <entry key="sy" value="1" />
@@ -72,7 +53,7 @@
         <counts>
           <entry key="CLASS" value="4" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="89" />
+          <entry key="JAVA" value="92" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="XML" value="5" />
@@ -80,15 +61,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2933" />
-          <entry key="luna" value="185" />
+          <entry key="java" value="5570" />
+          <entry key="luna" value="379" />
           <entry key="myString" value="80" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2933" />
-          <entry key="PLAIN_TEXT" value="185" />
+          <entry key="JAVA" value="5570" />
+          <entry key="PLAIN_TEXT" value="379" />
           <entry key="VTL" value="80" />
         </counts>
       </usages-collector>
@@ -110,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.luna">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
+            <state relative-caret-position="64">
+              <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -131,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="131" column="20" lean-forward="true" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
+            <state relative-caret-position="-597">
+              <caret line="64" column="32" lean-forward="true" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,18 +127,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state relative-caret-position="208">
+              <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#204#205#0" expanded="true" />
-                <element signature="e#231#232#0" expanded="true" />
-                <element signature="e#774#775#0" expanded="true" />
-                <element signature="e#811#812#0" expanded="true" />
-                <element signature="e#674#675#0" expanded="true" />
-                <element signature="e#715#716#0" expanded="true" />
-                <element signature="e#1437#1438#0" expanded="true" />
-                <element signature="e#1479#1480#0" expanded="true" />
+                <element signature="e#823#824#0" expanded="true" />
+                <element signature="e#857#858#0" expanded="true" />
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#918#919#0" expanded="true" />
+                <element signature="e#1217#1218#0" expanded="true" />
+                <element signature="e#1246#1247#0" expanded="true" />
+                <element signature="e#1275#1276#0" expanded="true" />
+                <element signature="e#1309#1310#0" expanded="true" />
+                <element signature="e#1342#1343#0" expanded="true" />
+                <element signature="e#1419#1420#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -180,8 +163,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1664">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="179">
+              <caret line="108" column="67" selection-start-line="108" selection-start-column="67" selection-end-line="108" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2453#2454#0" expanded="true" />
@@ -223,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/constant/Keywords.java" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/compile/constant/STATUS.java" />
         <option value="$PROJECT_DIR$/Model/src/com/luna/base/condition/Condition.java" />
         <option value="$PROJECT_DIR$/Model/src/com/luna/base/kits/ContextKit.java" />
@@ -267,13 +249,14 @@
         <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Linker.java" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/CodeGenerator.java" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/compile/Run.java" />
-        <option value="$PROJECT_DIR$/test.luna" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/StringElement.java" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/base/kits/StringKit.java" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/base/kits/CommandKit.java" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" />
         <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/utils/TypeFinalizer.java" />
+        <option value="$PROJECT_DIR$/test.luna" />
       </list>
     </option>
   </component>
@@ -349,24 +332,6 @@
               <item name="LC" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="luna" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="kits" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LUNAL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LUNAL" type="462c0819:PsiDirectoryNode" />
-              <item name="LC" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="luna" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="result" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LUNAL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LUNAL" type="462c0819:PsiDirectoryNode" />
-              <item name="LC" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="luna" type="462c0819:PsiDirectoryNode" />
               <item name="compile" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -432,7 +397,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579005578097" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579080994897" />
     <property name="last.edited.regexp" value="abc unr" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -608,7 +573,7 @@
       <workItem from="1577067745872" duration="15751000" />
       <workItem from="1577088059565" duration="3377000" />
       <workItem from="1577152132285" duration="1335000" />
-      <workItem from="1578880966689" duration="9395000" />
+      <workItem from="1578880966689" duration="28629000" />
     </task>
     <task id="LOCAL-00001" summary="reconstruct">
       <created>1570860624279</created>
@@ -666,11 +631,18 @@
       <option name="project" value="LOCAL" />
       <updated>1577090962963</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="reconstruct">
+      <created>1579005593591</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1579005593591</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159090000" />
+    <option name="totallyTimeSpent" value="178324000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -683,8 +655,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14925373" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14925373" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -693,7 +666,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32960325" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.32552955" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.32552955" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39910814" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -757,14 +730,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/Keywords.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/src/com/luna/base/io/OUT.java" />
     <entry file="jar://$PROJECT_DIR$/artifacts/Model.jar!/com/luna/base/io/OUT.class" />
     <entry file="file://$PROJECT_DIR$/LC/out/basic.sy">
       <provider selected="true" editor-type-id="text-editor" />
@@ -900,45 +865,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.luna">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/StringElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1664">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2453#2454#0" expanded="true" />
-            <element signature="e#2531#2532#0" expanded="true" />
-            <element signature="e#2571#2572#0" expanded="true" />
-            <element signature="e#2616#2617#0" expanded="true" />
-            <element signature="e#2666#2667#0" expanded="true" />
-            <element signature="e#2736#2737#0" expanded="true" />
-            <element signature="e#2798#2799#0" expanded="true" />
-            <element signature="e#2826#2827#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -975,24 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#231#232#0" expanded="true" />
-            <element signature="e#774#775#0" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#715#716#0" expanded="true" />
-            <element signature="e#1437#1438#0" expanded="true" />
-            <element signature="e#1479#1480#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LC/src/com/luna/base/kits/CommandKit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -1000,13 +912,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java">
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="131" column="20" lean-forward="true" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
+        <state relative-caret-position="179">
+          <caret line="108" column="67" selection-start-line="108" selection-start-column="67" selection-end-line="108" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2453#2454#0" expanded="true" />
+            <element signature="e#2531#2532#0" expanded="true" />
+            <element signature="e#2571#2572#0" expanded="true" />
+            <element signature="e#2616#2617#0" expanded="true" />
+            <element signature="e#2666#2667#0" expanded="true" />
+            <element signature="e#2736#2737#0" expanded="true" />
+            <element signature="e#2798#2799#0" expanded="true" />
+            <element signature="e#2826#2827#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="563" column="6" selection-start-line="563" selection-start-column="6" selection-end-line="563" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1246#1247#0" expanded="true" />
+            <element signature="e#1275#1276#0" expanded="true" />
+            <element signature="e#1309#1310#0" expanded="true" />
+            <element signature="e#1342#1343#0" expanded="true" />
+            <element signature="e#1419#1420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/TypeFinalizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#216#217#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-597">
+          <caret line="64" column="32" lean-forward="true" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.luna">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
         </state>
       </provider>
     </entry>

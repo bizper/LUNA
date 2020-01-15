@@ -122,14 +122,36 @@ public class Preprocessor extends Component {
         return list;
     }
 
-    private List<Token> process(final List<Token> list) {
-//        for(Token token : list) {
-//            if(map.containsKey(token.getValue()) && !TokenUtil.check(token, TOKEN.STRING)) {
-//                //token.setValue(map.get(token.getValue()).getValue());
-//                token.setType(TOKEN.SYMBOL);
-//            }
-//        }
+    private List<Token> process(List<Token> list) {
+        for(int i = 0; i<list.size(); i++) {
+            Token token = list.get(i);
+            final int j = i;//lambda expression needs non-effectively variable
+            map.keySet().forEach((e) -> {
+                if(e.headMatch(token)) {
+                    if(subListMatch(list, j, e)) {
+                        clearMatch(list, j, e, map.get(e));
+                    }
+                }
+            });
+        }
         return list;
+    }
+
+    private boolean subListMatch(List<Token> list, int i, TokenSequence ts) {
+        for(i = i + 1; i<list.size() && !ts.isTail(); i++) {
+            if(!ts.nextMatch(list.get(i))) return false;
+        }
+        return true;
+    }
+
+    private void clearMatch(List<Token> list, int i, TokenSequence ts, TokenSequence tts) {
+        int k = 0;
+        Token key = list.get(i);
+        tts.resetMetaInfo(key.getLine(), key.getCol());
+        for(;i<list.size() && k<ts.size(); k++) {
+            list.remove(i);
+        }
+        list.addAll(i, tts.getList());
     }
 
 }
