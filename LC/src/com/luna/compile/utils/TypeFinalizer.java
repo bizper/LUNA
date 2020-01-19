@@ -12,7 +12,6 @@ import java.util.List;
  * double + double => double
  * int + double => double
  * anything + string => string
- *
  */
 public class TypeFinalizer {
 

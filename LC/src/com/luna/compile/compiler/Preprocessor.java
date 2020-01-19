@@ -104,14 +104,14 @@ public class Preprocessor extends Component {
 //                    i = -1;
 //                    continue;
 //                }
-                if(atom.match(next.getList())) {
-                    context.setCode(TOKEN_SYNTAX_ERROR);
-                    context.setMsg(PREPROCESS_ERROR);
-                    context.addErrMsg(token, true, "语法错误：不允许定义表达式作为替换文本");
-                    list = TokenUtil.clearLine(list, token.getLine());
-                    i = -1;
-                    continue;
-                }
+//                if(atom.match(next.getList())) {
+//                    context.setCode(TOKEN_SYNTAX_ERROR);
+//                    context.setMsg(PREPROCESS_ERROR);
+//                    context.addErrMsg(token, true, "语法错误：不允许定义表达式作为替换文本");
+//                    list = TokenUtil.clearLine(list, token.getLine());
+//                    i = -1;
+//                    continue;
+//                }
                 map.put(prev, next);
                 //start to remove token for non multi-define
                 list = TokenUtil.clearLine(list, token.getLine());
@@ -144,6 +144,8 @@ public class Preprocessor extends Component {
         return true;
     }
 
+    //ts: matched token sequence
+    //tts: target token sequence
     private void clearMatch(List<Token> list, int i, TokenSequence ts, TokenSequence tts) {
         int k = 0;
         Token key = list.get(i);

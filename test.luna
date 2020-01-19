@@ -1,5 +1,3 @@
-MIN <- 5
+5 <- 5
 
 print MIN a
-
-MAX a b = if a > b then a else b

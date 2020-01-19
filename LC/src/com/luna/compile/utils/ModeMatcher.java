@@ -2,6 +2,7 @@ package com.luna.compile.utils;
 
 import com.luna.base.io.OUT;
 import com.luna.compile.struct.Mode;
+import com.luna.compile.struct.TokenSequence;
 
 import java.util.List;
 import java.util.function.Function;
@@ -73,6 +74,10 @@ public class ModeMatcher {
 
         public Atom getNext() {
             return next;
+        }
+
+        public <T extends Mode> boolean match(TokenSequence ts) {
+            return match(ts.getList());
         }
 
         public <T extends Mode> boolean match(List<T> list) {

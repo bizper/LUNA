@@ -1,7 +1,6 @@
 package com.luna.compile.struct;
 
 import com.luna.base.kits.StringKit;
-import com.luna.compile.constant.TOKEN;
 
 import java.util.ArrayList;
 import java.util.List;
