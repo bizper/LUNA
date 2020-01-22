@@ -5,6 +5,7 @@ public enum MultiSymbolOperator implements SIG {
     COMMENT("//"),
     DOUBLE_PLUS("++"),
     NOT_EQUALS("!="),
+    EQUALS("=="),
     DOUBLE_MINUS("--"),
     LEFT_ARROW("<-");
 

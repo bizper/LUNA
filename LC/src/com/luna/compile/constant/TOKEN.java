@@ -7,6 +7,7 @@ public enum TOKEN {
     STRING("字符常量"),//字面常量会被设置为此类型
     NUMBER("数字常量"),//常量，对于数字会被设置为此类型
     OPERATOR("操作符"),//操作符
+    BOOLEAN("布尔值"),
     EXPRESSION("表达式");
 
     private String desc;

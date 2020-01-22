@@ -2,19 +2,17 @@ package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
 import com.luna.base.io.OUT;
-import com.luna.base.kits.StringKit;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Token;
 import com.luna.compile.struct.TokenSequence;
+import com.luna.compile.utils.ExpressionFinalizer;
 import com.luna.compile.utils.ModeMatcher;
 import com.luna.compile.utils.TokenUtil;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static com.luna.compile.constant.STATUS.TOKEN_SYNTAX_ERROR;
 
@@ -41,6 +39,7 @@ public class Preprocessor extends Component {
         this.context = context;
         for(List<Token> list : context.getList()) {
             list = process(checkDefine(list));
+            ExpressionFinalizer.derive(list);
             OUT.debug(list);
         }
         return this;

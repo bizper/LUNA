@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.luna.compile.constant.CONSTANT.*;
@@ -169,6 +170,8 @@ public class Tokenizer extends Component {
             list.add(Token.get(line, col, TOKEN.KEYWORD, value, currentFileName, Keywords.getKeyword(value)));
         } else if(isDigit(value)) {
             list.add(Token.get(line, col, TOKEN.NUMBER, value, currentFileName, null));
+        } else if(value.equals("true") || value.equals("false")) {
+            list.add(Token.get(line, col, TOKEN.BOOLEAN, value, currentFileName, null));
         } else {
             list.add(Token.get(line, col, TOKEN.SYMBOL, value, currentFileName, null));
         }
@@ -182,8 +185,13 @@ public class Tokenizer extends Component {
 
     private boolean isDigit(String s) {
         char[] arr = s.toCharArray();
+        boolean isFloat = false;
         for(char c : arr) {
-            if(!Character.isDigit(c)) return false;
+            if(c == '.') {
+                if(!isFloat) isFloat = true;
+                else return false;
+            }
+            if(!Character.isDigit(c) && c != '.') return false;
         }
         return true;
     }
