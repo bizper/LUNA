@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.luna.compile.constant.CONSTANT.*;
@@ -26,6 +27,15 @@ import static com.luna.compile.constant.STATUS.*;
  * 提取词组，并进行分类
  */
 public class Tokenizer extends Component {
+
+    private static Component instance;
+
+    public static Component getInstance() {
+        if(instance == null) instance = new Tokenizer();
+        return instance;
+    }
+
+    private Tokenizer() {}
 
     private static final int def_col = 1;
     private static final int def_lin = 1;
@@ -42,6 +52,8 @@ public class Tokenizer extends Component {
                 context.setMsg(e.getMessage());
             }
         }
+        context.setCode(OK);
+        context.setMsg("SUCCESS");
         OUT.debug(context.getList());
         return this;
     }
@@ -142,33 +154,44 @@ public class Tokenizer extends Component {
         return merge(list);
     }
 
+//    public List<Token> parseLine(int line, String code) {
+//        return parseInside(line, code);
+//    }
+
     /**
      * 将缓存区的字符压入列表
      * @param list  目标列表
      * @param line  行号
-     * @param  col  列号
+     * @param col   列号
      * @param value 字符
      */
     private void pushToList(List<Token> list, int line, int col, String value) {
         if(Keywords.isKeyword(value)) {
-            list.add(Token.get(line, col, TOKEN.KEYWORD, value, currentFileName));
+            list.add(Token.get(line, col, TOKEN.KEYWORD, value, currentFileName, Keywords.getKeyword(value)));
         } else if(isDigit(value)) {
-            list.add(Token.get(line, col, TOKEN.NUMBER, value, currentFileName));
+            list.add(Token.get(line, col, TOKEN.NUMBER, value, currentFileName, null));
+        } else if(value.equals("true") || value.equals("false")) {
+            list.add(Token.get(line, col, TOKEN.BOOLEAN, value, currentFileName, null));
         } else {
-            list.add(Token.get(line, col, TOKEN.SYMBOL, value, currentFileName));
+            list.add(Token.get(line, col, TOKEN.SYMBOL, value, currentFileName, null));
         }
         clear();
     }
 
     private void pushToList(List<Token> list, int line, int col, TOKEN type, Object value) {
-        list.add(Token.get(line, col, type, value.toString(), currentFileName));
+        list.add(Token.get(line, col, type, value.toString(), currentFileName, Operator.getOperator(value.toString())));
         clear();
     }
 
     private boolean isDigit(String s) {
         char[] arr = s.toCharArray();
+        boolean isFloat = false;
         for(char c : arr) {
-            if(!Character.isDigit(c)) return false;
+            if(c == '.') {
+                if(!isFloat) isFloat = true;
+                else return false;
+            }
+            if(!Character.isDigit(c) && c != '.') return false;
         }
         return true;
     }
@@ -191,7 +214,7 @@ public class Tokenizer extends Component {
                     l.remove(0);//移除第一个token，其为记录位
                     list.removeAll(l);//移除剩下的token
                     list.get(i).setValue(s);//将其设置为多符号操作符
-
+                    list.get(i).setSig(MultiSymbolOperator.getMultiSymbolOperator(s));
                 }
             }
         }

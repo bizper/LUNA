@@ -2,120 +2,157 @@ package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
 import com.luna.base.io.OUT;
+import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Token;
+import com.luna.compile.struct.TokenSequence;
+import com.luna.compile.utils.ExpressionFinalizer;
 import com.luna.compile.utils.ModeMatcher;
-import com.sun.istack.internal.NotNull;
+import com.luna.compile.utils.TokenUtil;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import static com.luna.compile.constant.STATUS.TOKEN_SYNTAX_ERROR;
 
 /**
- * 处理 [source text] <- [replace text] 的预处理器，将代码中的source text全部替换为后来的文本
- * source text语法定义
- * 不允许数字，操作符以及字符的定义
+ * 处理 [source text] <- [replace text] 的预处理器，将代码中的源文本全部替换为后来的文本
+ * 源文本语法定义
+ * 不允许数字，操作符以及表达式
  */
 public class Preprocessor extends Component {
+
+    private Preprocessor() {}
+
+    private static Component instance;
+
+    public static Component getInstance() {
+        if(instance == null) instance = new Preprocessor();
+        return instance;
+    }
+
+    private static final String PREPROCESS_ERROR = "PREPROCESS ERROR";
 
     @Override
     public Component run(Context context, Config config) {
         this.context = context;
-        for(final List<Token> list : context.getList()) {
-            checkDefine(list);
-            process(list);
-            OUT.debug("After Preprocess:\n"+list);
+        for(List<Token> list : context.getList()) {
+            list = process(checkDefine(list));
+            ExpressionFinalizer.derive(list);
+            OUT.debug(list);
         }
         return this;
     }
 
-    private HashMap<String, String> map = new HashMap<>();
+    private HashMap<TokenSequence, TokenSequence> map = new HashMap<>();
 
-    private void checkDefine(final List<Token> list) {
-        int i;
-        for(i = 0; i<list.size(); i++) {
+    private ModeMatcher.Atom atom = ModeMatcher.compile("SYMBOL *");
+
+    private List<Token> checkDefine(List<Token> list) {
+        for(int i = 0; i<list.size(); i++) {
             Token token = list.get(i);
-            if(check(token, TOKEN.OPERATOR, "<-")) {
+            if(TokenUtil.check(token, TOKEN.OPERATOR, MultiSymbolOperator.LEFT_ARROW)) {
                 //search for text
-                Token prev = i - 1 < 0 ? null : list.get(i - 1);
-                Token next = list.get(i + 1);
-                //ensure there are no null
+                TokenSequence prev = i - 1 < 0 ? null : TokenSequence.getInstance(list, 0, i, (e) -> e.getLine() == token.getLine());
+                TokenSequence next = i + 1 > list.size() ? null : TokenSequence.getInstance(list, i + 1, list.size(), (e) -> e.getLine() == token.getLine());
+                //to make sure that all tokens are at the same line.
+                if(prev != null && prev.isEmpty()) {
+                    prev = null;
+                }
+                if(next != null && next.isEmpty()) {
+                    next = null;
+                }
                 if(prev == null) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
-                    context.setMsg("PREPROCESS ERROR");
+                    context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(token, "语法错误：不允许空的源文本");
+                    list = TokenUtil.clearLine(list, token.getLine());
+                    i = -1;
                     continue;
                 }
-                if(prev.getType() == TOKEN.NUMBER || prev.getType() == TOKEN.OPERATOR || prev.getType() == TOKEN.STRING) {
+//                if(prev.getType() == TOKEN.NUMBER || prev.getType() == TOKEN.OPERATOR || prev.getType() == TOKEN.STRING) {
+//                    context.setCode(TOKEN_SYNTAX_ERROR);
+//                    context.setMsg(PREPROCESS_ERROR);
+//                    context.addErrMsg(prev, "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.getValue());
+//                    list = TokenUtil.clearLine(list, token.getLine());
+//                    i = -1;
+//                    continue;
+//                }
+//                if(Objects.requireNonNull(prev).getLine() != token.getLine()) {
+//                    context.setCode(TOKEN_SYNTAX_ERROR);
+//                    context.setMsg(PREPROCESS_ERROR);
+//                    context.addErrMsg(prev, "语法错误：不允许空的源文本");
+//                    list = TokenUtil.clearLine(list, token.getLine());
+//                    i = -1;
+//                    continue;
+//                }
+                if(next == null) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
-                    context.setMsg("PREPROCESS ERROR");
-                    context.addErrMsg(prev, "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.getValue());
-                    continue;
-                }
-                if(Objects.requireNonNull(prev).getLine() != token.getLine()) {
-                    context.setCode(TOKEN_SYNTAX_ERROR);
-                    context.setMsg("PREPROCESS ERROR");
-                    context.addErrMsg(prev, "语法错误：不允许空的源文本");
-                    continue;
-                }
-                if(Objects.requireNonNull(next).getLine() != token.getLine()) {
-                    context.setCode(TOKEN_SYNTAX_ERROR);
-                    context.setMsg("PREPROCESS ERROR");
+                    context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(token, true, "语法错误：不允许空的替换文本");
+                    list = TokenUtil.clearLine(list, token.getLine());
+                    i = -1;
                     continue;
                 }
-                if(map.containsKey(Objects.requireNonNull(prev).getValue())) {
-                    context.setCode(TOKEN_SYNTAX_ERROR);
-                    context.setMsg("PREPROCESS ERROR");
-                    context.addErrMsg(prev, "语法错误：重复定义的源文本 " + prev.getValue());
-                    continue;
-                }
-                if(ModeMatcher.compile("SYMBOL * *").match(getLine(list, i))) {
-                    context.setCode(TOKEN_SYNTAX_ERROR);
-                    context.setMsg("PREPROCESS ERROR");
-                    context.addErrMsg(token, true, "语法错误：不允许定义表达式作为替换文本");
-                    continue;
-                }
-                map.put(prev.getValue(), next.getValue());
+//                if(map.containsKey(Objects.requireNonNull(prev).getValue())) {
+//                    context.setCode(TOKEN_SYNTAX_ERROR);
+//                    context.setMsg(PREPROCESS_ERROR);
+//                    context.addErrMsg(prev, "语法错误：重复定义的源文本 " + prev.getValue());
+//                    list = TokenUtil.clearLine(list, token.getLine());
+//                    i = -1;
+//                    continue;
+//                }
+//                if(atom.match(next.getList())) {
+//                    context.setCode(TOKEN_SYNTAX_ERROR);
+//                    context.setMsg(PREPROCESS_ERROR);
+//                    context.addErrMsg(token, true, "语法错误：不允许定义表达式作为替换文本");
+//                    list = TokenUtil.clearLine(list, token.getLine());
+//                    i = -1;
+//                    continue;
+//                }
+                map.put(prev, next);
                 //start to remove token for non multi-define
-                list.remove(prev);
-                list.remove(next);
-                list.remove(token);
-                i = 0;
-            }
+                list = TokenUtil.clearLine(list, token.getLine());
+                i = -1;
+             }
         }
         OUT.debug(map);
+        return list;
     }
 
-    private void process(final List<Token> list) {
-        for(Token token : list) {
-            if(map.containsKey(token.getValue()) && !check(token, TOKEN.STRING)) {
-                token.setValue(map.get(token.getValue()));
-                token.setType(TOKEN.STRING);//the all replace text is string, not symbol, in case of symbol link error
-            }
-        }
-    }
-
-    private boolean check(Token token, TOKEN type, String value) {
-        return token != null && token.getType() == type && token.getValue().equals(value);
-    }
-
-    private boolean check(Token token, TOKEN type) {
-        return token != null && token.getType() == type;
-    }
-
-    private List<Token> getLine(List<Token> list, int pos) {
-        List<Token> result = new ArrayList<>();
-        Token key = list.get(pos);
-        for(int i = pos + 1; i<list.size(); i++) {
+    private List<Token> process(List<Token> list) {
+        for(int i = 0; i<list.size(); i++) {
             Token token = list.get(i);
-            if(token.getLine() == key.getLine()) result.add(token);
+            final int j = i;//lambda expression needs non-effectively variable
+            map.keySet().forEach((e) -> {
+                if(e.headMatch(token)) {
+                    if(subListMatch(list, j, e)) {
+                        clearMatch(list, j, e, map.get(e));
+                    }
+                }
+            });
         }
-        return result;
+        return list;
+    }
+
+    private boolean subListMatch(List<Token> list, int i, TokenSequence ts) {
+        for(i = i + 1; i<list.size() && !ts.isTail(); i++) {
+            if(!ts.nextMatch(list.get(i))) return false;
+        }
+        return true;
+    }
+
+    //ts: matched token sequence
+    //tts: target token sequence
+    private void clearMatch(List<Token> list, int i, TokenSequence ts, TokenSequence tts) {
+        int k = 0;
+        Token key = list.get(i);
+        tts.resetMetaInfo(key.getLine(), key.getCol());
+        for(;i<list.size() && k<ts.size(); k++) {
+            list.remove(i);
+        }
+        list.addAll(i, tts.getList());
     }
 
 }

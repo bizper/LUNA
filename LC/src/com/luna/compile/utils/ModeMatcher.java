@@ -1,10 +1,11 @@
 package com.luna.compile.utils;
 
+import com.luna.base.io.OUT;
 import com.luna.compile.struct.Mode;
+import com.luna.compile.struct.TokenSequence;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.function.Function;
 
 /**
  * 对输入的token流进行模式匹配
@@ -23,7 +24,7 @@ public class ModeMatcher {
             root = root.getNext();
         }
         if(root.getType() == null) root.getParent().setNext(null);
-        System.out.println(cache);
+        OUT.debug(cache);
         return cache;
     }
 
@@ -34,7 +35,7 @@ public class ModeMatcher {
         private String type;
 
         public String toString() {
-            return next != null ? type + " -> " + next.toString() : type;
+            return next != null ? type + " => " + next.toString() : type;
         }
 
         public Atom setNext(Atom next) {
@@ -57,6 +58,16 @@ public class ModeMatcher {
             return this;
         }
 
+        public int getLength() {
+            int i = 1;
+            Atom node = this;
+            while(node.next != null) {
+                i++;
+                node = node.next;
+            }
+            return i;
+        }
+
         public String getType() {
             return type;
         }
@@ -65,22 +76,38 @@ public class ModeMatcher {
             return next;
         }
 
+        public <T extends Mode> boolean match(TokenSequence ts) {
+            return match(ts.getList());
+        }
+
         public <T extends Mode> boolean match(List<T> list) {
             if(list.isEmpty()) return false;
+            if(list.size() < getLength()) return false;
             if(!list.get(0).mode().equals(type) && !type.equals("*")) return false;
-            Atom root = this;
+            Atom root = this.getNext();
             for(int i = 1; i<list.size(); i++) {
                 T t = list.get(i);
-                Atom cache = root.getNext(t);
-                if(cache == null) return false;
-                root = cache;
+                if(root == null) return true;
+                if(!root.type.equals(t.mode()) && !root.type.equals("*")) return false;
+                root = root.getNext();
             }
             return true;
         }
 
-        public <T extends Mode> Atom getNext(T t) {
-            if(next != null && (next.type.equals(t.mode()) || next.type.equals("*"))) return next;
-            return null;
+        public <T extends Mode, R> boolean action(List<T> list, Function<T, R> function) {
+            if(list.isEmpty()) return false;
+            if(list.size() < getLength()) return false;
+            if(!list.get(0).mode().equals(type) && !type.equals("*")) return false;
+            if(function != null) function.apply(list.get(0));
+            Atom root = this.getNext();
+            for(int i = 1; i<list.size(); i++) {
+                T t = list.get(i);
+                if(root == null) return true;
+                if(!root.type.equals(t.mode()) && !root.type.equals("*")) return false;
+                if(function != null) function.apply(t);
+                root = root.getNext();
+            }
+            return true;
         }
     }
 

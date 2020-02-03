@@ -1,6 +1,6 @@
 package com.luna.compile.compiler.constant;
 
-public enum Operator {
+public enum Operator implements SIG {
 
     EQUAL('='),
     PLUS('+'),

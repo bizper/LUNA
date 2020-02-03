@@ -8,6 +8,7 @@ import com.luna.compile.constant.Vars;
 import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Node;
 import com.luna.compile.struct.Token;
+import com.luna.compile.utils.TokenUtil;
 
 import java.util.List;
 
@@ -15,6 +16,15 @@ import java.util.List;
  * 对于语法进行分析，语法的根基为根目录下的basic.sy文件
  */
 public class SyntaxProcessor extends Component {
+
+    private SyntaxProcessor() {}
+
+    private static Component instance;
+
+    public static Component getInstance() {
+        if(instance == null) instance = new SyntaxProcessor();
+        return instance;
+    }
 
     @Override
     public Component run(Context context, Config config) {
@@ -29,13 +39,13 @@ public class SyntaxProcessor extends Component {
         Node root = Node.create();
         Node cache = root;
         for(Token token : list) {
-            if(check(token, TOKEN.SYMBOL)) {
+            if(TokenUtil.check(token, TOKEN.SYMBOL)) {
                 root.setName(NODE.METHOD_CALL);
                 root.setValue(token.getValue());
                 root.addNode(Node.create());
                 root = root.head();
             }
-            if(check(token, TOKEN.STRING)) {
+            if(TokenUtil.check(token, TOKEN.STRING)) {
                 if(root.getParent().getName() == NODE.METHOD_CALL) {
                     root.setValue(token.getValue());
                     root.setName(NODE.CONSTANT);
@@ -45,7 +55,7 @@ public class SyntaxProcessor extends Component {
                     root = node;
                 }
             }
-            if(check(token, TOKEN.OPERATOR, "=")) {
+            if(TokenUtil.check(token, TOKEN.OPERATOR, "=")) {
                 if(root.getParent().getName() == NODE.METHOD_CALL) {
                     root.getParent().setName(NODE.METHOD_DEFINE);
                     
@@ -53,14 +63,6 @@ public class SyntaxProcessor extends Component {
             }
         }
         OUT.debug(cache);
-    }
-
-    private boolean check(Token token, TOKEN type, String value) {
-        return token != null && token.getType() == type && token.getValue().equals(value);
-    }
-
-    private boolean check(Token token, TOKEN type) {
-        return token != null && token.getType() == type;
     }
 
 }

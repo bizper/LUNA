@@ -45,8 +45,7 @@ example:
 
 表达式定义
 
-单独的数字和双引号引起的字符都可以作为表达式，
-有字符串参与的表达式计算无法使用除+之外的操作符
+单独的数字和双引号引起的字符都可以作为表达式
 
 EXPRESSION = ATOM ｜ ATOM OPERATOR ATOM | ATOM OPERATOR EXPRESSION | EXPRESSION OPERATOR EXPRESSION
 

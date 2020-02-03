@@ -13,6 +13,4 @@ public abstract class Component {
         return context;
     }
 
-
-
 }

@@ -1,10 +1,11 @@
 package com.luna.compile.compiler.constant;
 
-public enum MultiSymbolOperator {
+public enum MultiSymbolOperator implements SIG {
 
     COMMENT("//"),
     DOUBLE_PLUS("++"),
     NOT_EQUALS("!="),
+    EQUALS("=="),
     DOUBLE_MINUS("--"),
     LEFT_ARROW("<-");
 
@@ -12,6 +13,13 @@ public enum MultiSymbolOperator {
 
     MultiSymbolOperator(String value) {
         this.value = value;
+    }
+
+    public static MultiSymbolOperator getMultiSymbolOperator(String value) {
+        for(MultiSymbolOperator op : values()) {
+            if(op.getValue().equals(value)) return op;
+        }
+        return null;
     }
 
     public String getValue() {

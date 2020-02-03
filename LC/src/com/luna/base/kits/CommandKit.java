@@ -33,7 +33,7 @@ public class CommandKit extends BaseKit {
                 config.addCompileFiles(s);
             }
         }
-        return build(true, StringKit.join(" ", args), config);
+        return build(true, StringKit.join(args, " "), config);
     }
 
     private static String getFurtherInfo(String[] a, int loc, String message) {

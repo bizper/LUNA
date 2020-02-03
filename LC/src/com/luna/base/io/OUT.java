@@ -15,7 +15,7 @@ public class OUT {
     }
 
     public static void err(Object obj) {
-        System.err.println(obj);
+        System.out.println("\033[31m"+obj+"\033[0m");
     }
 
     public static void openDebug() {
