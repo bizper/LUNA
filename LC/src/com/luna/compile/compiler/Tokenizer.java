@@ -10,6 +10,7 @@ import com.luna.compile.compiler.constant.Operator;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.loader.Loader;
 import com.luna.compile.struct.Context;
+import com.luna.compile.struct.FileInfo;
 import com.luna.compile.struct.Token;
 
 import java.io.BufferedReader;
@@ -17,7 +18,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.luna.compile.constant.CONSTANT.*;
@@ -58,24 +58,21 @@ public class Tokenizer extends Component {
         return this;
     }
 
-    private String currentFileName;
+    private FileInfo fileInfo;
 
     private List<Token> parseFile(String path) throws IOException {
+        List<Token> list = new ArrayList<>();
         Loader loader = Loader.get();
         Bean<File> bean = loader.load(path, (e0) -> e0.endsWith(".luna"));
-        List<Token> list = new ArrayList<>();
-        if(bean.isSuccess()) {
-            currentFileName = path;
-            File file = bean.getData();
-            BufferedReader fr = new BufferedReader(new FileReader(file));
-            String code;
-            int line = def_lin;
-            while((code = fr.readLine()) != null) {
-                list.addAll(parseInside(line++, code));
-            }
-        } else {
+        if(!bean.isSuccess()) {
             context.setCode(bean.getCode());
             context.setMsg(bean.getMessage());
+            return list;
+        }
+        fileInfo = com.luna.compile.loader.FileReader.read(bean.getData());
+        int line = def_lin;
+        for(String code : fileInfo.getContent()) {
+            list.addAll(parseInside(line++, code));
         }
         return list;
     }
@@ -167,19 +164,19 @@ public class Tokenizer extends Component {
      */
     private void pushToList(List<Token> list, int line, int col, String value) {
         if(Keywords.isKeyword(value)) {
-            list.add(Token.get(line, col, TOKEN.KEYWORD, value, currentFileName, Keywords.getKeyword(value)));
+            list.add(Token.get(line, col, TOKEN.KEYWORD, value, fileInfo.getName(), Keywords.getKeyword(value)));
         } else if(isDigit(value)) {
-            list.add(Token.get(line, col, TOKEN.NUMBER, value, currentFileName, null));
+            list.add(Token.get(line, col, TOKEN.NUMBER, value, fileInfo.getName(), null));
         } else if(value.equals("true") || value.equals("false")) {
-            list.add(Token.get(line, col, TOKEN.BOOLEAN, value, currentFileName, null));
+            list.add(Token.get(line, col, TOKEN.BOOLEAN, value, fileInfo.getName(), null));
         } else {
-            list.add(Token.get(line, col, TOKEN.SYMBOL, value, currentFileName, null));
+            list.add(Token.get(line, col, TOKEN.SYMBOL, value, fileInfo.getName(), null));
         }
         clear();
     }
 
     private void pushToList(List<Token> list, int line, int col, TOKEN type, Object value) {
-        list.add(Token.get(line, col, type, value.toString(), currentFileName, Operator.getOperator(value.toString())));
+        list.add(Token.get(line, col, type, value.toString(), fileInfo.getName(), Operator.getOperator(value.toString())));
         clear();
     }
 

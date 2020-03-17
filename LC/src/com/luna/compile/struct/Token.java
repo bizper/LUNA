@@ -6,7 +6,7 @@ import com.luna.compile.constant.TOKEN;
 
 import java.util.StringJoiner;
 
-public class Token implements Mode, StringElement{
+public class Token implements Mode, StringElement {
 
     private Token() { }
 

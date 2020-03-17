@@ -1,1 +1,9 @@
-ATOM = a-zA-Z0-9 | 0-9
+ATOM                :=          A-Z & a-z & 0-9
+STRING              :=          "any characters" | 'any characters'
+DIGITAL             :=          0-9
+OPERATOR            :=          + | - | * | /
+NODE                :=          ATOM | STRING | DIGITAL
+EXPRESSION          :=          NODE | NODE OPERATOR NODE | NODE OPERATOR EXPRESSION \
+                                    | EXPRESSION OPERATOR NODE | EXPRESSION OPERATOR EXPRESSION
+
+VARIABLE            :=          ATOM = EXPRESSION

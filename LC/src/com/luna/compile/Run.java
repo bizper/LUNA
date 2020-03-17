@@ -7,7 +7,7 @@ import com.luna.base.result.Bean;
 import com.luna.compile.compiler.*;
 import com.luna.compile.constant.STATUS;
 import com.luna.compile.struct.Context;
-import com.luna.compile.utils.ExpressionFinalizer;
+import com.luna.compile.utils.Env;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +45,7 @@ public class Run {
 
         private void init(Config config) {
             OUT.openDebug();
+            this.initParams();
             path.clear();
             path.add(Tokenizer.getInstance());
             path.add(TokenStreamChecker.getInstance());
@@ -56,6 +57,10 @@ public class Run {
             } else {
                 path.add(Printer.getInstance());
             }
+        }
+
+        private void initParams() {
+            Env.put("syntax_file_path", "./LC/src/basic.sy");
         }
 
         private void close() {
