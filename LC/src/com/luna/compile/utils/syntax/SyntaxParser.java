@@ -44,30 +44,54 @@ public final class SyntaxParser {
         String[] partition = code.split(":=");
         SyntaxNode syntaxNode = new SyntaxNode();
         syntaxNode.setName(partition[0].trim());
-        syntaxNode.setType(0);
-        String[] values = parseInside(partition[1]);
-        syntaxNode.setValues(values);
+        parseInside(syntaxNode, partition[1]);
         return syntaxNode;
     }
 
-    private static String[] parseInside(String str) {
+    private static void parseInside(SyntaxNode node, String str) {
         str = str.trim();
+        node.setType(0);
         char[] arr = str.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
         List<String> list = new ArrayList<>();
+        String code;
         for(int i = 0; i<arr.length; i++) {
             char c = arr[i];
             switch(c) {
                 case '|':
+                    node.setType(1);
+                    code = stringBuilder.toString().trim();
+                    if(code.contains("-")) {
+                        List<String> range = parseRange(code);
+                        if(range != null) {
+                            node.addNode(SyntaxNode.create(node.getName(), range.toArray(new String[]{})));
+                        }
+                    } else {
+                        list.add(code);
+                    }
+                    stringBuilder.delete(0, stringBuilder.length() - 1);
                     break;
                 case '&':
-
+                    code = stringBuilder.toString().trim();
+                    if(code.contains("-")) {
+                        List<String> range = parseRange(code);
+                        if(range != null) list.addAll(range);
+                    } else {
+                        list.add(code);
+                    }
+                    stringBuilder.delete(0, stringBuilder.length() - 1);
                     break;
                     default:
                         stringBuilder.append(c);
             }
         }
-        return list.toArray(new String[]{});
+        if(stringBuilder.length() > 0) {
+            code = stringBuilder.toString().trim();
+            if(code.contains("-")) {
+                List<String> range = parseRange(code);
+                if(range != null) list.addAll(range);
+            }
+        }
     }
 
     private static List<String> parseRange(String range) {

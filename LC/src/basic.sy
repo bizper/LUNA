@@ -1,5 +1,5 @@
 ATOM                :=          A-Z & a-z & 0-9
-STRING              :=          "any characters" | 'any characters'
+STRING              :=          "*" | '*'
 DIGITAL             :=          0-9
 OPERATOR            :=          + | - | * | /
 NODE                :=          ATOM | STRING | DIGITAL
