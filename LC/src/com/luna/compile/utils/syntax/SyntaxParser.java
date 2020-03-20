@@ -10,15 +10,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public final class SyntaxParser {
 
     private static final String path = Env.get("syntax_file_path");
 
+    private static final Pattern rangep = Pattern.compile("[a-zA-Z0-9]-[a-zA-Z0-9]");
+
     private static Map<String, SyntaxNode> map = null;
 
     public static Map<String, SyntaxNode> getMap() {
         return map;
+    }
+
+    public static SyntaxNode find(String name) {
+        return map.get(name);
     }
 
     public static void init() {
@@ -42,8 +49,7 @@ public final class SyntaxParser {
 
     private static SyntaxNode parseBNF(String code) {
         String[] partition = code.split(":=");
-        SyntaxNode syntaxNode = new SyntaxNode();
-        syntaxNode.setName(partition[0].trim());
+        SyntaxNode syntaxNode = SyntaxNode.create(partition[0].trim());
         parseInside(syntaxNode, partition[1]);
         return syntaxNode;
     }
@@ -53,45 +59,60 @@ public final class SyntaxParser {
         node.setType(0);
         char[] arr = str.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
-        List<String> list = new ArrayList<>();
         String code;
-        for(int i = 0; i<arr.length; i++) {
-            char c = arr[i];
-            switch(c) {
+        for (char c : arr) {
+            switch (c) {
                 case '|':
                     node.setType(1);
                     code = stringBuilder.toString().trim();
-                    if(code.contains("-")) {
+                    if (rangep.matcher(code).matches()) {
                         List<String> range = parseRange(code);
-                        if(range != null) {
-                            node.addNode(SyntaxNode.create(node.getName(), range.toArray(new String[]{})));
+                        if (range != null) {
+                            node.addNode(SyntaxNode.create(node.getName(), range));
                         }
                     } else {
-                        list.add(code);
+                        SyntaxNode cache;
+                        if ((cache = find(code)) != null) node.addNode(cache);
+                        else node.addNode(SyntaxNode.create(node.getName(), code));
                     }
                     stringBuilder.delete(0, stringBuilder.length() - 1);
                     break;
                 case '&':
                     code = stringBuilder.toString().trim();
-                    if(code.contains("-")) {
+                    if (rangep.matcher(code).matches()) {
                         List<String> range = parseRange(code);
-                        if(range != null) list.addAll(range);
+                        if (range != null) node.addValue(range);
                     } else {
-                        list.add(code);
+                        SyntaxNode cache;
+                        if ((cache = find(code)) != null) node.addNode(cache);
+                        else node.addValue(code);
                     }
                     stringBuilder.delete(0, stringBuilder.length() - 1);
                     break;
-                    default:
-                        stringBuilder.append(c);
+                default:
+                    stringBuilder.append(c);
             }
         }
         if(stringBuilder.length() > 0) {
             code = stringBuilder.toString().trim();
-            if(code.contains("-")) {
+            if(rangep.matcher(code).matches()) {
                 List<String> range = parseRange(code);
-                if(range != null) list.addAll(range);
+                if(range != null && node.getType() == 0) node.addValue(range);
+                if(range != null && node.getType() == 1) node.addNode(SyntaxNode.create(node.getName(), range));
+            } else {
+                if(node.getType() == 0) {
+                    SyntaxNode cache;
+                    if((cache = find(code)) != null) node.addNode(cache);
+                    else node.addValue(code);
+                }
+                if(node.getType() == 1) {
+                    SyntaxNode cache;
+                    if((cache = find(code)) != null) node.addNode(cache);
+                    else node.addNode(SyntaxNode.create(node.getName(), code));
+                }
             }
         }
+
     }
 
     private static List<String> parseRange(String range) {

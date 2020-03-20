@@ -1,9 +1,14 @@
 package com.luna.compile.struct;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SyntaxNode {
+
+    private SyntaxNode() {
+        values = new ArrayList<>();
+        nodes = new ArrayList<>();
+    }
 
     private String name;
 
@@ -13,15 +18,14 @@ public class SyntaxNode {
      */
     private int type;
 
-    private String[] values;
+    private List<String> values;
 
     private List<SyntaxNode> nodes;
 
     @Override
     public String toString() {
-        return "|----<" + name + '>' +
-                (type == 0 ? ", values=" + Arrays.toString(values) : ", nodes=" + nodes) +
-                ']';
+        return "<" + name +
+                (type == 0 ? ", values=" + values : ", nodes=" + nodes) + '>';
     }
 
     public SyntaxNode setType(int type) {
@@ -29,8 +33,18 @@ public class SyntaxNode {
         return this;
     }
 
-    public SyntaxNode setValues(String[] values) {
+    public SyntaxNode setValues(List<String> values) {
         this.values = values;
+        return this;
+    }
+
+    public SyntaxNode addValue(String value) {
+        this.values.add(value);
+        return this;
+    }
+
+    public SyntaxNode addValue(List<String> value) {
+        this.values.addAll(value);
         return this;
     }
 
@@ -38,7 +52,7 @@ public class SyntaxNode {
         return type;
     }
 
-    public String[] getValues() {
+    public List<String> getValues() {
         return values;
     }
 
@@ -64,12 +78,20 @@ public class SyntaxNode {
         return nodes;
     }
 
-    public static SyntaxNode create(String name, String[] values) {
+    public static SyntaxNode create(String name, List<String> values) {
         return new SyntaxNode().setName(name).setValues(values);
     }
 
     public static SyntaxNode create(String name, SyntaxNode node) {
         return new SyntaxNode().setName(name).addNode(node);
+    }
+
+    public static SyntaxNode create(String name, String value) {
+        return new SyntaxNode().setName(name).addValue(value);
+    }
+
+    public static SyntaxNode create(String name) {
+        return new SyntaxNode().setName(name);
     }
 
 }
