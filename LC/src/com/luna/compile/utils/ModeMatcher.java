@@ -9,8 +9,9 @@ import java.util.function.Function;
 
 /**
  * 对输入的token流进行模式匹配
- * 除去TOKEN的名字为关键字外，可以使用如下的方式去匹配
- * SYMBOL *
+ * 除去TOKEN的名字为关键字外，可以使用如下的符号去匹配
+ * * 匹配任何token
+ * !SYMBOL 匹配除了SYMBOL之外的token
  */
 public class ModeMatcher {
 

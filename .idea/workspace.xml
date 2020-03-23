@@ -10,24 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b54e2a15-c9eb-4c15-bc6c-3cf28da3a132" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/BaseFinalizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/META-INF/LC.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/Run$Finalizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/Run$Finalizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/Run.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/constant/TOKEN.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/constant/TOKEN.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/MultiSymbolOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/MultiSymbolOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/TOKEN.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/TOKEN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/TypeFinalizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/TypeFinalizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.luna" beforeDir="false" afterPath="$PROJECT_DIR$/test.luna" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ModeMatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ModeMatcher.java" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +21,97 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/TokenUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/ModeMatcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="543">
+              <caret line="105" column="45" lean-forward="true" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/TypeFinalizer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="825">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.luna">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1305">
+              <caret line="104" column="22" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,21 +125,178 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Model/src/com/luna/base/condition/Condition.java" />
+        <option value="$PROJECT_DIR$/Model/src/com/luna/base/kits/ContextKit.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxChecker.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/Finalizer.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/constant/CONSTANT.java" />
+        <option value="$PROJECT_DIR$/ExtendTools/src/com/luna/extend/Entrance.java" />
+        <option value="$PROJECT_DIR$/Model/src/com/luna/base/io/Out.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/loader/FileLoader.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/LC/src/basic.sy" />
+        <option value="$PROJECT_DIR$/Model/src/com/luna/base/kits/CommandKit.java" />
+        <option value="$PROJECT_DIR$/Model/src/com/luna/base/config/Config.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/SymbolMap.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ContextUtil.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Module.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Expression.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Node.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/constant/NODE.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/constant/TOKEN.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Mode.java" />
+        <option value="$PROJECT_DIR$/StandardLibrary/src/std.luna" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/Keywords.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/Operator.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/MultiSymbolOperator.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/constant/Vars.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/SIG.java" />
+        <option value="$PROJECT_DIR$/Model/src/com/luna/base/io/OUT.java" />
+        <option value="$PROJECT_DIR$/LC/src/base/kits/StringKit.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/base/kits/StringKit.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/base/kits/NumberKit.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/utils/TokenUtil.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Component.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Printer.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/TokenStreamChecker.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Linker.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/StringElement.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/base/kits/StringKit.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/base/kits/CommandKit.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/Run.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/utils/TypeFinalizer.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java" />
+        <option value="$PROJECT_DIR$/test.luna" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Context.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ModeMatcher.java" />
+        <option value="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectId" id="1WedmJrMliqPxeYV1AYJDPDgLjj" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="24" />
+    <option name="y" value="23" />
+    <option name="width" value="1426" />
+    <option name="height" value="877" />
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="luna" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="luna" type="462c0819:PsiDirectoryNode" />
+              <item name="compile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="luna" type="462c0819:PsiDirectoryNode" />
+              <item name="compile" type="462c0819:PsiDirectoryNode" />
+              <item name="compiler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="luna" type="462c0819:PsiDirectoryNode" />
+              <item name="compile" type="462c0819:PsiDirectoryNode" />
+              <item name="compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="constant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="luna" type="462c0819:PsiDirectoryNode" />
+              <item name="compile" type="462c0819:PsiDirectoryNode" />
+              <item name="constant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="luna" type="462c0819:PsiDirectoryNode" />
+              <item name="compile" type="462c0819:PsiDirectoryNode" />
+              <item name="loader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="luna" type="462c0819:PsiDirectoryNode" />
+              <item name="compile" type="462c0819:PsiDirectoryNode" />
+              <item name="struct" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Luna" type="462c0819:PsiDirectoryNode" />
+              <item name="LC" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="luna" type="462c0819:PsiDirectoryNode" />
+              <item name="compile" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Luna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -81,10 +315,10 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="project.propGUI" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -100,6 +334,18 @@
       <recent name="D:\IdeaProjects\LUNAL\LC\src" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.Run">
     <configuration name="CommandTool" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -171,8 +417,8 @@
     <list>
       <item itemvalue="Application.CommandTool" />
       <item itemvalue="Application.Entrance" />
-      <item itemvalue="Application.Linker" />
       <item itemvalue="Application.Run" />
+      <item itemvalue="Application.Linker" />
       <item itemvalue="Application.TokenUtil" />
     </list>
     <recent_temporary>
@@ -184,18 +430,6 @@
         <item itemvalue="Application.Entrance" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -330,7 +564,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188109000" />
+    <option name="totallyTimeSpent" value="188736000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -341,6 +575,42 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19170243" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32960325" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.3253012" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39910814" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32942432" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.3120482" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3277592" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24964234" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="9" />
+    </layout>
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -350,8 +620,35 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="COLUMN_ORDER" />
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
           </value>
         </entry>
       </map>
@@ -361,38 +658,380 @@
     <MESSAGE value="reconstruct" />
     <option name="LAST_COMMIT_MESSAGE" value="reconstruct" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="563" y="142" width="784" height="820" key="CommitChangelistDialog2" timestamp="1579706532473">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="563" y="142" width="784" height="820" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1579706532473" />
-    <state width="1868" height="226" key="GridCell.Tab.0.bottom" timestamp="1579588223919">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state width="1868" height="226" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1579588223919" />
-    <state width="1868" height="226" key="GridCell.Tab.0.center" timestamp="1579588223918">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state width="1868" height="226" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1579588223918" />
-    <state width="1868" height="226" key="GridCell.Tab.0.left" timestamp="1579588223918">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state width="1868" height="226" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1579588223918" />
-    <state width="1868" height="226" key="GridCell.Tab.0.right" timestamp="1579588223919">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state width="1868" height="226" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1579588223919" />
-    <state x="434" y="187" width="1024" height="845" key="SettingsEditor" timestamp="1579514203360">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="434" y="187" width="1024" height="845" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1579514203360" />
-    <state x="605" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1579514166517">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="605" y="380" key="com.intellij.ide.util.TipDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1579514166517" />
-  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/LC/src/base/kits/CommandKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/base/kits/BaseKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/base/config/Config.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/base/kits/ContextKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/base/condition/Condition.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/base/kits/StringKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/result/Bean.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/io/OUT.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/kits/NumberKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/io/IN.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/kits/CommandKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/kits/BaseKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/config/Config.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/kits/ContextKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/condition/Condition.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/base/kits/StringKit.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/base/condition/Condition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StandardLibrary/src/std.luna" />
+    <entry file="file://$PROJECT_DIR$/ExtendTools/src/com/luna/extend/Entrance.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Printer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/TokenStreamChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Linker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/StringElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/util/function/Predicate.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/Expression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/util/List.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/base/kits/StringKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="104" column="22" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/base/config/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="928">
+          <caret line="61" column="20" lean-forward="true" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/base/io/IN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/base/result/Bean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/base/kits/NumberKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/util/function/Function.java" />
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/base/kits/CommandKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/Run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.luna">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1334#1335#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="128">
+            <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/MultiSymbolOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <folding>
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#584#585#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/Operator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="32" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/SIG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/TypeFinalizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2145">
+          <caret line="27" column="35" lean-forward="true" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/CodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="34" selection-start-column="34" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/TokenUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LC/src/com/luna/compile/utils/ModeMatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="105" column="45" lean-forward="true" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>LC:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>httpcore-4.4.4</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>Kotlin SDK</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>LVM</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>LC</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
