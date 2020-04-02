@@ -17,7 +17,7 @@ public class Run {
     public static void main(String[] args) {
         if(args.length == 0) {
             OUT.info("-------------------------------------");
-            OUT.info("lc author: orange  version: 0x00.0x01");
+            OUT.info("lc author: orange  version: 0。01-alpha");
             OUT.info("for compiling luna code files.");
             OUT.info("-------------------------------------");
         } else {
