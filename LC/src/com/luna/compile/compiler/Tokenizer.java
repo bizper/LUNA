@@ -13,15 +13,15 @@ import com.luna.compile.struct.Context;
 import com.luna.compile.struct.FileInfo;
 import com.luna.compile.struct.Token;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.luna.compile.constant.CONSTANT.*;
-import static com.luna.compile.constant.STATUS.*;
+import static com.luna.compile.constant.CONSTANT.double_quote;
+import static com.luna.compile.constant.CONSTANT.space;
+import static com.luna.compile.constant.STATUS.ERROR;
+import static com.luna.compile.constant.STATUS.OK;
 
 /**
  * 提取词组，并进行分类
@@ -45,12 +45,7 @@ public class Tokenizer extends Component {
         this.context = context;
         String[] files = config.getCompileFiles();
         for(String path : files) {
-            try {
-                context.add(parseFile(path));
-            } catch (IOException e) {
-                context.setCode(ERROR);
-                context.setMsg(e.getMessage());
-            }
+            context.add(parseFile(path));
         }
         context.setCode(OK);
         context.setMsg("SUCCESS");
@@ -60,7 +55,7 @@ public class Tokenizer extends Component {
 
     private FileInfo fileInfo;
 
-    private List<Token> parseFile(String path) throws IOException {
+    private List<Token> parseFile(String path) {
         List<Token> list = new ArrayList<>();
         Loader loader = Loader.get();
         Bean<File> bean = loader.load(path, (e0) -> e0.endsWith(".luna"));

@@ -3,7 +3,7 @@ package com.luna.compile.utils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Env {
+public final class Env {
 
     private static final Map<String, String> map = new HashMap<>();
 
@@ -29,6 +29,10 @@ public class Env {
 
     public static String getOSVersion() {
         return System.getProperty("os.version");
+    }
+
+    public static void clear() {
+        map.clear();
     }
 
 }

@@ -2,7 +2,8 @@ package com.luna.compile.utils.syntax;
 
 import com.luna.compile.loader.FileReader;
 import com.luna.compile.struct.FileInfo;
-import com.luna.compile.struct.SyntaxNode;
+import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
+import com.luna.compile.utils.syntax.struct.SyntaxNode;
 import com.luna.compile.utils.Env;
 
 import java.io.File;
@@ -24,7 +25,7 @@ public final class SyntaxParser {
         return map;
     }
 
-    public static SyntaxNode find(String name) {
+    private static SyntaxNode find(String name) {
         return map.get(name);
     }
 
@@ -56,14 +57,14 @@ public final class SyntaxParser {
 
     private static void parseInside(SyntaxNode node, String str) {
         str = str.trim();
-        node.setType(0);
+        node.setType(SyntaxNodeType.BASE);
         char[] arr = str.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
         String code;
         for (char c : arr) {
             switch (c) {
                 case '|':
-                    node.setType(1);
+                    node.setType(SyntaxNodeType.LINK);
                     code = stringBuilder.toString().trim();
                     if (rangep.matcher(code).matches()) {
                         List<String> range = parseRange(code);
@@ -97,15 +98,15 @@ public final class SyntaxParser {
             code = stringBuilder.toString().trim();
             if(rangep.matcher(code).matches()) {
                 List<String> range = parseRange(code);
-                if(range != null && node.getType() == 0) node.addValue(range);
-                if(range != null && node.getType() == 1) node.addNode(SyntaxNode.create(node.getName(), range));
+                if(range != null && node.getType() == SyntaxNodeType.BASE) node.addValue(range);
+                if(range != null && node.getType() == SyntaxNodeType.LINK) node.addNode(SyntaxNode.create(node.getName(), range));
             } else {
-                if(node.getType() == 0) {
+                if(node.getType() == SyntaxNodeType.BASE) {
                     SyntaxNode cache;
                     if((cache = find(code)) != null) node.addNode(cache);
                     else node.addValue(code);
                 }
-                if(node.getType() == 1) {
+                if(node.getType() == SyntaxNodeType.LINK) {
                     SyntaxNode cache;
                     if((cache = find(code)) != null) node.addNode(cache);
                     else node.addNode(SyntaxNode.create(node.getName(), code));

@@ -39,13 +39,13 @@ public final class FileReader {
                 if(openConnectionSymbol) {
                     if(str.isEmpty()) continue;
                     if(key.length() > 0) {
-                        if(str.trim().endsWith("\\")) key.append(str.replace(connectionSymbol, ""));
+                        if(str.trim().endsWith(connectionSymbol)) key.append(str.replace(connectionSymbol, ""));
                         else {
                             content.add(key + str.trim());
                             key = new StringBuilder();
                         }
                     } else {
-                        if(str.trim().endsWith("\\")) key.append(str.replace(connectionSymbol, ""));
+                        if(str.trim().endsWith(connectionSymbol)) key.append(str.replace(connectionSymbol, ""));
                         else content.add(str);
                     }
                 } else {

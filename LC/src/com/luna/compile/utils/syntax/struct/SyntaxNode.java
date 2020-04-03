@@ -1,9 +1,11 @@
-package com.luna.compile.struct;
+package com.luna.compile.utils.syntax.struct;
+
+import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SyntaxNode {
+public final class SyntaxNode {
 
     private SyntaxNode() {
         values = new ArrayList<>();
@@ -16,7 +18,7 @@ public class SyntaxNode {
      * 0 base node, described as range or a single character
      * 1 link node, show as a collection contains much other nodes
      */
-    private int type;
+    private SyntaxNodeType type;
 
     private List<String> values;
 
@@ -25,10 +27,10 @@ public class SyntaxNode {
     @Override
     public String toString() {
         return "<" + name +
-                (type == 0 ? ", values=" + values : ", nodes=" + nodes) + '>';
+                (type == SyntaxNodeType.BASE ? ", values=" + values : ", nodes=" + nodes) + '>';
     }
 
-    public SyntaxNode setType(int type) {
+    public SyntaxNode setType(SyntaxNodeType type) {
         this.type = type;
         return this;
     }
@@ -48,7 +50,7 @@ public class SyntaxNode {
         return this;
     }
 
-    public int getType() {
+    public SyntaxNodeType getType() {
         return type;
     }
 

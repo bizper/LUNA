@@ -18,7 +18,7 @@ public class Run {
         if(args.length == 0) {
             OUT.info("-------------------------------------");
             OUT.info("lc author: orange  version: 0x00.0x01");
-            OUT.info("for compiling luna code files.");
+            OUT.info("tool for compiling luna code files.");
             OUT.info("-------------------------------------");
         } else {
             Bean<Config> bean = CommandKit.get(args);
@@ -45,7 +45,8 @@ public class Run {
 
         private void init(Config config) {
             OUT.openDebug();
-            this.initParams();
+            Env.clear();
+            Env.put("syntax_file_path", "./LC/src/basic.sy");
             path.clear();
             path.add(Tokenizer.getInstance());
             path.add(TokenStreamChecker.getInstance());
@@ -57,10 +58,6 @@ public class Run {
             } else {
                 path.add(Printer.getInstance());
             }
-        }
-
-        private void initParams() {
-            Env.put("syntax_file_path", "./LC/src/basic.sy");
         }
 
         private void close() {

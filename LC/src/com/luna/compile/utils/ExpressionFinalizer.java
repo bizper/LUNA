@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-public class ExpressionFinalizer {
+public class ExpressionFinalizer extends BaseFinalizer {
 
     private static final char symbol[] = {'+', '-', '*', '/', '(', ')'};
 
