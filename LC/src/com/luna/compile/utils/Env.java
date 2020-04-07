@@ -35,4 +35,9 @@ public final class Env {
         map.clear();
     }
 
+    public static void init() {
+        clear();
+        put("syntax_file_path", "./LC/src/basic.sy");
+    }
+
 }

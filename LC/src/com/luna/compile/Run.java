@@ -23,6 +23,7 @@ public class Run {
         } else {
             Bean<Config> bean = CommandKit.get(args);
             if(bean.isSuccess()) {
+                Env.init();
                 Finalizer.getInstance().run(bean.getData());
             } else {
                 OUT.err(bean.getMessage());
@@ -45,8 +46,6 @@ public class Run {
 
         private void init(Config config) {
             OUT.openDebug();
-            Env.clear();
-            Env.put("syntax_file_path", "./LC/src/basic.sy");
             path.clear();
             path.add(Tokenizer.getInstance());
             path.add(TokenStreamChecker.getInstance());
