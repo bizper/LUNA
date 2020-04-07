@@ -39,15 +39,12 @@ public class Preprocessor extends Component {
         this.context = context;
         for(List<Token> list : context.getList()) {
             list = process(checkDefine(list));
-            ExpressionFinalizer.derive(list);
             OUT.debug(list);
         }
         return this;
     }
 
     private HashMap<TokenSequence, TokenSequence> map = new HashMap<>();
-
-    private ModeMatcher.Atom atom = ModeMatcher.compile("SYMBOL *");
 
     private List<Token> checkDefine(List<Token> list) {
         for(int i = 0; i<list.size(); i++) {

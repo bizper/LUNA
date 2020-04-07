@@ -25,36 +25,31 @@ public class TypeFinalizer extends BaseFinalizer {
         return null;
     }
 
-    private static Bean<TOKEN> derive(Token a, Token operator, Token b) {
-        if(a == null || operator == null || b == null) return null;
-        if(a.getType() == OPERATOR || b.getType() == OPERATOR) return build(false, "");
-        if(a.getType() == KEYWORD || b.getType() == KEYWORD) return build(false, "");
+    private static Bean<TOKEN> derive(Token operator, Token... args) {
+        if(args.length == 0) return null;
+        if(TokenUtil.containsType(OPERATOR, args)) return build(false, "");
+        if(TokenUtil.containsType(KEYWORD, args)) return build(false, "");
         if(operator.getType() == OPERATOR) {
             SIG sig = operator.getSig();
             if(sig == Operator.PLUS) {
-                if(a.getType() == BOOLEAN || b.getType() == BOOLEAN) return build(false, "");
-                if(a.getType() == STRING || b.getType() == STRING) return build(true, "", STRING);
-                if(a.getType() == NUMBER && b.getType() == NUMBER) return build(true, "", NUMBER);
+                if(TokenUtil.containsType(BOOLEAN, args)) return build(false, "");
+                if(TokenUtil.containsType(STRING, args)) return build(true, "", STRING);
+                if(TokenUtil.allType(NUMBER, args)) return build(true, "", NUMBER);
             }
-            if(sig == Operator.MINUS) {
-                if(a.getType() == BOOLEAN || b.getType() == BOOLEAN) return build(false, "");
-                if(a.getType() == STRING || b.getType() == STRING) return build(false, "");
-                if(a.getType() == NUMBER && b.getType() == NUMBER) return build(true, "", NUMBER);
+            if(sig == Operator.MINUS ||
+                sig == Operator.DIV ||
+                sig == Operator.MULTI
+            ) {
+                if(TokenUtil.containsType(BOOLEAN, args)) return build(false, "");
+                if(TokenUtil.containsType(STRING, args)) return build(false, "");
+                if(TokenUtil.allType(NUMBER, args)) return build(true, "", NUMBER);
             }
-            if(sig == Operator.DIV) {
-                if(a.getType() == BOOLEAN || b.getType() == BOOLEAN) return build(false, "");
-                if(a.getType() == STRING || b.getType() == STRING) return build(false, "");
-                if(a.getType() == NUMBER && b.getType() == NUMBER) return build(true, "", NUMBER);
-            }
-            if(sig == Operator.MULTI) {
-                if(a.getType() == BOOLEAN || b.getType() == BOOLEAN) return build(false, "");
-                if(a.getType() == STRING || b.getType() == STRING) return build(false, "");
-                if(a.getType() == NUMBER && b.getType() == NUMBER) return build(true, "", NUMBER);
-            }
-            if(sig == MultiSymbolOperator.EQUALS) {
-                return build(true, "", BOOLEAN);
-            }
-            if(sig == MultiSymbolOperator.NOT_EQUALS) {
+            if(sig == MultiSymbolOperator.EQUALS ||
+                    sig == MultiSymbolOperator.NOT_EQUALS ||
+                    sig == Operator.GT ||
+                    sig == Operator.LT ||
+                    sig == Operator.NOT
+            ) {
                 return build(true, "", BOOLEAN);
             }
             return null;
