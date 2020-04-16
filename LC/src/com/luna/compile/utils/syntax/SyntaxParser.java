@@ -113,7 +113,6 @@ public final class SyntaxParser {
                 }
             }
         }
-
     }
 
     private static List<String> parseRange(String range) {

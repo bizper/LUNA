@@ -18,7 +18,7 @@ public class Run {
         if(args.length == 0) {
             OUT.info("-------------------------------------");
             OUT.info("lc author: orange  version: 0x00.0x01");
-            OUT.info("tool for compiling luna code files.");
+            OUT.info(" tool for compiling luna code files. ");
             OUT.info("-------------------------------------");
         } else {
             Bean<Config> bean = CommandKit.get(args);
