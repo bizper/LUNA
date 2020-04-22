@@ -158,10 +158,11 @@ public class Tokenizer extends Component {
      * @param value 字符
      */
     private void pushToList(List<Token> list, int line, int col, String value) {
+        boolean[] isDigit;
         if(Keywords.isKeyword(value)) {
             list.add(Token.get(line, col, TOKEN.KEYWORD, value, fileInfo.getName(), Keywords.getKeyword(value)));
-        } else if(isDigit(value)) {
-            list.add(Token.get(line, col, TOKEN.NUMBER, value, fileInfo.getName(), null));
+        } else if((isDigit = isDigit(value))[0]) {
+            list.add(Token.get(line, col, isDigit[1] ? TOKEN.FLOAT : TOKEN.INTEGER, value, fileInfo.getName(), null));
         } else if(value.equals("true") || value.equals("false")) {
             list.add(Token.get(line, col, TOKEN.BOOLEAN, value, fileInfo.getName(), null));
         } else {
@@ -175,17 +176,17 @@ public class Tokenizer extends Component {
         clear();
     }
 
-    private boolean isDigit(String s) {
+    private boolean[] isDigit(String s) {
         char[] arr = s.toCharArray();
         boolean isFloat = false;
         for(char c : arr) {
             if(c == '.') {
                 if(!isFloat) isFloat = true;
-                else return false;
+                else return new boolean[]{false, false};
             }
-            if(!Character.isDigit(c) && c != '.') return false;
+            if(!Character.isDigit(c) && c != '.') return new boolean[]{false, false};
         }
-        return true;
+        return new boolean[]{true, isFloat};
     }
 
     private List<Token> merge(List<Token> list) {

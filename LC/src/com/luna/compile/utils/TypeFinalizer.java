@@ -34,7 +34,7 @@ public class TypeFinalizer extends BaseFinalizer {
             if(sig == Operator.PLUS) {
                 if(TokenUtil.containsType(BOOLEAN, args)) return build(false, "");
                 if(TokenUtil.containsType(STRING, args)) return build(true, "", STRING);
-                if(TokenUtil.allType(NUMBER, args)) return build(true, "", NUMBER);
+                if(TokenUtil.allType(INTEGER, args)) return build(true, "", INTEGER);
             }
             if(sig == Operator.MINUS ||
                 sig == Operator.DIV ||
@@ -42,7 +42,7 @@ public class TypeFinalizer extends BaseFinalizer {
             ) {
                 if(TokenUtil.containsType(BOOLEAN, args)) return build(false, "");
                 if(TokenUtil.containsType(STRING, args)) return build(false, "");
-                if(TokenUtil.allType(NUMBER, args)) return build(true, "", NUMBER);
+                if(TokenUtil.allType(INTEGER, args)) return build(true, "", INTEGER);
             }
             if(sig == MultiSymbolOperator.EQUALS ||
                     sig == MultiSymbolOperator.NOT_EQUALS ||

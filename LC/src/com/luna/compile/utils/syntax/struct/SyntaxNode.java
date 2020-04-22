@@ -18,7 +18,7 @@ public final class SyntaxNode {
      * 0 base node, described as range or a single character
      * 1 link node, show as a collection contains much other nodes
      */
-    private SyntaxNodeType type;
+    private SyntaxNodeType type = SyntaxNodeType.BASE;
 
     private List<String> values;
 

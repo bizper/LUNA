@@ -45,7 +45,9 @@ public class TokenStreamChecker extends Component {
                     break;
                 case STRING:
                     break;
-                case NUMBER:
+                case INTEGER:
+                    break;
+                case FLOAT:
                     break;
                 default:
                     break;

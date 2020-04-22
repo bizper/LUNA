@@ -5,63 +5,62 @@ import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Token;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Stack;
 
 public class ExpressionFinalizer extends BaseFinalizer {
 
-    private static final char symbol[] = {'+', '-', '*', '/', '(', ')'};
+    private static final char symbols[] = {'+', '-', '*', '/', '(', ')'};
 
-    private static int cursor = 0;
+    private static String result;
 
-    private static List<Token> list;
+    private static final StringBuilder cache = new StringBuilder();
 
-    private static Map<String, Object> map;
-
-    private static Stack<Token> numbers;
-
-    private static Stack<Token> operators;
-
-    public static List<Token> derive(List<Token> tokens) {
-        return deriveWithMapping(null, tokens);
+    private static void put(Object obj) {
+        cache.append(obj);
     }
 
-    public static List<Token> deriveWithMapping(Map<String, Object> map, List<Token> tokens) {
-        ExpressionFinalizer.list = tokens;
-        ExpressionFinalizer.map = map;
-        ExpressionFinalizer.numbers = new Stack<>();
-        ExpressionFinalizer.operators = new Stack<>();
-        ExpressionFinalizer.cursor = 0;
-        for(Token token : tokens) {
-            switch(token.getType()) {
-                case NUMBER:
-                case STRING:
-                case SYMBOL:
-                    numbers.add(token);
-                    break;
-                case OPERATOR:
-                    operators.add(token);
-                    break;
-            }
-            cursor ++;
+    private static void clear() {
+        cache.delete(0, cache.length() - 1);
+    }
+
+    private static String get() {
+        return cache.toString();
+    }
+
+    public static String getResult() {
+        return result;
+    }
+
+    public static void calculate(List<Token> list) {
+        for(int i = 0; i<list.size(); i++) {
+            Token token = list.get(i);
+            if(token.getType() == TOKEN.OPERATOR && token.getSig() == Operator.LP) ICalculate(list, i);
+
         }
-        System.out.println(numbers);
-        System.out.println(operators);
-        return null;
     }
 
-    private static Token calculate() {
-        Token atomA = numbers.pop();
-        Token op = operators.pop();
-        Token atomB = numbers.pop();
-        if(op.getSig() == Operator.PLUS) {
-            return Token.get(atomB.getLine(), atomB.getCol(), TOKEN.STRING, atomA.getValue() + atomB.getValue(), null);
+    /**
+     * picker
+     * @param token token been chose
+     */
+    private static void PCalculate(Token token) {
+        switch(token.getType()) {
+            case OPERATOR:
+                break;
+            case INTEGER:
+                break;
+            case FLOAT:
+                break;
+                default:
+                    break;
+
         }
-        return null;
     }
 
-    private static void parseLP() {
-
+    private static void ICalculate(List<Token> list, int pos) {
+        for(int i = pos; i < list.size(); i++) {
+            Token token = list.get(i);
+            if(token.getType() == TOKEN.OPERATOR && token.getSig() == Operator.LT) return;
+        }
     }
 
 }
