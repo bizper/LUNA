@@ -42,16 +42,27 @@ public class TokenUtil {
         return list.stream().filter((e) -> e.getLine() != line).collect(Collectors.toList());
     }
 
-    public static boolean containsType(TOKEN type, Token... args) {
+    public static Token containsType(TOKEN type, Token... args) {
         for(Token t : args) {
-            if(t.check(type)) return true;
+            if(t.check(type)) return t;
         }
-        return false;
+        return null;
     }
 
     public static boolean allType(TOKEN type, Token... args) {
         for(Token t : args) {
             if(!t.check(type)) return false;
+        }
+        return true;
+    }
+
+    public static boolean inTypeRange(Token[] args, TOKEN... types) {
+        for(Token t : args) {
+            boolean bool = false;
+            for(TOKEN type : types) {
+                if(!bool) bool = t.check(type);
+            }
+            if(!bool) return false;
         }
         return true;
     }

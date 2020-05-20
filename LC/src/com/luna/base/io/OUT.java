@@ -14,6 +14,11 @@ public class OUT {
         System.out.println();
     }
 
+    public static void trackErr(Object obj) {
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        System.out.println("\033[31m"+String.format("%-80s %s", stack[2].toString(), obj)+"\033[0m");
+    }
+
     public static void err(Object obj) {
         System.out.println("\033[31m"+obj+"\033[0m");
     }
@@ -27,7 +32,8 @@ public class OUT {
     }
 
     public static void debug(Object obj) {
-        if(debug) info(obj);
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        if(debug) info(String.format("%-80s %s", stack[2].toString(), obj));
     }
 
     public static void output(Bean bean) {
@@ -35,7 +41,7 @@ public class OUT {
         if(bean.isSuccess()) {
             info(bean);
         } else {
-            err(bean);
+            trackErr(bean);
         }
     }
 
@@ -44,7 +50,7 @@ public class OUT {
         if(bean.isSuccess()) {
             info(bean.getMessage());
         } else {
-            err(bean.getMessage());
+            trackErr(bean.getMessage());
         }
     }
 

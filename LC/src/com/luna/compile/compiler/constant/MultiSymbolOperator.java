@@ -9,7 +9,7 @@ public enum MultiSymbolOperator implements SIG {
     DOUBLE_MINUS("--"),
     LEFT_ARROW("<-");
 
-    private String value;
+    private final String value;
 
     MultiSymbolOperator(String value) {
         this.value = value;

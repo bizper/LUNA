@@ -65,6 +65,7 @@ public class Tokenizer extends Component {
             return list;
         }
         fileInfo = com.luna.compile.loader.FileReader.read(bean.getData());
+        OUT.info("NOW COMPILING: " + fileInfo.getPath());
         int line = def_lin;
         for(String code : fileInfo.getContent()) {
             list.addAll(parseInside(line++, code));
@@ -131,13 +132,12 @@ public class Tokenizer extends Component {
             } else {
                 if(isString) {
                     add(c);
-                    col ++;
                 } else {
                     if(!isEmpty()) {
                         pushToList(list, line, col - length(), get());
                     }
-                    col++;
                 }
+                col ++;
             }
         }
         if(!isEmpty()) {

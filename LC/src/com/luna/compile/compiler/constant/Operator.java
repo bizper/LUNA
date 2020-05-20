@@ -16,7 +16,7 @@ public enum Operator implements SIG {
     COLON(':'),
     DEFINE('#');
 
-    private char value;
+    private final char value;
 
     Operator(char c) {
         this.value = c;

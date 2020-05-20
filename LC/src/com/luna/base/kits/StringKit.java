@@ -6,10 +6,10 @@ import java.util.List;
 
 public class StringKit {
 
-    public static String join(String[] strings, String separator) {
+    public static String join(Object[] strings, String separator) {
         if(strings == null) return "";
         StringBuilder sb = new StringBuilder();
-        for(String s : strings) {
+        for(Object s : strings) {
             sb.append(s).append(separator);
         }
         if(separator.length() >= 1) sb.deleteCharAt(sb.length() - 1);
@@ -26,7 +26,7 @@ public class StringKit {
         return sb.toString();
     }
 
-    public static String join(String[] args) {
+    public static String join(Object[] args) {
         return join(args, "");
     }
 

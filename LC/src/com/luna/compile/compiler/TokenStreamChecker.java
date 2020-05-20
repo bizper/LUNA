@@ -1,14 +1,21 @@
 package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
+import com.luna.base.result.Bean;
+import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Token;
+import com.luna.compile.utils.TypeFinalizer;
 
 import java.util.List;
+
+import static com.luna.compile.constant.STATUS.*;
 
 public class TokenStreamChecker extends Component {
 
     private static Component instance;
+
+    private static final String TYPE_CHECK_ERROR = "TYPE CHECK ERROR";
 
     public static Component getInstance() {
         if(instance == null) instance = new TokenStreamChecker();
@@ -22,8 +29,11 @@ public class TokenStreamChecker extends Component {
         this.context = context;
         final List<List<Token>> lists = context.getList();
         for(List<Token> list : lists) {
-            if(!check(list)) {
-                break;
+            Bean bean = TypeFinalizer.derive(list);
+            if(!bean.isSuccess()) {
+                this.context.setCode(TOKEN_TYPE_ERROR);
+                this.context.setMsg(TYPE_CHECK_ERROR);
+                this.context.addErrMsg((Token) bean.getData(), true, bean.getMessage());
             }
         }
         return this;

@@ -1,9 +1,12 @@
 package com.luna.compile.struct;
 
 import com.luna.base.kits.StringKit;
+import com.luna.compile.constant.TOKEN;
+import com.luna.compile.utils.TypeFinalizer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -23,6 +26,8 @@ public class TokenSequence implements StringElement {
         this.list = list;
         return this;
     }
+
+    
 
     public List<Token> getList() {
         return list;
@@ -58,6 +63,10 @@ public class TokenSequence implements StringElement {
             token.setCol(fromColumn);
             fromColumn += token.getValue().length() + 1;
         }
+    }
+
+    public TOKEN getType() {
+        return (TOKEN) Objects.requireNonNull(TypeFinalizer.derive(list)).getData();
     }
 
     public int getCursor() {

@@ -1,5 +1,6 @@
 package com.luna.compile.utils.syntax;
 
+import com.luna.base.io.OUT;
 import com.luna.compile.loader.FileReader;
 import com.luna.compile.struct.FileInfo;
 import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
@@ -42,8 +43,8 @@ public final class SyntaxParser {
             SyntaxNode sn = parseBNF(code);
             if(sn == null) return 1;
             map.put(sn.getName(), sn);
-            System.out.println(code);
-            System.out.println(sn);
+            OUT.debug(code);
+            OUT.debug(sn);
         }
         return 0;
     }
@@ -119,8 +120,8 @@ public final class SyntaxParser {
         String[] atoms = range.trim().split("-");
         List<String> result = new ArrayList<>();
         if(atoms[0].length() != 1 || atoms[1].length() != 1) return null;
-        int a = (int) atoms[0].charAt(0);
-        int b = (int) atoms[1].charAt(0);
+        int a = atoms[0].charAt(0);
+        int b = atoms[1].charAt(0);
         if(a < b) {
             for(; a<=b; a++) {
                 result.add(String.valueOf((char) a));

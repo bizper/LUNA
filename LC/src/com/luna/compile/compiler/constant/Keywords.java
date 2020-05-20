@@ -10,7 +10,7 @@ public enum Keywords implements SIG {
     THIS("this"),
     DO("do");
 
-    private String value;
+    private final String value;
 
     Keywords(String c) {
         this.value = c;

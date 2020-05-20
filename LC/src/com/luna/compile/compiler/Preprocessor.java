@@ -68,14 +68,14 @@ public class Preprocessor extends Component {
                     i = -1;
                     continue;
                 }
-//                if(prev.getType() == TOKEN.NUMBER || prev.getType() == TOKEN.OPERATOR || prev.getType() == TOKEN.STRING) {
-//                    context.setCode(TOKEN_SYNTAX_ERROR);
-//                    context.setMsg(PREPROCESS_ERROR);
-//                    context.addErrMsg(prev, "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.getValue());
-//                    list = TokenUtil.clearLine(list, token.getLine());
-//                    i = -1;
-//                    continue;
-//                }
+                if(prev.getType() == TOKEN.INTEGER || prev.getType() == TOKEN.FLOAT || prev.getType() == TOKEN.STRING) {
+                    context.setCode(TOKEN_SYNTAX_ERROR);
+                    context.setMsg(PREPROCESS_ERROR);
+                    context.addErrMsg(prev.get(0), "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.toString());
+                    list = TokenUtil.clearLine(list, token.getLine());
+                    i = -1;
+                    continue;
+                }
 //                if(Objects.requireNonNull(prev).getLine() != token.getLine()) {
 //                    context.setCode(TOKEN_SYNTAX_ERROR);
 //                    context.setMsg(PREPROCESS_ERROR);
@@ -92,14 +92,14 @@ public class Preprocessor extends Component {
                     i = -1;
                     continue;
                 }
-//                if(map.containsKey(Objects.requireNonNull(prev).getValue())) {
-//                    context.setCode(TOKEN_SYNTAX_ERROR);
-//                    context.setMsg(PREPROCESS_ERROR);
-//                    context.addErrMsg(prev, "语法错误：重复定义的源文本 " + prev.getValue());
-//                    list = TokenUtil.clearLine(list, token.getLine());
-//                    i = -1;
-//                    continue;
-//                }
+                if(map.containsKey(prev)) {
+                    context.setCode(TOKEN_SYNTAX_ERROR);
+                    context.setMsg(PREPROCESS_ERROR);
+                    context.addErrMsg(prev.get(0), "语法错误：重复定义的源文本 " + prev.toString());
+                    list = TokenUtil.clearLine(list, token.getLine());
+                    i = -1;
+                    continue;
+                }
 //                if(atom.match(next.getList())) {
 //                    context.setCode(TOKEN_SYNTAX_ERROR);
 //                    context.setMsg(PREPROCESS_ERROR);
