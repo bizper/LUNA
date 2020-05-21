@@ -66,7 +66,7 @@ public class TokenSequence implements StringElement {
     }
 
     public TOKEN getType() {
-        return (TOKEN) Objects.requireNonNull(TypeFinalizer.derive(list)).getData();
+        return TypeFinalizer.derive(list).getData().getType();
     }
 
     public int getCursor() {
@@ -100,7 +100,6 @@ public class TokenSequence implements StringElement {
     public static TokenSequence getInstance(List<Token> list, int fromIndex, int toIndex, Predicate<? super Token> condition) {
         return new TokenSequence().setList(list.subList(fromIndex, toIndex).stream().filter(condition).collect(Collectors.toList()));
     }
-
 
     @Override
     public String toString() {

@@ -1,8 +1,8 @@
 package com.luna.compile.utils.syntax;
 
 import com.luna.base.io.OUT;
-import com.luna.compile.loader.FileReader;
-import com.luna.compile.struct.FileInfo;
+import com.luna.base.io.loader.FileReader;
+import com.luna.base.result.FileInfo;
 import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
 import com.luna.compile.utils.syntax.struct.SyntaxNode;
 import com.luna.compile.utils.Env;

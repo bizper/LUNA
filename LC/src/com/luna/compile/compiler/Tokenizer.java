@@ -8,19 +8,17 @@ import com.luna.compile.compiler.constant.Keywords;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.compiler.constant.Operator;
 import com.luna.compile.constant.TOKEN;
-import com.luna.compile.loader.Loader;
+import com.luna.base.io.loader.Loader;
 import com.luna.compile.struct.Context;
-import com.luna.compile.struct.FileInfo;
+import com.luna.base.result.FileInfo;
 import com.luna.compile.struct.Token;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.luna.compile.constant.CONSTANT.double_quote;
 import static com.luna.compile.constant.CONSTANT.space;
-import static com.luna.compile.constant.STATUS.ERROR;
 import static com.luna.compile.constant.STATUS.OK;
 
 /**
@@ -64,7 +62,7 @@ public class Tokenizer extends Component {
             context.setMsg(bean.getMessage());
             return list;
         }
-        fileInfo = com.luna.compile.loader.FileReader.read(bean.getData());
+        fileInfo = com.luna.base.io.loader.FileReader.read(bean.getData());
         OUT.info("NOW COMPILING: " + fileInfo.getPath());
         int line = def_lin;
         for(String code : fileInfo.getContent()) {

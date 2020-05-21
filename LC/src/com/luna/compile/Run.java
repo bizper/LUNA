@@ -58,7 +58,7 @@ public class Run {
 
         private Finalizer init(Config config) {
             this.config = config;
-            //OUT.openDebug();
+            OUT.openDebug();
             path.clear();
             path.add(Tokenizer.getInstance());
             path.add(TokenStreamChecker.getInstance());

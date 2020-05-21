@@ -5,6 +5,7 @@ import com.luna.base.result.Bean;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Token;
+import com.luna.compile.struct.TokenRepresent;
 import com.luna.compile.utils.TypeFinalizer;
 
 import java.util.List;
@@ -27,15 +28,15 @@ public class TokenStreamChecker extends Component {
     @Override
     public Component run(Context context, Config config) {
         this.context = context;
-        final List<List<Token>> lists = context.getList();
-        for(List<Token> list : lists) {
-            Bean bean = TypeFinalizer.derive(list);
-            if(!bean.isSuccess()) {
-                this.context.setCode(TOKEN_TYPE_ERROR);
-                this.context.setMsg(TYPE_CHECK_ERROR);
-                this.context.addErrMsg((Token) bean.getData(), true, bean.getMessage());
-            }
-        }
+//        final List<List<Token>> lists = context.getList();
+//        for(List<Token> list : lists) {
+//            Bean<TokenRepresent> bean = TypeFinalizer.derive(list);
+//            if(!bean.isSuccess()) {
+//                this.context.setCode(TOKEN_TYPE_ERROR);
+//                this.context.setMsg(TYPE_CHECK_ERROR);
+//                this.context.addErrMsg(bean.getData().getRepresent(), true, bean.getMessage());
+//            }
+//        }
         return this;
     }
 

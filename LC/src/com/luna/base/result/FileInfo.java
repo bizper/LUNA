@@ -1,4 +1,4 @@
-package com.luna.compile.struct;
+package com.luna.base.result;
 
 import java.util.ArrayList;
 import java.util.List;

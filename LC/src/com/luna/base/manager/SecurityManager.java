@@ -1,6 +1,4 @@
-package com.luna.compile.utils;
-
-import java.io.File;
+package com.luna.base.manager;
 
 public class SecurityManager {
 

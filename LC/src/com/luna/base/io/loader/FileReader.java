@@ -1,7 +1,6 @@
-package com.luna.compile.loader;
+package com.luna.base.io.loader;
 
-import com.luna.base.result.Bean;
-import com.luna.compile.struct.FileInfo;
+import com.luna.base.result.FileInfo;
 
 import java.io.BufferedReader;
 import java.io.File;
