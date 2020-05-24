@@ -3,22 +3,17 @@ package com.luna.compile.utils.syntax;
 import com.luna.base.io.OUT;
 import com.luna.base.io.loader.FileReader;
 import com.luna.base.result.FileInfo;
+import com.luna.compile.utils.Env;
 import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
 import com.luna.compile.utils.syntax.struct.SyntaxNode;
-import com.luna.compile.utils.Env;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 public final class SyntaxParser {
 
     private static final String path = Env.get("syntax_file_path");
-
-    private static final Pattern rangep = Pattern.compile("[a-zA-Z0-9]-[a-zA-Z0-9]");
 
     private static Map<String, SyntaxNode> map = null;
 
@@ -33,7 +28,9 @@ public final class SyntaxParser {
     public static void init() {
         if(map == null) {
             map = new HashMap<>();
-            if(parse() != 0) map = null;
+            if(parse() != 0) {
+                map = null;
+            }
         }
     }
 
@@ -50,88 +47,56 @@ public final class SyntaxParser {
     }
 
     private static SyntaxNode parseBNF(String code) {
-        String[] partition = code.split(":=");
-        SyntaxNode syntaxNode = SyntaxNode.create(partition[0].trim());
-        parseInside(syntaxNode, partition[1]);
-        return syntaxNode;
-    }
-
-    private static void parseInside(SyntaxNode node, String str) {
-        str = str.trim();
-        node.setType(SyntaxNodeType.BASE);
-        char[] arr = str.toCharArray();
-        StringBuilder stringBuilder = new StringBuilder();
-        String code;
-        for (char c : arr) {
-            switch (c) {
-                case '|':
-                    node.setType(SyntaxNodeType.LINK);
-                    code = stringBuilder.toString().trim();
-                    if (rangep.matcher(code).matches()) {
-                        List<String> range = parseRange(code);
-                        if (range != null) {
-                            node.addNode(SyntaxNode.create(node.getName(), range));
+        if(code.contains(":=")) {
+            String[] partition = code.split(":=");
+            return SyntaxNode.create(partition[0].trim(), partition[1].trim()).setType(SyntaxNodeType.BASE);
+        }
+        StringBuilder value = new StringBuilder();
+        if(code.contains("::")) {
+            String[] partition = code.split("::");
+            if(partition[1].contains("|")) {
+                value.append("(");
+                String[] nodes = partition[1].split("\\|");
+                for(String node : nodes) {
+                    node = node.trim();
+                    if(node.contains(" ")) {
+                        String[] secNodes = node.split("\\s");
+                        value.append("(");
+                        for(String n : secNodes) {
+                            n = n.trim();
+                            if(map.containsKey(n)) {
+                                value.append(find(n).getValue());
+                            }
                         }
+                        value.append(")");
                     } else {
-                        SyntaxNode cache;
-                        if ((cache = find(code)) != null) node.addNode(cache);
-                        else node.addNode(SyntaxNode.create(node.getName(), code));
+                        if(map.containsKey(node)) {
+                            value.append(find(node).getValue()).append("|");
+                        }
                     }
-                    stringBuilder.delete(0, stringBuilder.length() - 1);
-                    break;
-                case '&':
-                    code = stringBuilder.toString().trim();
-                    if (rangep.matcher(code).matches()) {
-                        List<String> range = parseRange(code);
-                        if (range != null) node.addValue(range);
-                    } else {
-                        SyntaxNode cache;
-                        if ((cache = find(code)) != null) node.addNode(cache);
-                        else node.addValue(code);
-                    }
-                    stringBuilder.delete(0, stringBuilder.length() - 1);
-                    break;
-                default:
-                    stringBuilder.append(c);
-            }
-        }
-        if(stringBuilder.length() > 0) {
-            code = stringBuilder.toString().trim();
-            if(rangep.matcher(code).matches()) {
-                List<String> range = parseRange(code);
-                if(range != null && node.getType() == SyntaxNodeType.BASE) node.addValue(range);
-                if(range != null && node.getType() == SyntaxNodeType.LINK) node.addNode(SyntaxNode.create(node.getName(), range));
+                }
+                if(value.charAt(value.length() - 1) == '|') value.deleteCharAt(value.length() - 1);
+                value.append(")");
             } else {
-                if(node.getType() == SyntaxNodeType.BASE) {
-                    SyntaxNode cache;
-                    if((cache = find(code)) != null) node.addNode(cache);
-                    else node.addValue(code);
-                }
-                if(node.getType() == SyntaxNodeType.LINK) {
-                    SyntaxNode cache;
-                    if((cache = find(code)) != null) node.addNode(cache);
-                    else node.addNode(SyntaxNode.create(node.getName(), code));
+                if(partition[1].contains(" ")) {
+                    String[] secNodes = partition[1].split("\\s");
+                    value.append("(");
+                    for(String n : secNodes) {
+                        n = n.trim();
+                        if(map.containsKey(n)) {
+                            value.append(find(n).getValue());
+                        }
+                    }
+                    value.append(")");
+                } else {
+                    if(map.containsKey(partition[1])) {
+                        value.append(find(partition[1]).getValue()).append("|");
+                    }
                 }
             }
+            return SyntaxNode.create(partition[0].trim(), value.toString()).setType(SyntaxNodeType.LINK);
         }
-    }
-
-    private static List<String> parseRange(String range) {
-        String[] atoms = range.trim().split("-");
-        List<String> result = new ArrayList<>();
-        if(atoms[0].length() != 1 || atoms[1].length() != 1) return null;
-        int a = atoms[0].charAt(0);
-        int b = atoms[1].charAt(0);
-        if(a < b) {
-            for(; a<=b; a++) {
-                result.add(String.valueOf((char) a));
-            }
-        } else if(a > b) {
-            for(; b<=a; b++) {
-                result.add(String.valueOf((char) b));
-            }
-        } else result.add(String.valueOf((char) a));
-        return result;
+        return null;
     }
 
 }

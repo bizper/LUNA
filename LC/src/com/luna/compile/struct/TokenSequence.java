@@ -1,6 +1,7 @@
 package com.luna.compile.struct;
 
 import com.luna.base.kits.StringKit;
+import com.luna.base.result.Bean;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.utils.TypeFinalizer;
 
@@ -13,7 +14,20 @@ import java.util.stream.Collectors;
 
 public class TokenSequence implements StringElement {
 
+    private boolean checked = false;
+
     private List<Token> list = new ArrayList<>();
+
+    private int line;
+
+    public TokenSequence setLine(int line) {
+        this.line = line;
+        return this;
+    }
+
+    public int getLine() {
+        return line;
+    }
 
     @Override
     public String getElement() {
@@ -26,8 +40,6 @@ public class TokenSequence implements StringElement {
         this.list = list;
         return this;
     }
-
-    
 
     public List<Token> getList() {
         return list;
@@ -65,8 +77,18 @@ public class TokenSequence implements StringElement {
         }
     }
 
+    public TokenSequence setChecked(boolean checked) {
+        this.checked = checked;
+        return this;
+    }
+
     public TOKEN getType() {
-        return TypeFinalizer.derive(list).getData().getType();
+        Bean<TokenRepresent> bean = TypeFinalizer.derive(list);
+        return bean.getData().getType();
+    }
+
+    public boolean isChecked() {
+        return checked;
     }
 
     public int getCursor() {

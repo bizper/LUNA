@@ -5,6 +5,7 @@ import com.luna.base.io.OUT;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Context;
+import com.luna.compile.struct.Module;
 import com.luna.compile.struct.Token;
 import com.luna.compile.struct.TokenSequence;
 import com.luna.compile.utils.ExpressionFinalizer;
@@ -13,8 +14,10 @@ import com.luna.compile.utils.TokenUtil;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.luna.compile.constant.STATUS.TOKEN_SYNTAX_ERROR;
+import static com.luna.base.io.OUT.*;
 
 /**
  * 处理 [source text] <- [replace text] 的预处理器，将代码中的源文本全部替换为后来的文本
@@ -37,16 +40,28 @@ public class Preprocessor extends Component {
     @Override
     public Component run(Context context, Config config) {
         this.context = context;
-        for(List<Token> list : context.getList()) {
-            list = process(checkDefine(list));
-            OUT.debug(list);
+        for(Module module : context.getModules()) {
+            forEach(module);
         }
         return this;
     }
 
-    private HashMap<TokenSequence, TokenSequence> map = new HashMap<>();
+    private void forEach(Module module) {
+        List<TokenSequence> list = module.getList();
+        for (TokenSequence ts : list) {
+            checkDefine(module, ts);
+        }
+        debug(map);
+        for(TokenSequence ts : list) {
+            process(ts);
+            OUT.debug(ts);
+        }
+    }
 
-    private List<Token> checkDefine(List<Token> list) {
+    private final HashMap<TokenSequence, TokenSequence> map = new HashMap<>();
+
+    private void checkDefine(Module module, TokenSequence ts) {
+        List<Token> list = ts.getList();
         for(int i = 0; i<list.size(); i++) {
             Token token = list.get(i);
             if(TokenUtil.check(token, TOKEN.OPERATOR, MultiSymbolOperator.LEFT_ARROW)) {
@@ -63,7 +78,7 @@ public class Preprocessor extends Component {
                 if(prev == null) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
-                    context.addErrMsg(token, "语法错误：不允许空的源文本");
+                    context.addErrMsg(module, token, "语法错误：不允许空的源文本");
                     list = TokenUtil.clearLine(list, token.getLine());
                     i = -1;
                     continue;
@@ -71,7 +86,7 @@ public class Preprocessor extends Component {
                 if(prev.getType() == TOKEN.INTEGER || prev.getType() == TOKEN.FLOAT || prev.getType() == TOKEN.STRING) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
-                    context.addErrMsg(prev.get(0), "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.toString());
+                    context.addErrMsg(module, prev.get(0), "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.toString());
                     list = TokenUtil.clearLine(list, token.getLine());
                     i = -1;
                     continue;
@@ -79,7 +94,7 @@ public class Preprocessor extends Component {
                 if(next == null) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
-                    context.addErrMsg(token, true, "语法错误：不允许空的替换文本");
+                    context.addErrMsg(module, token, true, "语法错误：不允许空的替换文本");
                     list = TokenUtil.clearLine(list, token.getLine());
                     i = -1;
                     continue;
@@ -87,30 +102,20 @@ public class Preprocessor extends Component {
                 if(map.containsKey(prev)) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
-                    context.addErrMsg(prev.get(0), "语法错误：重复定义的源文本 " + prev.toString());
+                    context.addErrMsg(module, prev.get(0), "语法错误：重复定义的源文本 " + prev.toString());
                     list = TokenUtil.clearLine(list, token.getLine());
                     i = -1;
                     continue;
                 }
-//                if(atom.match(next.getList())) {
-//                    context.setCode(TOKEN_SYNTAX_ERROR);
-//                    context.setMsg(PREPROCESS_ERROR);
-//                    context.addErrMsg(token, true, "语法错误：不允许定义表达式作为替换文本");
-//                    list = TokenUtil.clearLine(list, token.getLine());
-//                    i = -1;
-//                    continue;
-//                }
                 map.put(prev, next);
                 //start to remove token for non multi-define
-                list = TokenUtil.clearLine(list, token.getLine());
-                i = -1;
+                module.remove(token.getLine());
              }
         }
-        OUT.debug(map);
-        return list;
     }
 
-    private List<Token> process(List<Token> list) {
+    private void process(TokenSequence ts) {
+        List<Token> list = ts.getList();
         for(int i = 0; i<list.size(); i++) {
             Token token = list.get(i);
             final int j = i;//lambda expression needs non-effectively variable
@@ -122,7 +127,6 @@ public class Preprocessor extends Component {
                 }
             });
         }
-        return list;
     }
 
     private boolean subListMatch(List<Token> list, int i, TokenSequence ts) {

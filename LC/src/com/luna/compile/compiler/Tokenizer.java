@@ -11,7 +11,9 @@ import com.luna.compile.constant.TOKEN;
 import com.luna.base.io.loader.Loader;
 import com.luna.compile.struct.Context;
 import com.luna.base.result.FileInfo;
+import com.luna.compile.struct.Module;
 import com.luna.compile.struct.Token;
+import com.luna.compile.struct.TokenSequence;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -43,32 +45,37 @@ public class Tokenizer extends Component {
         this.context = context;
         String[] files = config.getCompileFiles();
         for(String path : files) {
-            context.add(parseFile(path));
+            context.addModule(parseFile(path));
         }
         context.setCode(OK);
         context.setMsg("SUCCESS");
-        OUT.debug(context.getList());
+        OUT.debug(context.getModules());
         return this;
     }
 
-    private FileInfo fileInfo;
-
-    private List<Token> parseFile(String path) {
-        List<Token> list = new ArrayList<>();
+    private Module parseFile(String path) {
+        Module module = Module.get();
+        List<TokenSequence> list = new ArrayList<>();
+        module.setList(list);
         Loader loader = Loader.get();
         Bean<File> bean = loader.load(path, (e0) -> e0.endsWith(".luna"));
         if(!bean.isSuccess()) {
             context.setCode(bean.getCode());
             context.setMsg(bean.getMessage());
-            return list;
+            return module;
         }
-        fileInfo = com.luna.base.io.loader.FileReader.read(bean.getData());
+        FileInfo fileInfo = com.luna.base.io.loader.FileReader.read(bean.getData());
         OUT.info("NOW COMPILING: " + fileInfo.getPath());
+        module.setName(fileInfo.getName());
         int line = def_lin;
         for(String code : fileInfo.getContent()) {
-            list.addAll(parseInside(line++, code));
+            TokenSequence ts = parseInside(line++, code);
+            if(!ts.isEmpty()) {
+                list.add(ts);
+                OUT.debug(ts);
+            }
         }
-        return list;
+        return module;
     }
 
     private final StringBuilder stringBuilder = new StringBuilder();
@@ -93,13 +100,15 @@ public class Tokenizer extends Component {
         return stringBuilder.length();
     }
 
-    private List<Token> parseInside(int line, String code) {
+    private TokenSequence parseInside(int line, String code) {
 
         int col = def_col;
         boolean isString = false;
         final char[] chars = code.toCharArray();
 
         List<Token> list =  new ArrayList<>();
+
+        TokenSequence ts = TokenSequence.getInstance(list).setLine(line);
 
         for(char c : chars) {
             if(c != space) {
@@ -126,7 +135,6 @@ public class Tokenizer extends Component {
                     continue;
                 }
                 add(c);
-                col ++;
             } else {
                 if(isString) {
                     add(c);
@@ -135,13 +143,13 @@ public class Tokenizer extends Component {
                         pushToList(list, line, col - length(), get());
                     }
                 }
-                col ++;
             }
+            col ++;
         }
         if(!isEmpty()) {
             pushToList(list, line, col - length(), get());
         }
-        return merge(list);
+        return merge(ts);
     }
 
 //    public List<Token> parseLine(int line, String code) {
@@ -149,28 +157,28 @@ public class Tokenizer extends Component {
 //    }
 
     /**
-     * 将缓存区的字符压入列表
-     * @param list  目标列表
-     * @param line  行号
-     * @param col   列号
-     * @param value 字符
+     * put the buffer string into the list
+     * @param list  target list
+     * @param line  line
+     * @param col   column
+     * @param value char
      */
     private void pushToList(List<Token> list, int line, int col, String value) {
         boolean[] isDigit;
         if(Keywords.isKeyword(value)) {
-            list.add(Token.get(line, col, TOKEN.KEYWORD, value, fileInfo.getName(), Keywords.getKeyword(value)));
+            list.add(Token.get(line, col, TOKEN.KEYWORD, value, Keywords.getKeyword(value)));
         } else if((isDigit = isDigit(value))[0]) {
-            list.add(Token.get(line, col, isDigit[1] ? TOKEN.FLOAT : TOKEN.INTEGER, value, fileInfo.getName(), null));
+            list.add(Token.get(line, col, isDigit[1] ? TOKEN.FLOAT : TOKEN.INTEGER, value, null));
         } else if(value.equals("true") || value.equals("false")) {
-            list.add(Token.get(line, col, TOKEN.BOOLEAN, value, fileInfo.getName(), null));
+            list.add(Token.get(line, col, TOKEN.BOOLEAN, value, null));
         } else {
-            list.add(Token.get(line, col, TOKEN.SYMBOL, value, fileInfo.getName(), null));
+            list.add(Token.get(line, col, TOKEN.SYMBOL, value, null));
         }
         clear();
     }
 
     private void pushToList(List<Token> list, int line, int col, TOKEN type, Object value) {
-        list.add(Token.get(line, col, type, value.toString(), fileInfo.getName(), Operator.getOperator(value.toString())));
+        list.add(Token.get(line, col, type, value.toString(), Operator.getOperator(value.toString())));
         clear();
     }
 
@@ -187,7 +195,8 @@ public class Tokenizer extends Component {
         return new boolean[]{true, isFloat};
     }
 
-    private List<Token> merge(List<Token> list) {
+    private TokenSequence merge(TokenSequence ts) {
+        List<Token> list = ts.getList();
         for(int i = 0; i < list.size(); i++) {
             String[] arr = MultiSymbolOperator.toArray();
             for(String s : arr) {
@@ -201,15 +210,15 @@ public class Tokenizer extends Component {
                     }
                     return true;
                 })) {
-                    List<Token> l = ContextKit.view(list, i, s.length());//获得整个符号列
-                    l.remove(0);//移除第一个token，其为记录位
-                    list.removeAll(l);//移除剩下的token
-                    list.get(i).setValue(s);//将其设置为多符号操作符
+                    List<Token> l = ContextKit.view(list, i, s.length());//get the whole symbol line
+                    l.remove(0);//remove the first token，mark it as the symbol
+                    list.removeAll(l);//remove the last token
+                    list.get(i).setValue(s);
                     list.get(i).setSig(MultiSymbolOperator.getMultiSymbolOperator(s));
                 }
             }
         }
-        return list;
+        return ts;
     }
 
 }

@@ -17,7 +17,7 @@ public class StringKit {
     }
 
     public static <T extends StringElement> String join(List<T> list, String separator) {
-        if(list == null) return "";
+        if(list == null || list.size() == 0) return "";
         StringBuilder sb = new StringBuilder();
         for(T s : list) {
             sb.append(s.getElement()).append(separator);

@@ -14,17 +14,6 @@ public class Token implements Mode, StringElement {
 
     private Integer col;
 
-    private String fileName;
-
-    public Token setFileName(String fileName) {
-        this.fileName = fileName;
-        return this;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
     private TOKEN type;
 
     private SIG sig;
@@ -90,10 +79,6 @@ public class Token implements Mode, StringElement {
 
     public static Token get(int line, int col, TOKEN type, String value, SIG sig) {
         return new Token().setLine(line).setCol(col).setType(type).setValue(value).setSig(sig);
-    }
-
-    public static Token get(int line, int col, TOKEN type, String value, String fileName, SIG sig) {
-        return new Token().setLine(line).setCol(col).setType(type).setValue(value).setFileName(fileName).setSig(sig);
     }
 
     public static Token get(int line, int col, TOKEN type, char value, SIG sig) {

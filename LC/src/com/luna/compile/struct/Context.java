@@ -17,12 +17,12 @@ public class Context {
         return errMsg;
     }
 
-    public void addErrMsg(Token token, String msg) {
-        errMsg.add("Error:(" + token.getLine() + "," + token.getCol() + ") at " + token.getFileName() + "\n" + msg);
+    public void addErrMsg(Module module, Token token, String msg) {
+        errMsg.add("Error:(" + token.getLine() + "," + token.getCol() + ") at " + module.getName() + "\n" + msg);
     }
 
-    public void addErrMsg(Token token, boolean offset, String msg) {
-        errMsg.add("Error:(" + token.getLine() + "," + (offset ? token.getCol() + token.getValue().length() : token.getCol()) + ") at " + token.getFileName() + "\n" + msg);
+    public void addErrMsg(Module module, Token token, boolean offset, String msg) {
+        errMsg.add("Error:(" + token.getLine() + "," + (offset ? token.getCol() + token.getValue().length() : token.getCol()) + ") at " + module.getName() + "\n" + msg);
     }
 
     public void addErrMsg(String msg) {
@@ -51,22 +51,24 @@ public class Context {
         return code + " " + msg;
     }
 
-    private List<List<Token>> list = new ArrayList<>();
+    private List<Module> list = new ArrayList<>();
 
-    public void add(List<Token> module) {
+    public void addModule(Module module) {
         this.list.add(module);
     }
 
-    public List<Token> get(int number) {
+    public Module getModule(int number) {
         return list.get(number);
     }
 
-    public List<List<Token>> getList() {
+    public List<Module> getModules() {
         return list;
     }
 
     public static Context get() {
         return new Context();
     }
+
+
 
 }

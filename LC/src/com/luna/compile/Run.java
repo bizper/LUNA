@@ -38,13 +38,17 @@ public class Run {
         private final List<Component> path = new ArrayList<>();
 
         private Finalizer() {
-            OUT.info("TARGET COMPUTER:      " + Env.getComputerName());
-            OUT.info("TARGET OS:            " + Env.getOS() + " " + Env.getOSVersion());
-            OUT.info("OPERATOR:             " + Env.getUserName());
-            OUT.info("COMPILE TIME:         " + new Date());
-            OUT.info("COMPILER VERSION:     " + "0x00.0x01");
-            OUT.info("RANDOM INFO:          " + UUID.randomUUID().toString().replace("-", "").toUpperCase());
-            OUT.info("======================================================");
+            OUT.info("|======================================================");
+            OUT.info("|lc author: orange  version: 0x00.0x01");
+            OUT.info("| tool for compiling luna code files. ");
+            OUT.info("|------------------------------------------------------");
+            OUT.info("|TARGET COMPUTER:      " + Env.getComputerName());
+            OUT.info("|TARGET OS:            " + Env.getOS() + " " + Env.getOSVersion());
+            OUT.info("|OPERATOR:             " + Env.getUserName());
+            OUT.info("|COMPILE TIME:         " + new Date());
+            OUT.info("|COMPILER VERSION:     " + "0x00.0x01");
+            OUT.info("|RANDOM INFO:          " + UUID.randomUUID().toString().replace("-", "").toUpperCase());
+            OUT.info("|======================================================");
         }
 
         private static Finalizer instance;

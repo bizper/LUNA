@@ -7,10 +7,7 @@ import java.util.List;
 
 public final class SyntaxNode {
 
-    private SyntaxNode() {
-        values = new ArrayList<>();
-        nodes = new ArrayList<>();
-    }
+    private SyntaxNode() { }
 
     private String name;
 
@@ -20,14 +17,11 @@ public final class SyntaxNode {
      */
     private SyntaxNodeType type = SyntaxNodeType.BASE;
 
-    private List<String> values;
-
-    private List<SyntaxNode> nodes;
+    private String value;
 
     @Override
     public String toString() {
-        return "<" + name +
-                (type == SyntaxNodeType.BASE ? ", values=" + values : ", nodes=" + nodes) + '>';
+        return "<" + name + ", values=\"" + value + "\">";
     }
 
     public SyntaxNode setType(SyntaxNodeType type) {
@@ -35,18 +29,8 @@ public final class SyntaxNode {
         return this;
     }
 
-    public SyntaxNode setValues(List<String> values) {
-        this.values = values;
-        return this;
-    }
-
-    public SyntaxNode addValue(String value) {
-        this.values.add(value);
-        return this;
-    }
-
-    public SyntaxNode addValue(List<String> value) {
-        this.values.addAll(value);
+    public SyntaxNode setValue(String values) {
+        this.value = values;
         return this;
     }
 
@@ -54,8 +38,8 @@ public final class SyntaxNode {
         return type;
     }
 
-    public List<String> getValues() {
-        return values;
+    public String getValue() {
+        return value;
     }
 
     public SyntaxNode setName(String name) {
@@ -67,29 +51,9 @@ public final class SyntaxNode {
         return name;
     }
 
-    public void setNodes(List<SyntaxNode> nodes) {
-        this.nodes = nodes;
-    }
-
-    public SyntaxNode addNode(SyntaxNode node) {
-        nodes.add(node);
-        return this;
-    }
-
-    public List<SyntaxNode> getNodes() {
-        return nodes;
-    }
-
-    public static SyntaxNode create(String name, List<String> values) {
-        return new SyntaxNode().setName(name).setValues(values);
-    }
-
-    public static SyntaxNode create(String name, SyntaxNode node) {
-        return new SyntaxNode().setName(name).addNode(node);
-    }
 
     public static SyntaxNode create(String name, String value) {
-        return new SyntaxNode().setName(name).addValue(value);
+        return new SyntaxNode().setName(name).setValue(value);
     }
 
     public static SyntaxNode create(String name) {

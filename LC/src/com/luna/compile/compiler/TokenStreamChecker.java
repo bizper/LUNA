@@ -2,15 +2,15 @@ package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
 import com.luna.base.result.Bean;
-import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Context;
-import com.luna.compile.struct.Token;
+import com.luna.compile.struct.Module;
 import com.luna.compile.struct.TokenRepresent;
+import com.luna.compile.struct.TokenSequence;
 import com.luna.compile.utils.TypeFinalizer;
 
 import java.util.List;
 
-import static com.luna.compile.constant.STATUS.*;
+import static com.luna.compile.constant.STATUS.TOKEN_TYPE_ERROR;
 
 public class TokenStreamChecker extends Component {
 
@@ -28,53 +28,18 @@ public class TokenStreamChecker extends Component {
     @Override
     public Component run(Context context, Config config) {
         this.context = context;
-//        final List<List<Token>> lists = context.getList();
-//        for(List<Token> list : lists) {
-//            Bean<TokenRepresent> bean = TypeFinalizer.derive(list);
-//            if(!bean.isSuccess()) {
-//                this.context.setCode(TOKEN_TYPE_ERROR);
-//                this.context.setMsg(TYPE_CHECK_ERROR);
-//                this.context.addErrMsg(bean.getData().getRepresent(), true, bean.getMessage());
-//            }
-//        }
-        return this;
-    }
-
-    private List<Token> list;
-    private int i;
-
-    private boolean check(final List<Token> list) {
-        this.list = list;
-        for(i = 0; i<list.size(); i++) {
-            Token token = list.get(i);
-            switch(token.getType()) {
-                case OPERATOR:
-                    break;
-                case KEYWORD:
-                    break;
-                case SYMBOL:
-                    break;
-                case STRING:
-                    break;
-                case INTEGER:
-                    break;
-                case FLOAT:
-                    break;
-                default:
-                    break;
+        final List<Module> modules = context.getModules();
+        for(Module module : modules) {
+            for(TokenSequence ts : module.getList()) {
+                Bean<TokenRepresent> bean = TypeFinalizer.derive(ts.getList());
+                if(!bean.isSuccess()) {
+                    this.context.setCode(TOKEN_TYPE_ERROR);
+                    this.context.setMsg(TYPE_CHECK_ERROR);
+                    this.context.addErrMsg(module, bean.getData().getRepresent(), true, bean.getMessage());
+                }
             }
         }
-        return true;
-    }
-
-    private Token next() {
-        if(i + 1 >= list.size()) return null;
-        return list.get(i + 1);
-    }
-
-    private Token prev() {
-        if(i - 1 < 0) return null;
-        return list.get(i - 1);
+        return this;
     }
 
 }

@@ -24,12 +24,11 @@ public class TokenUtil {
     /**
      * 返回一个新的list，包含了相同列的所有token
      * @param list
-     * @param pos
+     * @param line
      * @return
      */
-    public static List<Token> getLine(List<Token> list, int pos) {
-        Token key = list.get(pos);
-        return list.stream().filter((e) -> e.getLine() == key.getLine() && e.getCol() > key.getCol()).collect(Collectors.toList());
+    public static List<Token> getLine(List<Token> list, int line) {
+        return list.stream().filter((e) -> e.getLine() == line).collect(Collectors.toList());
     }
 
     /**
