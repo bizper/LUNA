@@ -83,7 +83,7 @@ public class Preprocessor extends Component {
                     i = -1;
                     continue;
                 }
-                if(prev.getType() == TOKEN.INTEGER || prev.getType() == TOKEN.FLOAT || prev.getType() == TOKEN.STRING) {
+                if(prev.getType() != null && (prev.getType() == TOKEN.INTEGER || prev.getType() == TOKEN.FLOAT || prev.getType() == TOKEN.STRING)) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(module, prev.get(0), "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.toString());

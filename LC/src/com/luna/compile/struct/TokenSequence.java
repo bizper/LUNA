@@ -101,6 +101,10 @@ public class TokenSequence implements StringElement {
 
     private int cursor = 0;
 
+    public void reset() {
+        cursor = 0;
+    }
+
     public boolean nextMatch(Token token) {
         return get(cursor++).check(token.getType(), token.getValue());
     }

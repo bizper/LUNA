@@ -20,7 +20,7 @@ public class Token implements Mode, StringElement {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Token.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Token.class.getSimpleName() + " [", "]")
                 .add("line=" + line)
                 .add("col=" + col)
                 .add("type=" + type)
