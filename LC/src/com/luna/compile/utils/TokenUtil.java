@@ -4,10 +4,14 @@ import com.luna.compile.compiler.constant.SIG;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Token;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class TokenUtil {
+
+    private static final Object NULL = null;
 
     public static boolean check(Token token, TOKEN type, String value) {
         return token != null && token.check(type, value);
@@ -48,6 +52,13 @@ public class TokenUtil {
         return null;
     }
 
+    public static Token containsType(TOKEN type, List<Token> args) {
+        for(Token t : args) {
+            if(t.check(type)) return t;
+        }
+        return null;
+    }
+
     public static boolean allType(TOKEN type, Token... args) {
         for(Token t : args) {
             if(!t.check(type)) return false;
@@ -56,14 +67,16 @@ public class TokenUtil {
     }
 
     public static boolean inTypeRange(Token[] args, TOKEN... types) {
-        for(Token t : args) {
-            boolean bool = false;
-            for(TOKEN type : types) {
-                if(!bool) bool = t.check(type);
+        return inTypeRange(Arrays.asList(args), types);
+    }
+
+    public static boolean inTypeRange(List<Token> args, TOKEN... types) {
+        return args.stream().anyMatch((e) -> {
+            for (TOKEN type : types) {
+                if(e.check(type)) return true;
             }
-            if(!bool) return false;
-        }
-        return true;
+            return false;
+        });
     }
 
 }

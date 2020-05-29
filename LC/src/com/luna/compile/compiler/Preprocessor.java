@@ -81,7 +81,7 @@ public class Preprocessor extends Component {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(module, token, "语法错误：不允许空的源文本");
-                    list = TokenUtil.clearLine(list, token.getLine());
+                    module.remove(token.getLine());
                     i = -1;
                     continue;
                 }
@@ -89,7 +89,7 @@ public class Preprocessor extends Component {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(module, prev.get(0), "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.toString());
-                    list = TokenUtil.clearLine(list, token.getLine());
+                    module.remove(token.getLine());
                     i = -1;
                     continue;
                 }
@@ -97,7 +97,7 @@ public class Preprocessor extends Component {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(module, token, true, "语法错误：不允许空的替换文本");
-                    list = TokenUtil.clearLine(list, token.getLine());
+                    module.remove(token.getLine());
                     i = -1;
                     continue;
                 }
@@ -105,7 +105,7 @@ public class Preprocessor extends Component {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(module, prev.get(0), "语法错误：重复定义的源文本 " + prev.toString());
-                    list = TokenUtil.clearLine(list, token.getLine());
+                    module.remove(token.getLine());
                     i = -1;
                     continue;
                 }

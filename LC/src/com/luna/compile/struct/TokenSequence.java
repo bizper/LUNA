@@ -3,6 +3,7 @@ package com.luna.compile.struct;
 import com.luna.base.kits.StringKit;
 import com.luna.base.result.Bean;
 import com.luna.compile.constant.TOKEN;
+import com.luna.compile.utils.TokenUtil;
 import com.luna.compile.utils.TypeFinalizer;
 
 import java.util.ArrayList;
@@ -83,8 +84,11 @@ public class TokenSequence implements StringElement {
     }
 
     public TOKEN getType() {
-        Bean<TokenRepresent> bean = TypeFinalizer.derive(list);
-        return bean.getData().getType();
+        if(TokenUtil.containsType(TOKEN.SYMBOL, list) == null) {
+            Bean<TokenRepresent> bean = TypeFinalizer.derive(list);
+            return bean.getData().getType();
+        }
+        return null;
     }
 
     public boolean isChecked() {
