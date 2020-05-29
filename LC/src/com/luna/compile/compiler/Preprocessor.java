@@ -12,6 +12,7 @@ import com.luna.compile.utils.ExpressionFinalizer;
 import com.luna.compile.utils.ModeMatcher;
 import com.luna.compile.utils.TokenUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,7 +49,8 @@ public class Preprocessor extends Component {
 
     private void forEach(Module module) {
         List<TokenSequence> list = module.getList();
-        for (TokenSequence ts : list) {
+        List<TokenSequence> cache = new ArrayList<>(list);
+        for (TokenSequence ts : cache) {
             checkDefine(module, ts);
         }
         debug(map);
