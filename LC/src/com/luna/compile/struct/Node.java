@@ -29,7 +29,7 @@ public class Node {
     }
 
     public Node tail() {
-        return list.get(list.size() - 1 < 0 ? 0 : list.size() - 1);
+        return list.get(Math.max(list.size() - 1, 0));
     }
 
     public Node setName(NODE name) {

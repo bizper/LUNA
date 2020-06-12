@@ -28,34 +28,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b54e2a15-c9eb-4c15-bc6c-3cf28da3a132" name="Default Changelist" comment="repair the project with little bugs">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/DELL.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/Launcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/run/AbstractCore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/run/AbstractLauncher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/run/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std/std.luna" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/out/basic.sy" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/basic.sy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/Run$Finalizer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/Run.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/SyntaxProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/SyntaxProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/constant/Vars.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/loader/FileLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/loader/Filter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/loader/Loader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Context.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Context.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/base/kits/StringKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/base/kits/StringKit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/Run.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Expression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/basic.sy" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/basic.sy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/TokenStreamChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/TokenStreamChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/CONSTANT.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/CONSTANT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/NODE.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/NODE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/run/AbstractLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/run/AbstractLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/run/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/run/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/SyntaxParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/SyntaxParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/struct/SyntaxNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/struct/SyntaxNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.luna" beforeDir="false" afterPath="$PROJECT_DIR$/test.luna" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,18 +113,20 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579167117234" />
-    <property name="last.edited.regexp" value="a=&quot;asdf&quot;" />
+    <property name="last.edited.regexp" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Store" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -279,6 +271,8 @@
       <workItem from="1590194353114" duration="5625000" />
       <workItem from="1590297829986" duration="7506000" />
       <workItem from="1590370826771" duration="3054000" />
+      <workItem from="1591673532621" duration="174000" />
+      <workItem from="1591954421827" duration="5004000" />
     </task>
     <task id="LOCAL-00001" summary="reconstruct">
       <created>1570860624279</created>
@@ -443,6 +437,7 @@
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/Store" />
+      <path value="$PROJECT_DIR$/../Store" />
     </ignored-roots>
     <MESSAGE value="reconstruct" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;LC/out/com/luna/compile/Run.class&#10;#&#9;LC/src/com/luna/compile/Run.java" />
@@ -454,13 +449,15 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1590371078226" />
-    <state x="696" y="340" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590037583044">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="696" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591954649244">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="696" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591954649244" />
     <state x="696" y="340" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1590037583044" />
-    <state x="765" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1590297280758">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="765" y="232" key="#com.intellij.ide.util.MemberChooser" timestamp="1591957623931">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="765" y="232" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591957623931" />
     <state x="765" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1590297280758" />
     <state x="641" y="463" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1590313191857">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -478,21 +475,29 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1590054295260" />
-    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1590371202407">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom" timestamp="1591959275434">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1396" height="218" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591959275434" />
     <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1590371202407">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1876" height="277" key="GridCell.Tab.0.center" timestamp="1591959275434">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1396" height="218" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
+    <state width="1876" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591959275434" />
     <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1590371202407">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1876" height="277" key="GridCell.Tab.0.left" timestamp="1591959275434">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1396" height="218" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
+    <state width="1876" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591959275434" />
     <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1590371202407">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1876" height="277" key="GridCell.Tab.0.right" timestamp="1591959275434">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1396" height="218" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
+    <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591959275434" />
     <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
     <state width="1877" height="363" key="GridCell.Tab.1.bottom" timestamp="1590313727984">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -510,17 +515,20 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="363" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1590313727984" />
-    <state x="440" y="114" key="SettingsEditor" timestamp="1590038156038">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="440" y="110" key="SettingsEditor" timestamp="1591956730941">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="330" y="91" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1591673551523" />
+    <state x="440" y="110" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591956730941" />
     <state x="440" y="114" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1590038156038" />
     <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1590299630347">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1590299630347" />
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1590032854578">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="623" y="226" width="672" height="653" key="search.everywhere.popup" timestamp="1591957593874">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="623" y="226" width="672" height="653" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591957593874" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1590032854578" />
   </component>
   <component name="antWorkspaceConfiguration">

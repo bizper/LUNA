@@ -30,14 +30,7 @@ public class TokenStreamChecker extends Component {
         this.context = context;
         final List<Module> modules = context.getModules();
         for(Module module : modules) {
-            for(TokenSequence ts : module.getList()) {
-                Bean<TokenRepresent> bean = TypeFinalizer.derive(ts.getList());
-                if(!bean.isSuccess()) {
-                    this.context.setCode(TOKEN_TYPE_ERROR);
-                    this.context.setMsg(TYPE_CHECK_ERROR);
-                    this.context.addErrMsg(module, bean.getData().getRepresent(), true, bean.getMessage());
-                }
-            }
+
         }
         return this;
     }

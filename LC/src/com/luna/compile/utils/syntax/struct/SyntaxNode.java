@@ -4,6 +4,7 @@ import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public final class SyntaxNode {
 
@@ -45,6 +46,11 @@ public final class SyntaxNode {
     public SyntaxNode setName(String name) {
         this.name = name;
         return this;
+    }
+
+    public boolean match(String expr) {
+        Pattern p = Pattern.compile(value);
+        return p.matcher(expr).matches();
     }
 
     public String getName() {

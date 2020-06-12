@@ -26,6 +26,7 @@ public class TokenSequence implements StringElement {
         return this;
     }
 
+
     public int getLine() {
         return line;
     }
@@ -60,6 +61,16 @@ public class TokenSequence implements StringElement {
 
     public Token tail() {
         return list.get(list.size() - 1);
+    }
+
+    public TokenSequence[] split(String str) {
+        int key = 0;
+        for(Token token : list) {
+            if(token.getValue().equals(str)) break;
+            key ++;
+        }
+        if(key == 0) return new TokenSequence[]{this};
+        else return new TokenSequence[]{TokenSequence.getInstance(list, 0, key), TokenSequence.getInstance(list, key + 1, this.size())};
     }
 
     public boolean headMatch(Token token) {
@@ -116,6 +127,10 @@ public class TokenSequence implements StringElement {
     public boolean isTail() {
         return cursor == list.size();
     }
+
+    /**
+     * static method area
+     */
 
     private TokenSequence() {}
 

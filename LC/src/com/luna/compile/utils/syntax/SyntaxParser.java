@@ -25,6 +25,13 @@ public final class SyntaxParser {
         return map.get(name);
     }
 
+    public static SyntaxNode match(String expr) {
+        for(SyntaxNode s : map.values()) {
+            if(s.match(expr)) return s;
+        }
+        return null;
+    }
+
     public static void init() {
         if(map == null) {
             map = new HashMap<>();
@@ -65,7 +72,7 @@ public final class SyntaxParser {
                         for(String n : secNodes) {
                             n = n.trim();
                             if(map.containsKey(n)) {
-                                value.append(find(n).getValue());
+                                value.append("(").append(find(n).getValue()).append(")").append("[\\s]*");
                             }
                         }
                         value.append(")");
@@ -84,7 +91,7 @@ public final class SyntaxParser {
                     for(String n : secNodes) {
                         n = n.trim();
                         if(map.containsKey(n)) {
-                            value.append(find(n).getValue());
+                            value.append("(").append(find(n).getValue()).append(")").append("[\\s]*");
                         }
                     }
                     value.append(")");

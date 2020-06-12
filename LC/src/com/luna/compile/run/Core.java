@@ -33,6 +33,7 @@ public class Core extends AbstractCore {
     }
 
     protected void close() {
+        config = null;
         path.clear();
     }
 

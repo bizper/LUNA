@@ -15,7 +15,7 @@ public class AbstractLauncher {
         printBanner();
         if(args == null || args.length == 0) return;
         try {
-            AbstractCore core = clazz.newInstance();
+            AbstractCore core = clazz.getDeclaredConstructor().newInstance();
             Bean<Config> bean = CommandKit.get(args);//parse the command line arguments
             if(bean.isSuccess()) {
                 Env.init();
