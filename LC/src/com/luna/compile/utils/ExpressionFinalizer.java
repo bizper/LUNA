@@ -3,6 +3,7 @@ package com.luna.compile.utils;
 import com.luna.compile.compiler.constant.Operator;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Token;
+import com.luna.compile.struct.TokenSequence;
 
 import java.util.List;
 
@@ -30,12 +31,14 @@ public class ExpressionFinalizer extends BaseFinalizer {
         return result;
     }
 
-    public static void calculate(List<Token> list) {
+    public static String calculate(TokenSequence ts) {
+        List<Token> list = ts.getList();
         for(int i = 0; i<list.size(); i++) {
             Token token = list.get(i);
             if(token.getType() == TOKEN.OPERATOR && token.getSig() == Operator.LP) ICalculate(list, i);
 
         }
+        return "";
     }
 
     /**

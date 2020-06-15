@@ -7,6 +7,7 @@ import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Module;
 import com.luna.compile.struct.Node;
 import com.luna.compile.struct.TokenSequence;
+import com.luna.compile.utils.ExpressionFinalizer;
 import com.luna.compile.utils.TypeFinalizer;
 import com.luna.compile.utils.syntax.SyntaxParser;
 import com.luna.compile.utils.syntax.struct.SyntaxNode;
@@ -44,12 +45,15 @@ public class SyntaxProcessor extends Component {
                             setNodeValue(tokenSequences[0].toString());
                             change();
                             setNodeName(NODE.METHOD_PARAM);
-                            if(SyntaxParser.getMap().get("STATIC_EXPR").match(tokenSequences[1].toString())) {
+                            //如果右边为静态表达式（不包含符号引用和非静态函数引用，一切信息在编译器已得知），将直接计算表达式结果
+                            if(SyntaxParser.match("STATIC_EXPR", tokenSequences[1].toString())) {
                                 TypeFinalizer.derive(tokenSequences[1].getList());
-                                setNodeValue(tokenSequences[1].toString());
-                            } else {
-                                //TODO
+                                setNodeValue(ExpressionFinalizer.calculate(tokenSequences[1]));
+                            } else {//如果不是就将表达式组成语法树
+                                parseExpr();
                             }
+                            break;
+                        case "":
                             break;
                     }
                 }
@@ -58,6 +62,10 @@ public class SyntaxProcessor extends Component {
         recall();
         OUT.info(root);
         return this;
+    }
+
+    private void parseExpr() {
+
     }
 
     private void recall() {
@@ -77,6 +85,14 @@ public class SyntaxProcessor extends Component {
      */
     private void back() {
         root = root.getParent();
+    }
+
+    private void safetyBack() {
+        if(root.getParent() != null) root = root.getParent();
+    }
+
+    public boolean isNull() {
+        return root == null;
     }
 
     private void setNodeName(NODE name) {

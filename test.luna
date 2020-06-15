@@ -1,4 +1,4 @@
-ECHO <- 5 + 1
+ECHO D <- 5 + 1
 MIN <- 5
 
-a = ECHO
+a = ECHO D

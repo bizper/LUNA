@@ -32,6 +32,12 @@ public final class SyntaxParser {
         return null;
     }
 
+    public static boolean match(String nodeName, String expr) {
+        SyntaxNode sn = map.get(nodeName);
+        if(sn == null) return false;
+        return sn.match(expr);
+    }
+
     public static void init() {
         if(map == null) {
             map = new HashMap<>();

@@ -27,25 +27,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b54e2a15-c9eb-4c15-bc6c-3cf28da3a132" name="Default Changelist" comment="repair the project with little bugs">
-      <change afterPath="$PROJECT_DIR$/std/std.luna" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="b54e2a15-c9eb-4c15-bc6c-3cf28da3a132" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/basic.sy" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/basic.sy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/basic.sy" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/basic.sy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/SyntaxProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/SyntaxProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/TokenStreamChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/constant/CONSTANT.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/constant/CONSTANT.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/constant/NODE.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/constant/NODE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/struct/Node.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/TokenStreamChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/TokenStreamChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/CONSTANT.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/CONSTANT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/NODE.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/constant/NODE.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/run/AbstractLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/run/AbstractLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/run/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/run/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/TokenSequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/SyntaxParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/SyntaxParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/struct/SyntaxNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/struct/SyntaxNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.luna" beforeDir="false" afterPath="$PROJECT_DIR$/test.luna" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -272,7 +263,9 @@
       <workItem from="1590297829986" duration="7506000" />
       <workItem from="1590370826771" duration="3054000" />
       <workItem from="1591673532621" duration="174000" />
-      <workItem from="1591954421827" duration="5004000" />
+      <workItem from="1591954421827" duration="5283000" />
+      <workItem from="1592186986918" duration="995000" />
+      <workItem from="1592215770032" duration="999000" />
     </task>
     <task id="LOCAL-00001" summary="reconstruct">
       <created>1570860624279</created>
@@ -393,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590299625061</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="repair the project with little bugs">
+      <created>1591959701729</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1591959701729</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -471,33 +471,37 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="703" y="243" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080@0.0.1920.1080" timestamp="1590054491137" />
+    <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1591959700544">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="558" y="86" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591959700544" />
     <state x="739" y="281" key="FileChooserDialogImpl" timestamp="1590054295260">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1590054295260" />
-    <state width="1876" height="277" key="GridCell.Tab.0.bottom" timestamp="1591959275434">
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom" timestamp="1592215861115">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1396" height="218" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
-    <state width="1876" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591959275434" />
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592215861115" />
     <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1876" height="277" key="GridCell.Tab.0.center" timestamp="1591959275434">
+    <state width="1876" height="277" key="GridCell.Tab.0.center" timestamp="1592215861115">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1396" height="218" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
-    <state width="1876" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591959275434" />
+    <state width="1876" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592215861115" />
     <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1876" height="277" key="GridCell.Tab.0.left" timestamp="1591959275434">
+    <state width="1876" height="277" key="GridCell.Tab.0.left" timestamp="1592215861115">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1396" height="218" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
-    <state width="1876" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591959275434" />
+    <state width="1876" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592215861115" />
     <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1876" height="277" key="GridCell.Tab.0.right" timestamp="1591959275434">
+    <state width="1876" height="277" key="GridCell.Tab.0.right" timestamp="1592215861115">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1396" height="218" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
-    <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591959275434" />
+    <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592215861115" />
     <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
     <state width="1877" height="363" key="GridCell.Tab.1.bottom" timestamp="1590313727984">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -521,14 +525,15 @@
     <state x="330" y="91" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1591673551523" />
     <state x="440" y="110" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591956730941" />
     <state x="440" y="114" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1590038156038" />
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1590299630347">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1590299630347" />
-    <state x="623" y="226" width="672" height="653" key="search.everywhere.popup" timestamp="1591957593874">
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1591959702839">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="226" width="672" height="653" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591957593874" />
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591959702839" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1590299630347" />
+    <state x="623" y="226" width="672" height="653" key="search.everywhere.popup" timestamp="1592187728690">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="226" width="672" height="653" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592187728690" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1590032854578" />
   </component>
   <component name="antWorkspaceConfiguration">
