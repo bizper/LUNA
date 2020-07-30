@@ -3,6 +3,8 @@ package com.luna.compile.struct;
 import com.luna.compile.compiler.constant.Keywords;
 import com.luna.compile.compiler.constant.SIG;
 import com.luna.compile.constant.TOKEN;
+import com.luna.compile.struct.intf.Mode;
+import com.luna.compile.struct.intf.StringElement;
 
 import java.util.StringJoiner;
 

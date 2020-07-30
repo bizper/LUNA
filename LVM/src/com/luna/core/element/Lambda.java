@@ -1,4 +1,4 @@
 package com.luna.core.element;
 
-public class Lambda implements Element {
+public class Lambda extends Method {
 }

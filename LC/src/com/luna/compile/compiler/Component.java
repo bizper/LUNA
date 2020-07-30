@@ -7,7 +7,10 @@ public abstract class Component {
 
     Context context;
 
-    public abstract Component run(Context context, Config config);
+    public Component run(Context context, Config config) {
+        this.context = context;
+        return this;
+    }
 
     public Context getContext() {
         return context;

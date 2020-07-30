@@ -11,7 +11,7 @@ public enum TOKEN {
     BOOLEAN("布尔值"),
     EXPRESSION("表达式");
 
-    private String desc;
+    private final String desc;
 
     private TOKEN(String desc) {
         this.desc = desc;

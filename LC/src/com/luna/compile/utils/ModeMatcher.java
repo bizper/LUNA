@@ -1,7 +1,7 @@
 package com.luna.compile.utils;
 
 import com.luna.base.io.OUT;
-import com.luna.compile.struct.Mode;
+import com.luna.compile.struct.intf.Mode;
 import com.luna.compile.struct.TokenSequence;
 
 import java.util.List;

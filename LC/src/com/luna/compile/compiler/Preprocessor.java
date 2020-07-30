@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.luna.compile.constant.STATUS.OK;
 import static com.luna.compile.constant.STATUS.TOKEN_SYNTAX_ERROR;
 import static com.luna.base.io.OUT.*;
 
@@ -40,7 +41,7 @@ public class Preprocessor extends Component {
 
     @Override
     public Component run(Context context, Config config) {
-        this.context = context;
+        super.run(context, config);
         for(Module module : context.getModules()) {
             forEach(module);
         }
@@ -52,11 +53,14 @@ public class Preprocessor extends Component {
         List<TokenSequence> cache = new ArrayList<>(list);
         for (TokenSequence ts : cache) {
             checkDefine(module, ts);
+            if(context.getCode() != OK) {
+                break;
+            }
         }
         debug(map);
         for(TokenSequence ts : list) {
             process(ts);
-            OUT.debug(ts);
+            debug(ts);
         }
     }
 
@@ -82,32 +86,29 @@ public class Preprocessor extends Component {
                     context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(module, token, "语法错误：不允许空的源文本");
                     module.remove(token.getLine());
-                    i = -1;
-                    continue;
+                    break;
                 }
-                if(prev.getType() != null && (prev.getType() == TOKEN.INTEGER || prev.getType() == TOKEN.FLOAT || prev.getType() == TOKEN.STRING)) {
+                TOKEN type = prev.getType();
+                if(type == TOKEN.INTEGER || type == TOKEN.FLOAT || type == TOKEN.STRING || type == TOKEN.BOOLEAN) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
-                    context.addErrMsg(module, prev.get(0), "语法错误：源文本不能为" + prev.getType().getDesc() + " " + prev.toString());
+                    context.addErrMsg(module, prev.get(0), "语法错误：源文本不能为 " + prev.toString() + "::" + type);
                     module.remove(token.getLine());
-                    i = -1;
-                    continue;
+                    break;
                 }
                 if(next == null) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(module, token, true, "语法错误：不允许空的替换文本");
                     module.remove(token.getLine());
-                    i = -1;
-                    continue;
+                    break;
                 }
                 if(map.containsKey(prev)) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
                     context.addErrMsg(module, prev.get(0), "语法错误：重复定义的源文本 " + prev.toString());
                     module.remove(token.getLine());
-                    i = -1;
-                    continue;
+                    break;
                 }
                 map.put(prev, next);
                 //start to remove token for non multi-define

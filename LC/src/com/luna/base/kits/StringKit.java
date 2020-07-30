@@ -1,6 +1,6 @@
 package com.luna.base.kits;
 
-import com.luna.compile.struct.StringElement;
+import com.luna.compile.struct.intf.StringElement;
 
 import java.util.List;
 

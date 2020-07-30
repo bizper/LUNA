@@ -18,17 +18,17 @@ import static com.luna.compile.constant.TOKEN.*;
 /**
  * derive the type of specify expression
  * such as
- * number + - * / number    =>      number
- * anything + string        =>      string
- * anything - * / string    =>      error
- * string - * / anything    =>      error
+ * number + - * / number        =>      number
+ * anything + string            =>      string
+ * anything - * / string        =>      error
+ * string - * / anything        =>      error
  */
 public class TypeFinalizer extends BaseFinalizer {
 
     public static Bean<TokenRepresent> derive(List<Token> tokens) {
         TOKEN result = null;
         if(tokens.size() == 1) result = tokens.get(0).getType();
-        List<Token> cache = new ArrayList<>(tokens);
+        final List<Token> cache = new ArrayList<>(tokens);
         for(int i = 0; i<cache.size(); i++) {
             Token t = cache.get(i);
             SIG sig = t.getSig();
@@ -52,7 +52,7 @@ public class TypeFinalizer extends BaseFinalizer {
                         cache.add(i - 1, Token.get(0, 0, result, "", null));
                         i = 0;
                     } else {
-                        return build(false, bean.getMessage(), bean.getData());
+                        return bean;
                     }
                 }
             }

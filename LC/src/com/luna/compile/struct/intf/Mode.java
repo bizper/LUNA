@@ -1,4 +1,4 @@
-package com.luna.compile.struct;
+package com.luna.compile.struct.intf;
 
 public interface Mode {
 

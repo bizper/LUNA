@@ -5,6 +5,7 @@ import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Token;
 import com.luna.compile.struct.TokenSequence;
 
+import javax.swing.*;
 import java.util.List;
 
 public class ExpressionFinalizer extends BaseFinalizer {
@@ -38,7 +39,7 @@ public class ExpressionFinalizer extends BaseFinalizer {
             if(token.getType() == TOKEN.OPERATOR && token.getSig() == Operator.LP) ICalculate(list, i);
 
         }
-        return "";
+        return "5";
     }
 
     /**
@@ -48,6 +49,7 @@ public class ExpressionFinalizer extends BaseFinalizer {
     private static void PCalculate(Token token) {
         switch(token.getType()) {
             case OPERATOR:
+
                 break;
             case INTEGER:
                 break;

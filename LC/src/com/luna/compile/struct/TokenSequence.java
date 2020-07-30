@@ -1,14 +1,15 @@
 package com.luna.compile.struct;
 
+import com.luna.base.io.OUT;
 import com.luna.base.kits.StringKit;
 import com.luna.base.result.Bean;
 import com.luna.compile.constant.TOKEN;
+import com.luna.compile.struct.intf.StringElement;
 import com.luna.compile.utils.TokenUtil;
 import com.luna.compile.utils.TypeFinalizer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -95,11 +96,8 @@ public class TokenSequence implements StringElement {
     }
 
     public TOKEN getType() {
-        if(TokenUtil.containsType(TOKEN.SYMBOL, list) == null) {
-            Bean<TokenRepresent> bean = TypeFinalizer.derive(list);
-            return bean.getData().getType();
-        }
-        return null;
+        Bean<TokenRepresent> bean = TypeFinalizer.derive(list);
+        return bean.getData().getType();
     }
 
     public boolean isChecked() {
@@ -149,5 +147,19 @@ public class TokenSequence implements StringElement {
     @Override
     public String toString() {
         return StringKit.join(list, " ");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof TokenSequence)) {
+            return false;
+        }
+        TokenSequence ts = (TokenSequence) obj;
+        return this.toString().equals(ts.toString());
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
     }
 }

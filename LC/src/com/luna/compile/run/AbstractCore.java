@@ -2,17 +2,17 @@ package com.luna.compile.run;
 
 import com.luna.base.config.Config;
 
-public abstract class AbstractCore {
+public interface AbstractCore {
     /**
      * init a core with config which comes from command line or other ways.
      * @param config config package
      * @see com.luna.base.config.Config
      * @return itself
      */
-    protected abstract AbstractCore init(Config config);
+    AbstractCore launch(Config config);
 
-    protected abstract void run();
+    void run(Config config);
 
-    protected abstract void close();
+    void close();
 
 }

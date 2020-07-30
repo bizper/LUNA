@@ -19,7 +19,7 @@ public class AbstractLauncher {
             Bean<Config> bean = CommandKit.get(args);//parse the command line arguments
             if(bean.isSuccess()) {
                 Env.init();
-                core.init(bean.getData()).run();
+                core.launch(bean.getData());
             } else {
                 OUT.trackErr(bean.getMessage());
             }

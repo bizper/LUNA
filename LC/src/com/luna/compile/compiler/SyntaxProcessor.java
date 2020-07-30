@@ -33,7 +33,7 @@ public class SyntaxProcessor extends Component {
 
     @Override
     public Component run(Context context, Config config) {
-        this.context = context;
+        super.run(context, config);
         for(final Module module : context.getModules()) {
             for(TokenSequence ts : module.getList()) {
                 SyntaxNode sn;
@@ -45,7 +45,7 @@ public class SyntaxProcessor extends Component {
                             setNodeValue(tokenSequences[0].toString());
                             change();
                             setNodeName(NODE.METHOD_PARAM);
-                            //如果右边为静态表达式（不包含符号引用和非静态函数引用，一切信息在编译器已得知），将直接计算表达式结果
+                            //如果右边为静态表达式（不包含符号引用和非静态函数引用，一切信息在编译期已得知），将直接计算表达式结果
                             if(SyntaxParser.match("STATIC_EXPR", tokenSequences[1].toString())) {
                                 TypeFinalizer.derive(tokenSequences[1].getList());
                                 setNodeValue(ExpressionFinalizer.calculate(tokenSequences[1]));

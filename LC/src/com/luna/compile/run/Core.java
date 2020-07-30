@@ -9,14 +9,11 @@ import com.luna.compile.struct.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Core extends AbstractCore {
+public class Core implements AbstractCore {
 
     private final List<Component> path = new ArrayList<>();
 
-    private Config config;
-
-    protected AbstractCore init(Config config) {
-        this.config = config;
+    public AbstractCore launch(Config config) {
         OUT.openDebug();
         path.clear();
         path.add(Tokenizer.getInstance());
@@ -29,15 +26,15 @@ public class Core extends AbstractCore {
         } else {
             path.add(Printer.getInstance());
         }
+        run(config);
         return this;
     }
 
-    protected void close() {
-        config = null;
+    public void close() {
         path.clear();
     }
 
-    protected void run() {
+    public void run(Config config) {
         Context context = Context.get();
         for(Component component : path) {
             context = component.run(context, config).getContext();
