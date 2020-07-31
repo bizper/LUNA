@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Config {
 
+    private boolean debug = false;
+
     /**
      * start with -O, use like -O0 -O1
      * 0 normal
@@ -99,4 +101,11 @@ public class Config {
         return generateBytecodeFile;
     }
 
+    public void setDebug(boolean debug) {
+        this.debug = debug;
+    }
+
+    public boolean isDebug() {
+        return debug;
+    }
 }

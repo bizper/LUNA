@@ -33,7 +33,7 @@ public class OUT {
 
     public static void debug(Object obj) {
         StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-        if(debug) info(String.format("%-80s %s", stack[2].toString(), obj));
+        if(debug) info(String.format("%-100s %s", stack[2].toString(), obj));
     }
 
     public static void output(Bean bean) {

@@ -49,7 +49,6 @@ public class Tokenizer extends Component {
         }
         context.setCode(OK);
         context.setMsg("SUCCESS");
-        OUT.debug(context.getModules());
         return this;
     }
 
@@ -72,7 +71,7 @@ public class Tokenizer extends Component {
             TokenSequence ts = parseInside(line++, code);
             if(!ts.isEmpty()) {
                 list.add(ts);
-                OUT.debug(ts);
+                OUT.debug(ts.getList());
             }
         }
         return module;

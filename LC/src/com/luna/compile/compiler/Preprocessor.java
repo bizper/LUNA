@@ -57,7 +57,6 @@ public class Preprocessor extends Component {
                 break;
             }
         }
-        debug(map);
         for(TokenSequence ts : list) {
             process(ts);
             debug(ts);

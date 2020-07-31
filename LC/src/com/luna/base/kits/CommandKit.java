@@ -12,6 +12,8 @@ public class CommandKit extends BaseKit {
             if(s.startsWith("-")) {
                 s = s.substring(1);
                 switch(s) {
+                    case "debug":
+                        config.setDebug(true);
                     case "O0":
                         config.setCompileMode(0);
                         break;

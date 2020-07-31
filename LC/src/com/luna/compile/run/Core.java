@@ -14,7 +14,7 @@ public class Core implements AbstractCore {
     private final List<Component> path = new ArrayList<>();
 
     public AbstractCore launch(Config config) {
-        OUT.openDebug();
+        if(config.isDebug()) OUT.openDebug();
         path.clear();
         path.add(Tokenizer.getInstance());
         path.add(TokenStreamChecker.getInstance());

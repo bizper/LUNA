@@ -2,18 +2,26 @@ package com.luna.compile.compiler.constant;
 
 public enum Keywords implements SIG {
 
-    IF("if"),
-    ELSE("else"),
-    NAIVE("naive"),
-    END("end"),
-    LINK("link"),
-    THIS("this"),
-    DO("do");
+    IF("if", 0),
+    ELSE("else", 0),
+    NAIVE("naive", 0),
+    END("end", 0),
+    LINK("link", 0),
+    THIS("this", 0),
+    DO("do", 0);
 
     private final String value;
 
-    Keywords(String c) {
+    private final int level;
+
+    Keywords(String c, int level) {
         this.value = c;
+        this.level = level;
+    }
+
+    @Override
+    public int getLevel() {
+        return level;
     }
 
     public String getValue() {

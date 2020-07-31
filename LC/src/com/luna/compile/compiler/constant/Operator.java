@@ -2,33 +2,40 @@ package com.luna.compile.compiler.constant;
 
 public enum Operator implements SIG {
 
-    EQUAL('='),
-    PLUS('+'),
-    MINUS('-'),
-    MULTI('*'),
-    DIV('/'),
-    NOT('!'),
-    LT('<'),
-    GT('>'),
-    LP('('),
-    RP(')'),
-    QM('?'),
-    COLON(':'),
-    DEFINE('#');
+    EQUAL('=', 0),
+    PLUS('+', 0),
+    MINUS('-', 0),
+    MULTI('*', 1),
+    DIV('/', 1),
+    NOT('!', 0),
+    LT('<', 0),
+    GT('>', 0),
+    LP('(', 2),
+    RP(')', 2),
+    QM('?', 0),
+    COLON(':', 0),
+    DEFINE('#', 0);
 
     private final char value;
 
-    Operator(char c) {
+    private final int level;
+
+    Operator(char c, int level) {
         this.value = c;
+        this.level = level;
     }
 
-    public char getValue() {
-        return value;
+    public String getValue() {
+        return String.valueOf(value);
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public static Operator getOperator(char c) {
         for(Operator op : values()) {
-            if(op.getValue() == c) return op;
+            if(op.getValue().equals(String.valueOf(c))) return op;
         }
         return null;
     }
@@ -37,7 +44,7 @@ public enum Operator implements SIG {
         if(c == null) return null;
         if(c.length() > 1) return null;
         for(Operator op : values()) {
-            if(op.getValue() == c.charAt(0)) return op;
+            if(op.getValue().equals(c)) return op;
         }
         return null;
     }

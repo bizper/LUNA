@@ -48,7 +48,7 @@ public class SyntaxProcessor extends Component {
                             //如果右边为静态表达式（不包含符号引用和非静态函数引用，一切信息在编译期已得知），将直接计算表达式结果
                             if(SyntaxParser.match("STATIC_EXPR", tokenSequences[1].toString())) {
                                 TypeFinalizer.derive(tokenSequences[1].getList());
-                                setNodeValue(ExpressionFinalizer.calculate(tokenSequences[1]));
+                                OUT.debug(ExpressionFinalizer.getInstance().calculate(tokenSequences[1]));
                             } else {//如果不是就将表达式组成语法树
                                 parseExpr();
                             }
