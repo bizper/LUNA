@@ -13,21 +13,8 @@ import java.util.Stack;
 
 public class ExpressionFinalizer extends BaseFinalizer {
 
-    private ExpressionFinalizer() {}
-
-    public static ExpressionFinalizer getInstance() {
-        return new ExpressionFinalizer();
-    }
-
-    private String result;
-
-    public void init() {
-        result = "";
-    }
-
     //5 + 6 => 5 6 +
-    public String calculate(TokenSequence ts) {
-        init();
+    public static String calculate(TokenSequence ts) {
         List<Token> list = ts.getList();
         List<Token> stack = reversePolishNotation(list);
         for(int i = 0; i<stack.size(); i++) {
@@ -38,14 +25,11 @@ public class ExpressionFinalizer extends BaseFinalizer {
                 String value = "";
                 if(Operator.PLUS.equals(token.getSig())) {
                     value = String.valueOf(Integer.parseInt(param1.getValue()) + Integer.parseInt(param2.getValue()));
-                }
-                if(Operator.MINUS.equals(token.getSig())) {
+                } else if(Operator.MINUS.equals(token.getSig())) {
                     value = String.valueOf(Integer.parseInt(param1.getValue()) - Integer.parseInt(param2.getValue()));
-                }
-                if(Operator.MULTI.equals(token.getSig())) {
+                } else if(Operator.MULTI.equals(token.getSig())) {
                     value = String.valueOf(Integer.parseInt(param1.getValue()) * Integer.parseInt(param2.getValue()));
-                }
-                if(Operator.DIV.equals(token.getSig())) {
+                } else if(Operator.DIV.equals(token.getSig())) {
                     value = String.valueOf(Integer.parseInt(param1.getValue()) / Integer.parseInt(param2.getValue()));
                 }
                 Token calculateResult = Token.get(param1.getLine(), param1.getCol(), TOKEN.INTEGER, value, null);
@@ -56,11 +40,10 @@ public class ExpressionFinalizer extends BaseFinalizer {
                 i = -1;
             }
         }
-        result = String.valueOf(stack.get(0).getValue());
-        return result;
+        return String.valueOf(stack.get(0).getValue());
     }
 
-    private List<Token> reversePolishNotation(List<Token> list) {
+    private static List<Token> reversePolishNotation(List<Token> list) {
         List<Token> result = new ArrayList<>();
         Stack<Token> stack = new Stack<>();
         for(Token token : list) {

@@ -70,12 +70,11 @@ public class Node {
 
     @Override
     public String toString() {
-        String self =  "|--<" + name + ":" + value + ">\n";
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder("|--<" + name + ":" + value + ">\n");
         for(Node node : list) {
             stringBuilder.append("  ").append(node);
         }
-        return self + stringBuilder.toString();
+        return stringBuilder.toString();
     }
 
     public static Node create() {

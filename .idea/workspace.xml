@@ -33,21 +33,12 @@
       <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Preprocessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/SyntaxProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/SyntaxProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/Tokenizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/basic.sy" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/basic.sy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/base/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/base/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/base/io/OUT.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/base/io/OUT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/base/kits/CommandKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/base/kits/CommandKit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Preprocessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/constant/Keywords.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/constant/Keywords.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/constant/MultiSymbolOperator.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/constant/MultiSymbolOperator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/constant/Operator.class" beforeDir="false" afterPath="$PROJECT_DIR$/LC/out/com/luna/compile/compiler/constant/Operator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/SyntaxProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/Keywords.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/Keywords.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/MultiSymbolOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/MultiSymbolOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/Operator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/SIG.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/compiler/constant/SIG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/run/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/run/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/struct/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/ExpressionFinalizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/SyntaxParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/LC/src/com/luna/compile/utils/syntax/SyntaxParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.luna" beforeDir="false" afterPath="$PROJECT_DIR$/test.luna" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +287,7 @@
       <workItem from="1592909694833" duration="353000" />
       <workItem from="1594802940293" duration="1056000" />
       <workItem from="1596087391399" duration="15813000" />
-      <workItem from="1596176536220" duration="12167000" />
+      <workItem from="1596176536220" duration="15143000" />
     </task>
     <task id="LOCAL-00001" summary="reconstruct">
       <created>1570860624279</created>
@@ -438,7 +429,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596107408065</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="完成了静态表达式计算">
+      <created>1596188785619</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1596188785619</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -487,7 +485,8 @@
     <MESSAGE value="reconstruct" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;LC/out/com/luna/compile/Run.class&#10;#&#9;LC/src/com/luna/compile/Run.java" />
     <MESSAGE value="repair the project with little bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="repair the project with little bugs" />
+    <MESSAGE value="完成了静态表达式计算" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了静态表达式计算" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="188" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596181175934">
@@ -517,37 +516,37 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="703" y="243" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080@0.0.1920.1080" timestamp="1590054491137" />
-    <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1596107405441">
+    <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1596188783091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="558" y="86" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1596107405441" />
+    <state x="558" y="86" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1596188783091" />
     <state x="739" y="281" key="FileChooserDialogImpl" timestamp="1590054295260">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1590054295260" />
-    <state width="1876" height="359" key="GridCell.Tab.0.bottom" timestamp="1596188481834">
+    <state width="1876" height="310" key="GridCell.Tab.0.bottom" timestamp="1596192029485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1396" height="218" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
-    <state width="1876" height="359" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596188481834" />
+    <state width="1876" height="310" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596192029485" />
     <state width="1877" height="297" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1876" height="359" key="GridCell.Tab.0.center" timestamp="1596188481834">
+    <state width="1876" height="310" key="GridCell.Tab.0.center" timestamp="1596192029485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1396" height="218" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
-    <state width="1876" height="359" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596188481834" />
+    <state width="1876" height="310" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596192029485" />
     <state width="1877" height="297" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1876" height="359" key="GridCell.Tab.0.left" timestamp="1596188481834">
+    <state width="1876" height="310" key="GridCell.Tab.0.left" timestamp="1596192029485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1396" height="218" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
-    <state width="1876" height="359" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596188481834" />
+    <state width="1876" height="310" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596192029485" />
     <state width="1877" height="297" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
-    <state width="1876" height="359" key="GridCell.Tab.0.right" timestamp="1596188481834">
+    <state width="1876" height="310" key="GridCell.Tab.0.right" timestamp="1596192029485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1396" height="218" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1591673716180" />
-    <state width="1876" height="359" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596188481834" />
+    <state width="1876" height="310" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596192029485" />
     <state width="1877" height="297" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1590371202407" />
     <state width="1876" height="342" key="GridCell.Tab.1.bottom" timestamp="1596108620181">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -575,10 +574,10 @@
     <state x="330" y="91" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1591673551523" />
     <state x="440" y="110" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1596185121049" />
     <state x="440" y="114" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1590038156038" />
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1596107416623">
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2" timestamp="1596188787014">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1596107416623" />
+    <state x="552" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1596188787014" />
     <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1590299630347" />
     <state x="623" y="226" width="672" height="653" key="search.everywhere.popup" timestamp="1592187728690">
       <screen x="0" y="0" width="1920" height="1040" />
