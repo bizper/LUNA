@@ -36,27 +36,7 @@ public class SyntaxProcessor extends Component {
         super.run(context, config);
         for(final Module module : context.getModules()) {
             for(TokenSequence ts : module.getList()) {
-                SyntaxNode sn;
-                if((sn = SyntaxParser.match(ts.toString())) != null) {
-                    switch(sn.getName()) {
-                        case "VARIABLE":
-                            TokenSequence[] tokenSequences = ts.split("=");
-                            setNodeName(NODE.METHOD_DEFINE);
-                            setNodeValue(tokenSequences[0].toString());
-                            change();
-                            setNodeName(NODE.METHOD_PARAM);
-                            //如果右边为静态表达式（不包含符号引用和非静态函数引用，一切信息在编译期已得知），将直接计算表达式结果
-                            if(SyntaxParser.match("STATIC_EXPR", tokenSequences[1].toString())) {
-                                TypeFinalizer.derive(tokenSequences[1].getList());
-                                OUT.debug(ExpressionFinalizer.calculate(tokenSequences[1]));
-                            } else {//如果不是就将表达式组成语法树
-                                parseExpr();
-                            }
-                            break;
-                        case "":
-                            break;
-                    }
-                }
+
             }
         }
         recall();
@@ -81,7 +61,7 @@ public class SyntaxProcessor extends Component {
     }
 
     /**
-     * noticed that this method wont do any null-checking operations.
+     * noticed that this method wont do any null-check operations.
      */
     private void back() {
         root = root.getParent();
