@@ -2,7 +2,7 @@ package com.luna.core.env;
 
 public class Stack<T> {
 
-    private Stack<T> stack = new Stack<>();
+    private final Stack<T> stack = new Stack<>();
 
     public void push(T t) {
         stack.push(t);

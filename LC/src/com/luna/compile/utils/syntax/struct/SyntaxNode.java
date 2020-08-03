@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static com.luna.compile.utils.syntax.constant.SyntaxNodeType.BASE;
+
 public final class SyntaxNode {
 
     private SyntaxNode() { }
@@ -16,13 +18,16 @@ public final class SyntaxNode {
      * 0 base node, described as range or a single character
      * 1 link node, show as a collection contains much other nodes
      */
-    private SyntaxNodeType type = SyntaxNodeType.BASE;
+    private SyntaxNodeType type = BASE;
 
-    private String value;
+    private String[] value;
+
+    private List<SyntaxNode> arrays;
 
     @Override
     public String toString() {
-        return "<" + name + ", values=\"" + value + "\">";
+        if(type == BASE) return "<" + name + ", values=\"" + value + "\">";
+        else return "<" + name + ", arrays=\"" + arrays + "\">";
     }
 
     public SyntaxNode setType(SyntaxNodeType type) {
@@ -30,7 +35,7 @@ public final class SyntaxNode {
         return this;
     }
 
-    public SyntaxNode setValue(String values) {
+    public SyntaxNode setValue(String[] values) {
         this.value = values;
         return this;
     }
@@ -39,7 +44,7 @@ public final class SyntaxNode {
         return type;
     }
 
-    public String getValue() {
+    public String[] getValue() {
         return value;
     }
 
@@ -48,17 +53,12 @@ public final class SyntaxNode {
         return this;
     }
 
-    public boolean match(String expr) {
-        Pattern p = Pattern.compile(value);
-        return p.matcher(expr).matches();
-    }
-
     public String getName() {
         return name;
     }
 
 
-    public static SyntaxNode create(String name, String value) {
+    public static SyntaxNode create(String name, String[] value) {
         return new SyntaxNode().setName(name).setValue(value);
     }
 

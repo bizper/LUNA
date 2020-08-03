@@ -44,6 +44,9 @@ public class Preprocessor extends Component {
         super.run(context, config);
         for(Module module : context.getModules()) {
             forEach(module);
+            if(context.getCode() != OK) {
+                break;
+            }
         }
         return this;
     }

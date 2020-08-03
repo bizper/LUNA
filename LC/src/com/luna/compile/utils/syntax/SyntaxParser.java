@@ -26,19 +26,6 @@ public final class SyntaxParser {
         return map.get(name);
     }
 
-    public static SyntaxNode match(String expr) {
-        for(SyntaxNode s : map.values()) {
-            if(s.match(expr)) return s;
-        }
-        return null;
-    }
-
-    public static boolean match(String nodeName, String expr) {
-        SyntaxNode sn = map.get(nodeName);
-        if(sn == null) return false;
-        return sn.match(expr);
-    }
-
     public static void init() {
         if(map == null) {
             map = new HashMap<>();
