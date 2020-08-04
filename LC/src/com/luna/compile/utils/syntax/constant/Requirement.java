@@ -1,8 +1,8 @@
 package com.luna.compile.utils.syntax.constant;
 
-public enum SyntaxNodeType {
+public enum Requirement {
 
-    LINK,
-    CONST
+    REQUIRED,
+    OPTIONAL
 
 }

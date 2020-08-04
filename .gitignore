@@ -1,3 +1,6 @@
 /out/
 *.class
 /LC/out/META-INF/
+/.idea/
+/LC/out/
+/LVM/out/

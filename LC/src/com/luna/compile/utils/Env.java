@@ -38,6 +38,7 @@ public final class Env {
     public static void init() {
         clear();
         put("syntax_file_path", "./LC/src/basic.sy");
+        put("test_syntax_file_path", "./LC/src/extend.sy");
     }
 
 }

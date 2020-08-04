@@ -9,6 +9,7 @@ import com.luna.compile.struct.Node;
 import com.luna.compile.struct.TokenSequence;
 import com.luna.compile.utils.ExpressionFinalizer;
 import com.luna.compile.utils.TypeFinalizer;
+import com.luna.compile.utils.syntax.SyntaxMatcher;
 import com.luna.compile.utils.syntax.SyntaxParser;
 import com.luna.compile.utils.syntax.struct.SyntaxNode;
 
@@ -21,7 +22,7 @@ public class SyntaxProcessor extends Component {
 
     private SyntaxProcessor() {
         root = Node.create();
-        SyntaxParser.init();
+        SyntaxMatcher.init();
     }
 
     private static Component instance;
