@@ -1,8 +1,0 @@
-naive echo any
-
-naive read _
-
-sum a b = a + b
-
-operator+ plus a b = sum a b
-
