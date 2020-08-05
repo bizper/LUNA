@@ -1,6 +1,6 @@
 package com.luna.compile.utils.syntax.constant;
 
-public enum Requirement {
+public enum SyntaxRequirement {
 
     REQUIRED,
     OPTIONAL

@@ -14,7 +14,7 @@ import com.luna.compile.utils.syntax.SyntaxParser;
 import com.luna.compile.utils.syntax.struct.SyntaxNode;
 
 /**
- * 对于语法进行分析，语法的根基为根目录下的basic.sy文件
+ * 对于词法进行分析，词法的根基为根目录下的basic.sy文件
  */
 public class SyntaxProcessor extends Component {
 

@@ -1,15 +1,14 @@
 package com.luna.compile.utils.syntax.struct;
 
-import com.luna.compile.utils.syntax.constant.Requirement;
+import com.luna.compile.utils.syntax.constant.SyntaxRequirement;
 import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.luna.compile.utils.syntax.constant.Requirement.*;
+import static com.luna.compile.utils.syntax.constant.SyntaxRequirement.*;
 import static com.luna.compile.utils.syntax.constant.SyntaxNodeType.*;
 
 public final class SyntaxNode implements Cloneable {
@@ -22,15 +21,15 @@ public final class SyntaxNode implements Cloneable {
 
     private SyntaxNodeType type = LINK;
 
-    private Requirement requirement = REQUIRED;
+    private SyntaxRequirement requirement = REQUIRED;
 
     private String value;
 
-    public void setRequirement(Requirement requirement) {
+    public void setRequirement(SyntaxRequirement requirement) {
         this.requirement = requirement;
     }
 
-    public Requirement getRequirement() {
+    public SyntaxRequirement getRequirement() {
         return requirement;
     }
 

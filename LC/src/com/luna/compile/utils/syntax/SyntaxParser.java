@@ -4,7 +4,7 @@ import com.luna.base.io.OUT;
 import com.luna.base.io.loader.FileReader;
 import com.luna.base.result.FileInfo;
 import com.luna.compile.utils.Env;
-import com.luna.compile.utils.syntax.constant.Requirement;
+import com.luna.compile.utils.syntax.constant.SyntaxRequirement;
 import com.luna.compile.utils.syntax.struct.SyntaxNode;
 
 import java.io.File;
@@ -27,13 +27,15 @@ public final class SyntaxParser {
         return map;
     }
 
-    public static void init() {
+    public static boolean init() {
         if(map == null) {
             map = new HashMap<>();
             if(parse() != 0) {
                 map = null;
+                return false;
             }
         }
+        return true;
     }
 
     private static int parse() {
@@ -103,11 +105,11 @@ public final class SyntaxParser {
                     String value = parseOptional(chars);
                     if(value.equals(sn.getName())) {
                         SyntaxNode clone = sn.clone();
-                        Objects.requireNonNull(clone).setRequirement(Requirement.OPTIONAL);
+                        Objects.requireNonNull(clone).setRequirement(SyntaxRequirement.OPTIONAL);
                         sn.addNode(clone);
                     } else {
                         SyntaxNode node = map.get(value).clone();
-                        Objects.requireNonNull(node).setRequirement(Requirement.OPTIONAL);
+                        Objects.requireNonNull(node).setRequirement(SyntaxRequirement.OPTIONAL);
                         sn.addNode(node);
                     }
                     clear();
