@@ -27,15 +27,13 @@ public final class SyntaxParser {
         return map;
     }
 
-    public static boolean init() {
+    public static void init() {
         if(map == null) {
             map = new HashMap<>();
             if(parse() != 0) {
                 map = null;
-                return false;
             }
         }
-        return true;
     }
 
     private static int parse() {
@@ -67,7 +65,6 @@ public final class SyntaxParser {
     private static SyntaxNode parseBNF(String code) {
         char[] chars = code.toCharArray();
         boolean isDefine = false;
-        boolean isParted = false;
         int partCount = 0;
         SyntaxNode sn = SyntaxNode.get();
         for(pointer = 0; pointer < chars.length; pointer++) {
@@ -82,6 +79,17 @@ public final class SyntaxParser {
                     clear();
                 }
             } else {
+                if(c == '(') {
+                    List<SyntaxNode> nodes = sn.getNodes();
+                    SyntaxNode and = SyntaxNode.get(AND);
+                    sn.addNode(and);
+                    sn = and;
+                    sn.addAllNode(nodes);
+                    partCount = 0;
+                }
+                if(c == ')') {
+                    sn = sn.getParent();
+                }
                 if(c == '"') {
                     String value = parseConst(chars);
                     SyntaxNode constNode = SyntaxNode.get(CONST);
@@ -116,27 +124,25 @@ public final class SyntaxParser {
                     partCount ++;
                 }
                 if(c == '|') {
-                    isParted = true;
-                    if(partCount >= 2) {
-                        List<SyntaxNode> list = sn.getNodes(partCount);
-                        if(list.isEmpty()) continue;
-                        SyntaxNode linkNode = SyntaxNode.get(LINK);
-                        linkNode.addAllNode(list);
-                        sn.addNode(linkNode);
+                    List<SyntaxNode> list = sn.getNodes(partCount);
+                    if(sn.getType() != OR) {
+                        SyntaxNode or = SyntaxNode.get(OR);
+                        sn.addNode(or);
+                        sn = or;
                     }
+                    sn.addAllNode(list);
                     partCount = 0;
                 }
             }
         }
-        if(isParted) {
-            if(partCount >= 2) {
-                List<SyntaxNode> list = sn.getNodes(partCount);
-                SyntaxNode linkNode = SyntaxNode.get();
-                linkNode.addAllNode(list);
-                sn.addNode(linkNode);
-            }
+        return recall(sn);
+    }
+
+    private static SyntaxNode recall(SyntaxNode node) {
+        while(node.getParent() != null) {
+            node = node.getParent();
         }
-        return sn;
+        return node;
     }
 
     private static String parseConst(char[] chars) {

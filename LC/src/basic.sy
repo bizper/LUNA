@@ -1,26 +1,3 @@
 <NEGATIVE>              ::=         "-"
 <BIN NUMBER>            ::=         "0" | "1"
-<DEC NUMBER>            ::=         [NEGATIVE] <BIN NUMBER> | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
-<HEX NUMBER>            ::=         [NEGATIVE] <DEC NUMBER> | "A" | "B" | "C" | "D" | "E" | "F"
-<DEC NUMBER STRING>     ::=         <DEC NUMBER> | <DEC NUMBER STRING> <DEC NUMBER>
-<HEX NUMBER STRING>     ::=         <HEX NUMBER> | <HEX NUMBER STRING> <HEX NUMBER>
-<NUMBER>                ::=         "0x"<HEX NUMBER STRING> | <DEC NUMBER STRING>
-
-<LOWER CASE>            ::=         "a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"
-<UPPER CASE>            ::=         "A"|"B"|"C"|"D"|"E"|"F"|"G"|"H"|"I"|"J"|"K"|"L"|"M"|"N"|"O"|"P"|"Q"|"R"|"S"|"T"|"U"|"V"|"W"|"X"|"Y"|"Z"
-<WORD>                  ::=         "_" | <UPPER CASE> | <LOWER CASE>
-<SYMBOL STRING>         ::=         <WORD> | <SYMBOL STRING> <WORD> | <SYMBOL STRING> <DEC NUMBER>
-<SYMBOL>                ::=         <WORD> | <SYMBOL> <SYMBOL STRING>
-
-<KEYWORDS>              ::=         "if" | "else" | "naive" | "end" | "link" | "do" | "this"
-<ASSIGMENT OP>          ::=         "="
-<CAL OP>                ::=         "+" | "-" | "*" | "/" | "(" | ")"
-<EXPR OP>               ::=         <CAL OP> | "!" | ">" | "<" | "<=" | ">=" | "==" | "!=" | "++" | "--"
-
-<STATIC EXPR>           ::=         <NUMBER> | <STATIC EXPR> <CAL OP> <STATIC EXPR>
-<EXPR>                  ::=         <SYMBOL> | <NUMBER> | <EXPR> <EXPR OP> <EXPR>
-<STATEMENT>             ::=         <EXPR> | <STATIC EXPR>
-
-<PARAM LIST>            ::=         <SYMBOL> [PARAM LIST]
-<SINGLE FUNC DEF>       ::=         <PARAM LIST> "=" <STATEMENT>
-<FUNC DEF>              ::=         <PARAM LIST> "=" "do" <STATEMENT> "end"
+<DEC NUMBER>            ::=         [NEGATIVE] ( <BIN NUMBER> | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" )

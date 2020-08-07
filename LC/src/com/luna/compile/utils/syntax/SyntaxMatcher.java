@@ -1,5 +1,6 @@
 package com.luna.compile.utils.syntax;
 
+import com.luna.compile.struct.Token;
 import com.luna.compile.struct.TokenSequence;
 import com.luna.compile.utils.syntax.struct.SyntaxNode;
 
@@ -19,9 +20,20 @@ public class SyntaxMatcher {
         return null;
     }
 
-    private static void match(TokenSequence ts) {
-        Map<String, SyntaxNode> map = SyntaxParser.getMap();
+    public static String match(TokenSequence ts) {
+        for(Token token : ts) {
+            String name = match(token);
+            if(name != null) return name;
+        }
+        return null;
+    }
 
+    private static String match(Token token) {
+        Map<String, SyntaxNode> map = SyntaxParser.getMap();
+        for (Map.Entry<String, SyntaxNode> entry : map.entrySet()) {
+            if(entry.getValue().match(token)) return entry.getKey();
+        }
+        return null;
     }
 
 }

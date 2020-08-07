@@ -1,5 +1,6 @@
 package com.luna.compile.utils.syntax.struct;
 
+import com.luna.compile.struct.Token;
 import com.luna.compile.utils.syntax.constant.SyntaxRequirement;
 import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
 
@@ -8,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.luna.compile.constant.TOKEN.*;
 import static com.luna.compile.utils.syntax.constant.SyntaxRequirement.*;
 import static com.luna.compile.utils.syntax.constant.SyntaxNodeType.*;
 
@@ -19,7 +21,7 @@ public final class SyntaxNode implements Cloneable {
         this.type = type;
     }
 
-    private SyntaxNodeType type = LINK;
+    private SyntaxNodeType type = TERMINAL;
 
     private SyntaxRequirement requirement = REQUIRED;
 
@@ -51,6 +53,16 @@ public final class SyntaxNode implements Cloneable {
 
     private String name;
 
+    private SyntaxNode parent;
+
+    public void setParent(SyntaxNode parent) {
+        this.parent = parent;
+    }
+
+    public SyntaxNode getParent() {
+        return parent;
+    }
+
     private final List<SyntaxNode> list = new ArrayList<>();
 
     public void setName(String name) {
@@ -62,11 +74,14 @@ public final class SyntaxNode implements Cloneable {
     }
 
     public void addNode(SyntaxNode node) {
+        node.setParent(this);
         this.list.add(node);
     }
 
     public List<SyntaxNode> getNodes() {
-        return list;
+        List<SyntaxNode> cache = new ArrayList<>(list);
+        list.clear();
+        return cache;
     }
 
     public List<SyntaxNode> getNodes(int length) {
@@ -76,6 +91,49 @@ public final class SyntaxNode implements Cloneable {
             list.remove(j);
         }
         return nonLinkNodes;
+    }
+
+    public boolean match(Token token) {
+        SyntaxNode pointer = this;
+        if(token.getType() == INTEGER || token.getType() == FLOAT) {
+            String value = token.getValue();
+            char[] chars = value.toCharArray();
+            for (char c : chars) {
+                pointer = pointer.pick(c);
+                if (pointer == null) return false;
+            }
+            return true;
+        }
+        if(token.getType() == STRING) {
+            pointer = pointer.pick(token.getValue());
+            return pointer != null;
+        }
+        return false;
+    }
+
+    public boolean equals(char c) {
+        return equals(String.valueOf(c));
+    }
+
+    public boolean equals(String value) {
+        return this.value.equals(value);
+    }
+
+    public SyntaxNode pick(char c) {
+        return pick(String.valueOf(c));
+    }
+
+    public SyntaxNode pick(String value) {
+        for(SyntaxNode node : getNodes()) {
+            if(node.getType() == OR) {
+                return node.pick(value);
+            }
+            if(node.getType() == AND) {
+                return node.pick(value);
+            }
+            if(node.getType() == CONST && node.equals(value)) return node;
+        }
+        return null;
     }
 
     public void addAllNode(Collection<SyntaxNode> collection) {
@@ -93,7 +151,7 @@ public final class SyntaxNode implements Cloneable {
     //<DEC NUMBER>[[-]<BIN NUMBER>[<0><1>]<2>....]
     public String toString() {
         if(type == CONST) return "<" + type + (requirement == OPTIONAL ? ":" + requirement : "") + ":" + value + ">" ;
-        if(type == LINK) {
+        else {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("|--<").append(type).append(requirement == OPTIONAL ? ":" + requirement : "").append(":").append(name).append(">").append('\n');
             int i = 0;
@@ -108,7 +166,6 @@ public final class SyntaxNode implements Cloneable {
             }
             return stringBuilder.toString();
         }
-        return "";
     }
 
     public String toString(SyntaxNode root, int length) {
@@ -117,7 +174,7 @@ public final class SyntaxNode implements Cloneable {
             stringBuilder.append("  ");
         }
         if(type == CONST) stringBuilder.append("|--<").append(type).append(requirement == OPTIONAL ? ":" + requirement : "").append(":").append(value).append(">").append('\n');
-        if(type == LINK) {
+        else {
             stringBuilder.append("|--<").append(type).append(requirement == OPTIONAL ? ":" + requirement : "").append(":").append(name).append(">").append('\n');
             for(SyntaxNode node : list) {
                 if(node == root) {

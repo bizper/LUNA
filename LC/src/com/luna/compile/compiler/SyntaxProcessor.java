@@ -3,10 +3,7 @@ package com.luna.compile.compiler;
 import com.luna.base.config.Config;
 import com.luna.base.io.OUT;
 import com.luna.compile.constant.NODE;
-import com.luna.compile.struct.Context;
-import com.luna.compile.struct.Module;
-import com.luna.compile.struct.Node;
-import com.luna.compile.struct.TokenSequence;
+import com.luna.compile.struct.*;
 import com.luna.compile.utils.ExpressionFinalizer;
 import com.luna.compile.utils.TypeFinalizer;
 import com.luna.compile.utils.syntax.SyntaxMatcher;
@@ -37,7 +34,7 @@ public class SyntaxProcessor extends Component {
         super.run(context, config);
         for(final Module module : context.getModules()) {
             for(TokenSequence ts : module.getList()) {
-
+                System.out.println(SyntaxMatcher.match(ts));
             }
         }
         recall();

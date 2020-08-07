@@ -8,13 +8,27 @@ import com.luna.compile.struct.intf.StringElement;
 import com.luna.compile.utils.TokenUtil;
 import com.luna.compile.utils.TypeFinalizer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class TokenSequence implements StringElement {
+public class TokenSequence implements StringElement, Iterable<Token> {
+
+    @Override
+    public Iterator<Token> iterator() {
+        return list.iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super Token> action) {
+        list.forEach(action);
+    }
+
+    @Override
+    public Spliterator<Token> spliterator() {
+        return list.spliterator();
+    }
 
     private boolean checked = false;
 
