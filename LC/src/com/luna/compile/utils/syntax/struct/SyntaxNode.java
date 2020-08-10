@@ -146,6 +146,7 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
                 return node.pick(value);
             }
             if(node.getType() == AND) {
+                //TODO AND branch needs to fix
                 return node.pick(value);
             }
             if(node.getType() == TERMINAL) {

@@ -2,9 +2,7 @@
 
 
 
-<STATIC EXPR>           ::=         <NUMBER> | <STATIC EXPR> <CAL OP> <STATIC EXPR>
-<EXPR>                  ::=         <SYMBOL> | <NUMBER> | <EXPR> <EXPR OP> <EXPR>
-<STATEMENT>             ::=         <EXPR> | <STATIC EXPR>
+
 
 <PARAM LIST>            ::=         <SYMBOL> [PARAM LIST]
 <SINGLE FUNC DEF>       ::=         <PARAM LIST> "=" <STATEMENT>
