@@ -4,16 +4,16 @@ import com.luna.compile.struct.Token;
 import com.luna.compile.utils.syntax.constant.SyntaxRequirement;
 import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.io.Serializable;
+import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static com.luna.compile.constant.TOKEN.*;
 import static com.luna.compile.utils.syntax.constant.SyntaxRequirement.*;
 import static com.luna.compile.utils.syntax.constant.SyntaxNodeType.*;
 
-public final class SyntaxNode implements Cloneable {
+public final class SyntaxNode implements Serializable, Cloneable, Iterable<SyntaxNode> {
 
     private SyntaxNode() { }
 
@@ -26,6 +26,10 @@ public final class SyntaxNode implements Cloneable {
     private SyntaxRequirement requirement = REQUIRED;
 
     private String value;
+
+    private String name;
+
+    private SyntaxNode parent;
 
     public void setRequirement(SyntaxRequirement requirement) {
         this.requirement = requirement;
@@ -50,10 +54,6 @@ public final class SyntaxNode implements Cloneable {
     public SyntaxNodeType getType() {
         return type;
     }
-
-    private String name;
-
-    private SyntaxNode parent;
 
     public void setParent(SyntaxNode parent) {
         this.parent = parent;
@@ -93,43 +93,66 @@ public final class SyntaxNode implements Cloneable {
         return nonLinkNodes;
     }
 
+    @Override
+    public Iterator<SyntaxNode> iterator() {
+        return list.iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super SyntaxNode> action) {
+        list.forEach(action);
+    }
+
+    @Override
+    public Spliterator<SyntaxNode> spliterator() {
+        return list.spliterator();
+    }
+
     public boolean match(Token token) {
         SyntaxNode pointer = this;
-        if(token.getType() == INTEGER || token.getType() == FLOAT) {
+        SyntaxNode anchor = this;
+        if(token.getType() == INTEGER || token.getType() == FLOAT || token.getType() == SYMBOL) {
             String value = token.getValue();
             char[] chars = value.toCharArray();
             for (char c : chars) {
                 pointer = pointer.pick(c);
                 if (pointer == null) return false;
+                pointer = anchor;
             }
             return true;
         }
-        if(token.getType() == STRING) {
+        if(token.getType() == STRING || token.getType() == OPERATOR) {
             pointer = pointer.pick(token.getValue());
             return pointer != null;
         }
         return false;
     }
 
-    public boolean equals(char c) {
+    private boolean equals(char c) {
         return equals(String.valueOf(c));
     }
 
-    public boolean equals(String value) {
+    private boolean equals(String value) {
         return this.value.equals(value);
     }
 
-    public SyntaxNode pick(char c) {
+    private SyntaxNode pick(char c) {
         return pick(String.valueOf(c));
     }
 
-    public SyntaxNode pick(String value) {
-        for(SyntaxNode node : getNodes()) {
+    private SyntaxNode pick(String value) {
+        for(SyntaxNode node : this) {
             if(node.getType() == OR) {
                 return node.pick(value);
             }
             if(node.getType() == AND) {
                 return node.pick(value);
+            }
+            if(node.getType() == TERMINAL) {
+                for(SyntaxNode inside : node) {
+                    SyntaxNode insideResult = inside.pick(value);
+                    if(insideResult != null) return insideResult;
+                }
             }
             if(node.getType() == CONST && node.equals(value)) return node;
         }

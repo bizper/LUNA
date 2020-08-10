@@ -4,6 +4,8 @@ import com.luna.compile.struct.Token;
 import com.luna.compile.struct.TokenSequence;
 import com.luna.compile.utils.syntax.struct.SyntaxNode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class SyntaxMatcher {
@@ -20,12 +22,17 @@ public class SyntaxMatcher {
         return null;
     }
 
-    public static String match(TokenSequence ts) {
+    public static List<String> match(TokenSequence ts) {
+        List<String> result = new ArrayList<>();
         for(Token token : ts) {
             String name = match(token);
-            if(name != null) return name;
+            result.add(name);
         }
-        return null;
+        return result;
+    }
+
+    private static String match(List<String> syntaxList) {
+        return "";
     }
 
     private static String match(Token token) {

@@ -182,6 +182,11 @@ public class Tokenizer extends Component {
     }
 
     private boolean[] isDigit(String s) {
+        boolean hex = false;
+        if(s.startsWith("0x")) {
+            s = s.substring(2);
+            hex = true;
+        }
         char[] arr = s.toCharArray();
         boolean isFloat = false;
         for(char c : arr) {
@@ -189,7 +194,9 @@ public class Tokenizer extends Component {
                 if(!isFloat) isFloat = true;
                 else return new boolean[]{false, false};
             }
-            if(!Character.isDigit(c) && c != '.') return new boolean[]{false, false};
+            if(!Character.isDigit(c) && (!hex && c >= 'A' && c <= 'F')) {
+                return new boolean[]{false, false};
+            }
         }
         return new boolean[]{true, isFloat};
     }
