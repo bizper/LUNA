@@ -1,1 +1,3 @@
-attB = 0x145DE
+attB <- MIN
+
+attB = 5 + 5

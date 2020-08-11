@@ -74,7 +74,7 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
     }
 
     public void addNode(SyntaxNode node) {
-        node.setParent(this);
+        if(node != null) node.setParent(this);
         this.list.add(node);
     }
 
@@ -171,6 +171,7 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
     public static SyntaxNode get(SyntaxNodeType type) {
         return new SyntaxNode(type);
     }
+
     //<BIN NUMBER>[<0><1>]
     //<DEC NUMBER>[[-]<BIN NUMBER>[<0><1>]<2>....]
     public String toString() {
