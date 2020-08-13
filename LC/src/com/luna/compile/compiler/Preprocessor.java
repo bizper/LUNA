@@ -3,6 +3,7 @@ package com.luna.compile.compiler;
 import com.luna.base.config.Config;
 import com.luna.base.io.OUT;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
+import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Module;
@@ -38,6 +39,11 @@ public class Preprocessor extends Component {
     }
 
     private static final String PREPROCESS_ERROR = "PREPROCESS ERROR";
+
+    @Override
+    public COMPONENT type() {
+        return COMPONENT.PREPROCESSOR;
+    }
 
     @Override
     public Component run(Context context, Config config) {

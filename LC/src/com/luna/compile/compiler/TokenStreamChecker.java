@@ -2,6 +2,7 @@ package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
 import com.luna.base.result.Bean;
+import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Module;
 import com.luna.compile.struct.TokenRepresent;
@@ -24,6 +25,10 @@ public class TokenStreamChecker extends Component {
     }
 
     private TokenStreamChecker() {}
+
+    public COMPONENT type() {
+        return COMPONENT.TOKEN_STREAM_CHECKER;
+    }
 
     @Override
     public Component run(Context context, Config config) {

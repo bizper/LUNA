@@ -2,6 +2,7 @@ package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
 import com.luna.base.io.OUT;
+import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.constant.NODE;
 import com.luna.compile.struct.*;
 import com.luna.compile.utils.ExpressionFinalizer;
@@ -20,6 +21,11 @@ public class SyntaxProcessor extends Component {
     private SyntaxProcessor() {
         root = Node.create();
         SyntaxMatcher.init();
+    }
+
+    @Override
+    public COMPONENT type() {
+        return COMPONENT.SYNTAX_PROCESSOR;
     }
 
     private static Component instance;

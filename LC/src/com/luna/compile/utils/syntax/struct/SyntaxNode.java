@@ -87,8 +87,8 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
     public List<SyntaxNode> getNodes(int length) {
         int size = list.size() - length;
         List<SyntaxNode> nonLinkNodes = list.stream().skip(size).collect(Collectors.toList());
-        for(int j = list.size() - 1; j >= size; j--) {
-            list.remove(j);
+        if (list.size() > size) {
+            list.subList(size, list.size()).clear();
         }
         return nonLinkNodes;
     }
@@ -147,6 +147,9 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
             }
             if(node.getType() == AND) {
                 //TODO AND branch needs to fix
+                node.forEach(e -> {
+
+                });
                 return node.pick(value);
             }
             if(node.getType() == TERMINAL) {
@@ -175,10 +178,10 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
     //<BIN NUMBER>[<0><1>]
     //<DEC NUMBER>[[-]<BIN NUMBER>[<0><1>]<2>....]
     public String toString() {
-        if(type == CONST) return "<" + type + (requirement == OPTIONAL ? ":" + requirement : "") + ":" + value + ">" ;
+        if(type == CONST) return "<" + type +  ":" + requirement + ":" + value + ">" ;
         else {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("|--<").append(type).append(requirement == OPTIONAL ? ":" + requirement : "").append(":").append(name).append(">").append('\n');
+            stringBuilder.append("|--<").append(type).append(":").append(requirement).append(":").append(name).append(">").append('\n');
             int i = 0;
             for(SyntaxNode node : list) {
                 if(node == this) {

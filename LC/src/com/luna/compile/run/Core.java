@@ -2,6 +2,7 @@ package com.luna.compile.run;
 
 import com.luna.base.config.Config;
 import com.luna.base.io.OUT;
+import com.luna.base.manager.SecurityManager;
 import com.luna.compile.compiler.*;
 import com.luna.compile.constant.STATUS;
 import com.luna.compile.struct.Context;
@@ -25,6 +26,13 @@ public class Core implements AbstractCore {
             path.add(CodeGenerator.getInstance());
         } else {
             path.add(Printer.getInstance());
+        }
+        SecurityManager securityManager = SecurityManager.getSecurityManager();
+        if(!securityManager.check(path)) {
+            OUT.err("Error Happened during checking the compile chain.");
+            OUT.err("Check your options.");
+            OUT.err(securityManager.getErrMsg());
+            return this;
         }
         run(config);
         return this;

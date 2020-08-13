@@ -7,6 +7,7 @@ import com.luna.base.result.Bean;
 import com.luna.compile.compiler.constant.Keywords;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.compiler.constant.Operator;
+import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.constant.TOKEN;
 import com.luna.base.io.loader.Loader;
 import com.luna.compile.struct.Context;
@@ -36,6 +37,11 @@ public class Tokenizer extends Component {
     }
 
     private Tokenizer() {}
+
+    @Override
+    public COMPONENT type() {
+        return COMPONENT.TOKENIZER;
+    }
 
     private static final int def_col = 1;
     private static final int def_lin = 1;

@@ -1,6 +1,7 @@
 package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
+import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.struct.Context;
 
 public abstract class Component {
@@ -15,5 +16,7 @@ public abstract class Component {
     public Context getContext() {
         return context;
     }
+
+    public abstract COMPONENT type();
 
 }
