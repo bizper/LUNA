@@ -63,9 +63,21 @@ public class ExpressionFinalizer extends BaseFinalizer {
                 result.add(token);
             }
         }
-        if(!stack.isEmpty()) result.add(stack.pop());
-        OUT.debug(result);
+        while(!stack.isEmpty()) result.add(stack.pop());
+        OUT.info(result);
         return result;
+    }
+
+    public static void main(String[] args) {
+        List<Token> list = new ArrayList<>();
+        list.add(Token.get(0, 0, TOKEN.OPERATOR, "(", Operator.LP));
+        list.add(Token.get(0, 0, TOKEN.INTEGER, "8", null));
+        list.add(Token.get(0, 0, TOKEN.OPERATOR, "+", Operator.PLUS));
+        list.add(Token.get(0, 0, TOKEN.INTEGER, "6", null));
+        list.add(Token.get(0, 0, TOKEN.OPERATOR, ")", Operator.RP));
+        list.add(Token.get(0, 0, TOKEN.OPERATOR, "*", Operator.MULTI));
+        list.add(Token.get(0, 0, TOKEN.INTEGER, "5125125", null));
+        System.out.println(calculate(TokenSequence.getInstance(list)));
     }
 
 }

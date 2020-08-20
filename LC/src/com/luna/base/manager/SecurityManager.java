@@ -1,9 +1,6 @@
 package com.luna.base.manager;
 
 import com.luna.compile.compiler.Component;
-import com.luna.compile.compiler.Preprocessor;
-import com.luna.compile.compiler.TokenStreamChecker;
-import com.luna.compile.compiler.Tokenizer;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -34,9 +31,21 @@ public class SecurityManager {
                         return false;
                     }
                 case LINKER:
-                    break;
+                    if(id.get() == 4) {
+                        id.set(5);
+                        continue;
+                    } else {
+                        errMsg = "Linker must follow the Syntax Processor.";
+                        return false;
+                    }
                 case PRINTER:
-                    break;
+                    if(id.get() == 5) {
+                        id.set(6);
+                        continue;
+                    } else {
+                        errMsg = "Printer must follow the Linker.";
+                        return false;
+                    }
                 case PREPROCESSOR:
                     if(id.get() <= 2) {
                         id.set(3);
@@ -46,15 +55,27 @@ public class SecurityManager {
                         return false;
                     }
                 case CODE_GENERATOR:
-                    break;
+                    if(id.get() == 5) {
+                        id.set(6);
+                        continue;
+                    } else {
+                        errMsg = "Code Generator must follow the Linker.";
+                        return false;
+                    }
                 case SYNTAX_PROCESSOR:
-                    break;
+                    if(id.get() == 3) {
+                        id.set(4);
+                        continue;
+                    } else {
+                        errMsg = "Syntax Processor must follow the Preprocessor.";
+                        return false;
+                    }
                 case TOKEN_STREAM_CHECKER:
                     if(id.get() == 1) {
                         id.set(2);
                         continue;
                     } else {
-                        errMsg = "TokenStreamChecker must be the second component.";
+                        errMsg = "Token Stream Checker must be the second component.";
                         return false;
                     }
                 default:
