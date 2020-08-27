@@ -1,6 +1,7 @@
 package com.luna.compile.utils.syntax.struct;
 
 import com.luna.compile.struct.Token;
+import com.luna.compile.struct.TokenSequence;
 import com.luna.compile.utils.syntax.constant.SyntaxRequirement;
 import com.luna.compile.utils.syntax.constant.SyntaxNodeType;
 
@@ -108,61 +109,6 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
         return list.spliterator();
     }
 
-    public boolean match(Token token) {
-        SyntaxNode pointer = this;
-        SyntaxNode anchor = this;
-        if(token.getType() == INTEGER || token.getType() == FLOAT || token.getType() == SYMBOL) {
-            String value = token.getValue();
-            char[] chars = value.toCharArray();
-            for (char c : chars) {
-                pointer = pointer.pick(c);
-                if (pointer == null) return false;
-                pointer = anchor;
-            }
-            return true;
-        }
-        if(token.getType() == STRING || token.getType() == OPERATOR) {
-            pointer = pointer.pick(token.getValue());
-            return pointer != null;
-        }
-        return false;
-    }
-
-    private boolean equals(char c) {
-        return equals(String.valueOf(c));
-    }
-
-    private boolean equals(String value) {
-        return this.value.equals(value);
-    }
-
-    private SyntaxNode pick(char c) {
-        return pick(String.valueOf(c));
-    }
-
-    private SyntaxNode pick(String value) {
-        for(SyntaxNode node : this) {
-            if(node.getType() == OR) {
-                return node.pick(value);
-            }
-            if(node.getType() == AND) {
-                //TODO AND branch needs to fix
-                node.forEach(e -> {
-
-                });
-                return node.pick(value);
-            }
-            if(node.getType() == TERMINAL) {
-                for(SyntaxNode inside : node) {
-                    SyntaxNode insideResult = inside.pick(value);
-                    if(insideResult != null) return insideResult;
-                }
-            }
-            if(node.getType() == CONST && node.equals(value)) return node;
-        }
-        return null;
-    }
-
     public void addAllNode(Collection<SyntaxNode> collection) {
         this.list.addAll(collection);
     }
@@ -213,9 +159,7 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
                 } else {
                     stringBuilder.append(node.toString(this, length + 1));
                 }
-
             }
-
         }
         return stringBuilder.toString();
     }
@@ -227,6 +171,11 @@ public final class SyntaxNode implements Serializable, Cloneable, Iterable<Synta
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean match(Token ts) {
+        String name = "";
+        return true;
     }
 
 }

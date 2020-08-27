@@ -18,27 +18,16 @@ public class SyntaxMatcher {
         return true;
     }
 
-    public static String find(TokenSequence ts) {
-        return null;
-    }
-
-    public static List<String> match(TokenSequence ts) {
-        List<String> result = new ArrayList<>();
-        for(Token token : ts) {
-            String name = match(token);
-            result.add(name);
-        }
-        return result;
-    }
-
-    private static String match(List<String> syntaxList) {
-        return "";
-    }
-
-    private static String match(Token token) {
+    public static String match(TokenSequence ts) {
         Map<String, SyntaxNode> map = SyntaxParser.getMap();
-        for (Map.Entry<String, SyntaxNode> entry : map.entrySet()) {
-            if(entry.getValue().match(token)) return entry.getKey();
+        for(Map.Entry<String, SyntaxNode> entry : map.entrySet()) {
+            List<Token> list = ts.getList();
+            for(int i = 0; i<list.size(); i++) {
+                Token token = list.get(i);
+                if(entry.getValue().match(token)) {
+
+                }
+            }
         }
         return null;
     }

@@ -3,6 +3,7 @@ package com.luna.core.element;
 import com.luna.core.constant.ESTATUS;
 
 public class Method implements Element {
+
     @Override
     public void create() {
 
@@ -27,4 +28,5 @@ public class Method implements Element {
     public String info() {
         return null;
     }
+
 }

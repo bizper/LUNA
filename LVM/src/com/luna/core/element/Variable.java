@@ -3,6 +3,7 @@ package com.luna.core.element;
 import com.luna.core.constant.ESTATUS;
 
 public class Variable implements Element {
+
     @Override
     public void create() {
 

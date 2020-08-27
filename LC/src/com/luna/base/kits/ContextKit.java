@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class ContextKit {
 
-
     public static <T> List<T> view(List<T> list, int cursor) {
         return view(list, cursor, 3);
     }
@@ -24,7 +23,7 @@ public class ContextKit {
      * @param cursor 指定的位置，切面
      * @param list 指定的列表
      * @param length 需要的长度
-     * @return 指定位置的上下文
+     * @return the context at the cursor
      */
     public static <T> List<T> view(List<T> list, int cursor, int length) {
         List<T> newList = new ArrayList<>(length);

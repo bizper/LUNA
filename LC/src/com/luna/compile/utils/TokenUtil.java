@@ -27,9 +27,6 @@ public class TokenUtil {
 
     /**
      * 返回一个新的list，包含了相同列的所有token
-     * @param list
-     * @param line
-     * @return
      */
     public static List<Token> getLine(List<Token> list, int line) {
         return list.stream().filter((e) -> e.getLine() == line).collect(Collectors.toList());
@@ -37,9 +34,6 @@ public class TokenUtil {
 
     /**
      * 返回一个新的list，清除了相同列的所有list
-     * @param list
-     * @param line
-     * @return
      */
     public static List<Token> clearLine(List<Token> list, int line) {
         return list.stream().filter((e) -> e.getLine() != line).collect(Collectors.toList());

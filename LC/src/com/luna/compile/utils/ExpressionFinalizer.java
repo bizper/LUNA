@@ -14,6 +14,8 @@ import java.util.Stack;
 public class ExpressionFinalizer extends BaseFinalizer {
 
     //5 + 6 => 5 6 +
+    //(2 + 4) * 3 => 2 4 + 3 *
+    //2 + 4 * 3 => 2 4 3 * +
     public static String calculate(TokenSequence ts) {
         List<Token> list = ts.getList();
         List<Token> stack = reversePolishNotation(list);
@@ -24,13 +26,13 @@ public class ExpressionFinalizer extends BaseFinalizer {
                 Token param2 = stack.get(i - 1);
                 String value = "";
                 if(Operator.PLUS.equals(token.getSig())) {
-                    value = String.valueOf(Integer.parseInt(param1.getValue()) + Integer.parseInt(param2.getValue()));
+                    value = String.valueOf(Long.parseLong(param1.getValue()) + Long.parseLong(param2.getValue()));
                 } else if(Operator.MINUS.equals(token.getSig())) {
-                    value = String.valueOf(Integer.parseInt(param1.getValue()) - Integer.parseInt(param2.getValue()));
+                    value = String.valueOf(Long.parseLong(param1.getValue()) - Long.parseLong(param2.getValue()));
                 } else if(Operator.MULTI.equals(token.getSig())) {
-                    value = String.valueOf(Integer.parseInt(param1.getValue()) * Integer.parseInt(param2.getValue()));
+                    value = String.valueOf(Long.parseLong(param1.getValue()) * Long.parseLong(param2.getValue()));
                 } else if(Operator.DIV.equals(token.getSig())) {
-                    value = String.valueOf(Integer.parseInt(param1.getValue()) / Integer.parseInt(param2.getValue()));
+                    value = String.valueOf(Long.parseLong(param1.getValue()) / Long.parseLong(param2.getValue()));
                 }
                 Token calculateResult = Token.get(param1.getLine(), param1.getCol(), TOKEN.INTEGER, value, null);
                 stack.remove(param1);
@@ -71,12 +73,12 @@ public class ExpressionFinalizer extends BaseFinalizer {
     public static void main(String[] args) {
         List<Token> list = new ArrayList<>();
         list.add(Token.get(0, 0, TOKEN.OPERATOR, "(", Operator.LP));
-        list.add(Token.get(0, 0, TOKEN.INTEGER, "8", null));
+        list.add(Token.get(0, 0, TOKEN.INTEGER, "2", null));
         list.add(Token.get(0, 0, TOKEN.OPERATOR, "+", Operator.PLUS));
-        list.add(Token.get(0, 0, TOKEN.INTEGER, "6", null));
+        list.add(Token.get(0, 0, TOKEN.INTEGER, "4", null));
         list.add(Token.get(0, 0, TOKEN.OPERATOR, ")", Operator.RP));
         list.add(Token.get(0, 0, TOKEN.OPERATOR, "*", Operator.MULTI));
-        list.add(Token.get(0, 0, TOKEN.INTEGER, "5125125", null));
+        list.add(Token.get(0, 0, TOKEN.INTEGER, "" + Integer.MAX_VALUE, null));
         System.out.println(calculate(TokenSequence.getInstance(list)));
     }
 

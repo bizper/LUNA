@@ -1,8 +1,17 @@
+<NUMBER>                ::=         "0" "x" <HEX NUMBER> | <DEC NUMBER>
 
+<KEYWORDS>              ::=         "if" | "else" | "naive" | "end" | "link" | "do" | "this"
+<ASSIGMENT OP>          ::=         "="
+<CAL OP>                ::=         "+" | "-" | "*" | "/" | "(" | ")"
+<EXPR OP>               ::=         <CAL OP> | "!" | ">" | "<" | "<=" | ">=" | "==" | "!=" | "++" | "--"
 
+<LOWER CASE>            ::=         "a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"
+<UPPER CASE>            ::=         "A"|"B"|"C"|"D"|"E"|"F"|"G"|"H"|"I"|"J"|"K"|"L"|"M"|"N"|"O"|"P"|"Q"|"R"|"S"|"T"|"U"|"V"|"W"|"X"|"Y"|"Z"
+<SYMBOL>                ::=         "_" | <UPPER CASE> | <LOWER CASE> | <DEC NUMBER>
 
-
-
+<STATIC EXPR>           ::=         <NUMBER> | <NUMBER> <CAL OP> <NUMBER>
+<EXPR>                  ::=         <SYMBOL> <EXPR OP> <SYMBOL>
+<STATEMENT>             ::=         <EXPR> | <STATIC EXPR>
 
 <PARAM LIST>            ::=         <SYMBOL> [PARAM LIST]
 <SINGLE FUNC DEF>       ::=         <PARAM LIST> "=" <STATEMENT>
