@@ -78,7 +78,7 @@ public class ExpressionFinalizer extends BaseFinalizer {
         list.add(Token.get(0, 0, TOKEN.INTEGER, "4", null));
         list.add(Token.get(0, 0, TOKEN.OPERATOR, ")", Operator.RP));
         list.add(Token.get(0, 0, TOKEN.OPERATOR, "*", Operator.MULTI));
-        list.add(Token.get(0, 0, TOKEN.INTEGER, "" + Integer.MAX_VALUE, null));
+        list.add(Token.get(0, 0, TOKEN.INTEGER, "2", null));
         System.out.println(calculate(TokenSequence.getInstance(list)));
     }
 

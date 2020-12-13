@@ -2,19 +2,19 @@ package com.luna.compile.constant;
 
 public class STATUS {
     /**
-     * 通用成功码
+     * typically success code
      */
     public static final int OK = 0;
     /**
-     * 通用错误码
+     * typically error code
      */
     public static final int ERROR = 100;
     /**
-     * 文件不合法，不为合法的LUNA后缀文件
+     * illegal luna file
      */
     public static final int FILE_NOT_VALID = 101;
     /**
-     * 编译器没有找到对应的文件
+     * can not find the file described in path
      */
     public static final int FILE_NOT_FOUND = 102;
     /**

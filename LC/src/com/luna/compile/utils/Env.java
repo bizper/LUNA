@@ -1,7 +1,9 @@
 package com.luna.compile.utils;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public final class Env {
 
@@ -29,6 +31,18 @@ public final class Env {
 
     public static String getOSVersion() {
         return System.getProperty("os.version");
+    }
+
+    public static String getDateString() {
+        return DateUtil.toDateString();
+    }
+
+    public static String getRandomUppercaseUUID() {
+        return UUID.randomUUID().toString().replace("-", "").toUpperCase();
+    }
+
+    public static String getVersion() {
+        return "0x00.0x01";
     }
 
     public static void clear() {

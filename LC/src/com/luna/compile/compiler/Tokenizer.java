@@ -20,8 +20,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.luna.compile.constant.CONSTANT.double_quote;
-import static com.luna.compile.constant.CONSTANT.space;
 import static com.luna.compile.constant.STATUS.OK;
 
 /**
@@ -44,7 +42,12 @@ public class Tokenizer extends Component {
     }
 
     private static final int def_col = 1;
+
     private static final int def_lin = 1;
+
+    private static final char double_quote = '"';
+
+    private static final char space = ' ';
 
     @Override
     public Component run(Context context, Config config) {

@@ -5,6 +5,7 @@ import com.luna.base.io.OUT;
 import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.constant.NODE;
 import com.luna.compile.struct.*;
+import com.luna.compile.struct.Module;
 import com.luna.compile.utils.ExpressionFinalizer;
 import com.luna.compile.utils.TypeFinalizer;
 import com.luna.compile.utils.syntax.SyntaxMatcher;

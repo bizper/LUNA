@@ -9,6 +9,8 @@ import com.luna.compile.utils.Env;
 import java.util.Date;
 import java.util.UUID;
 
+import static com.luna.compile.utils.DateUtil.toDateString;
+
 public class AbstractLauncher {
 
     public static void launch(Class<? extends AbstractCore> clazz, String[] args) {
@@ -31,14 +33,14 @@ public class AbstractLauncher {
     private static void printBanner() {
         OUT.info("======================================================");
         OUT.info("lc author: orange  version: 0x00.0x01");
-        OUT.info(" tool for compiling luna code files. ");
+        OUT.info(" tools for compiling luna source files. ");
         OUT.info("------------------------------------------------------");
         OUT.info("TARGET COMPUTER:      " + Env.getComputerName());
         OUT.info("TARGET OS:            " + Env.getOS() + " " + Env.getOSVersion());
         OUT.info("OPERATOR:             " + Env.getUserName());
-        OUT.info("COMPILE TIME:         " + new Date());
-        OUT.info("COMPILER VERSION:     " + "0x00.0x01");
-        OUT.info("RANDOM INFO:          " + UUID.randomUUID().toString().replace("-", "").toUpperCase());
+        OUT.info("COMPILE TIME:         " + Env.getDateString());
+        OUT.info("COMPILER VERSION:     " + Env.getVersion());
+        OUT.info("RANDOM INFO:          " + Env.getRandomUppercaseUUID());
         OUT.info("======================================================");
     }
 

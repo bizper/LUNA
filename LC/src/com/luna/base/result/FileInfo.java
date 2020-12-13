@@ -5,6 +5,10 @@ import java.util.List;
 
 public class FileInfo {
 
+    public FileInfo() {
+        this.content = new ArrayList<>();
+    }
+
     private String name;
 
     private String path;
@@ -41,7 +45,6 @@ public class FileInfo {
     }
 
     public List<String> getContent() {
-        if(content == null) content = new ArrayList<>();
         return content;
     }
 }

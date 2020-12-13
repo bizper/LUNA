@@ -14,7 +14,7 @@ public class Core implements AbstractCore {
 
     private final List<Component> path = new ArrayList<>();
 
-    public AbstractCore launch(Config config) {
+    public void launch(Config config) {
         if(config.isDebug()) OUT.openDebug();
         path.clear();
         path.add(Tokenizer.getInstance());
@@ -32,10 +32,9 @@ public class Core implements AbstractCore {
             OUT.err("Error Happened during checking the compile chain.");
             OUT.err("Check your options.");
             OUT.err(securityManager.getErrMsg());
-            return this;
+            return;
         }
         run(config);
-        return this;
     }
 
     public void close() {

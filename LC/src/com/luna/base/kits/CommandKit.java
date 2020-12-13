@@ -14,6 +14,7 @@ public class CommandKit extends BaseKit {
                 switch(s) {
                     case "debug":
                         config.setDebug(true);
+                        break;
                     case "O0":
                         config.setCompileMode(0);
                         break;
