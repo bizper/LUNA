@@ -6,11 +6,6 @@ import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.constant.NODE;
 import com.luna.compile.struct.*;
 import com.luna.compile.struct.Module;
-import com.luna.compile.utils.ExpressionFinalizer;
-import com.luna.compile.utils.TypeFinalizer;
-import com.luna.compile.utils.syntax.SyntaxMatcher;
-import com.luna.compile.utils.syntax.SyntaxParser;
-import com.luna.compile.utils.syntax.struct.SyntaxNode;
 
 /**
  * 对于词法进行分析，词法的根基为根目录下的basic.sy文件
@@ -21,7 +16,6 @@ public class SyntaxProcessor extends Component {
 
     private SyntaxProcessor() {
         root = Node.create();
-        SyntaxMatcher.init();
     }
 
     @Override
@@ -41,7 +35,6 @@ public class SyntaxProcessor extends Component {
         super.run(context, config);
         for(final Module module : context.getModules()) {
             for(TokenSequence ts : module.getList()) {
-                System.out.println(SyntaxMatcher.match(ts));
             }
         }
         recall();

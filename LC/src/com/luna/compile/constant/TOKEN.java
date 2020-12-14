@@ -8,6 +8,7 @@ public enum TOKEN {
     INTEGER,//常量，对于数字会被设置为此类型
     FLOAT,//常量，对于数字会被设置为此类型
     OPERATOR,//操作符
-    BOOLEAN
+    BOOLEAN,
+    EOF
 
 }

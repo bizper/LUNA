@@ -34,7 +34,7 @@ public class Core implements AbstractCore {
             OUT.err(securityManager.getErrMsg());
             return;
         }
-        run(config);
+        this.run(config);
     }
 
     public void close() {
