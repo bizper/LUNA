@@ -1,50 +1,50 @@
 package com.luna.base.result;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileInfo {
 
-    public FileInfo() {
-        this.content = new ArrayList<>();
+    public FileInfo(File f) {
+        try {
+            this.path = new BufferedReader(new FileReader(f));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private String name;
 
-    private String path;
+    private BufferedReader path;
 
-    private List<String> content;
+    private int line;
 
     @Override
     public String toString() {
         return "FileInfo{" +
                 "name='" + name + '\'' +
                 ", path='" + path + '\'' +
-                ", content=" + content +
+                ", line=" + line +
                 '}';
     }
 
-    public void setName(String name) {
+    public FileInfo setName(String name) {
         this.name = name;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public void setContent(List<String> content) {
-        this.content = content;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public List<String> getContent() {
-        return content;
+    public String getContent() {
+        try {
+            line ++;
+            return path.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

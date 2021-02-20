@@ -6,11 +6,6 @@ import com.luna.base.kits.CommandKit;
 import com.luna.base.result.Bean;
 import com.luna.compile.utils.Env;
 
-import java.util.Date;
-import java.util.UUID;
-
-import static com.luna.compile.utils.DateUtil.toDateString;
-
 public class AbstractLauncher {
 
     public static void launch(Class<? extends AbstractCore> clazz, String[] args) {

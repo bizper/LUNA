@@ -73,10 +73,11 @@ public class Tokenizer extends Component {
             return module;
         }
         FileInfo fileInfo = com.luna.base.io.loader.FileReader.read(bean.getData());
-        OUT.info("NOW COMPILING: " + fileInfo.getPath());
+        OUT.info("NOW COMPILING: " + fileInfo.getName());
         module.setName(fileInfo.getName());
         int line = def_lin;
-        for(String code : fileInfo.getContent()) {
+        String code;
+        while((code = fileInfo.getContent()) != null) {
             TokenSequence ts = parseInside(line++, code);
             if(!ts.isEmpty()) {
                 list.add(ts);
