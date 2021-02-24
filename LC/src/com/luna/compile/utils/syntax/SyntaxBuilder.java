@@ -11,23 +11,7 @@ public class SyntaxBuilder {
     }
 
     public SyntaxNode start() {
-        return null;
-    }
-
-    public SyntaxNode and(SyntaxNode... nodes) {
-        return null;
-    }
-
-    public SyntaxNode or(SyntaxNode... nodes) {
-        return null;
-    }
-
-    public SyntaxNode content(String content) {
-        return null;
-    }
-
-    public SyntaxNode end() {
-        return null;
+        return new SyntaxNode();
     }
 
 }
