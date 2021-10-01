@@ -20,6 +20,8 @@ public class Token implements Mode, StringElement {
 
     private SIG sig;
 
+    private String value;
+
     @Override
     public String toString() {
         return new StringJoiner(", ", Token.class.getSimpleName() + " [", "]")
@@ -40,8 +42,6 @@ public class Token implements Mode, StringElement {
         return sig;
     }
 
-    private String value;
-
     public Token setLine(int line) {
         this.line = line;
         return this;
@@ -61,6 +61,11 @@ public class Token implements Mode, StringElement {
         this.value = value;
         if(Keywords.isKeyword(value)) setSig(Keywords.getKeyword(value));
         return this;
+    }
+
+    public int getInt() {
+        if(type != TOKEN.INTEGER) throw new TokenException("ERROR TYPE", this);
+        return Integer.parseInt(value);
     }
 
     public int getLine() {

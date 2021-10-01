@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Config {
 
-    private boolean debug = false;
+    private boolean debug = true;
 
     /**
      * start with -O, use like -O0 -O1
