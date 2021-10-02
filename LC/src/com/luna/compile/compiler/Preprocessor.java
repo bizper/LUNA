@@ -1,7 +1,6 @@
 package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
-import com.luna.base.io.OUT;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.constant.TOKEN;
@@ -9,14 +8,11 @@ import com.luna.compile.struct.Context;
 import com.luna.compile.struct.Module;
 import com.luna.compile.struct.Token;
 import com.luna.compile.struct.TokenSequence;
-import com.luna.compile.utils.ExpressionFinalizer;
-import com.luna.compile.utils.ModeMatcher;
 import com.luna.compile.utils.TokenUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.luna.compile.constant.STATUS.OK;
 import static com.luna.compile.constant.STATUS.TOKEN_SYNTAX_ERROR;
@@ -100,7 +96,7 @@ public class Preprocessor extends Component {
                 if(type == TOKEN.INTEGER || type == TOKEN.FLOAT || type == TOKEN.STRING || type == TOKEN.BOOLEAN) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
-                    context.addErrMsg(module, prev.get(0), "语法错误：源文本不能为 " + prev.toString() + "::" + type);
+                    context.addErrMsg(module, prev.get(0), "语法错误：源文本不能为 " + prev + "::" + type);
                     module.remove(token.getLine());
                     break;
                 }
@@ -114,7 +110,7 @@ public class Preprocessor extends Component {
                 if(map.containsKey(prev)) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
-                    context.addErrMsg(module, prev.get(0), "语法错误：重复定义的源文本 " + prev.toString());
+                    context.addErrMsg(module, prev.get(0), "语法错误：重复定义的源文本 " + prev);
                     module.remove(token.getLine());
                     break;
                 }

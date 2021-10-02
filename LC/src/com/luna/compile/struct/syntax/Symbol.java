@@ -10,6 +10,10 @@ public class Symbol extends ASTLeaf {
         super(token);
     }
 
+    public String value() {
+        return token.getValue();
+    }
+
     @Override
     public Iterator<ASTree> iterator() {
         return super.iterator();
