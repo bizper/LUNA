@@ -10,6 +10,10 @@ public class OUT {
         System.out.println(obj);
     }
 
+    public static void info(String format, Object... args) {
+        info(String.format(format, args));
+    }
+
     public static void print(Object obj) {
         System.out.print(obj);
     }

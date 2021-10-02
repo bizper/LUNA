@@ -3,7 +3,7 @@ package com.luna.core.constant;
 public enum ESTATUS {
 
     /**
-     * an element is be creating and ready for filling.
+     * one element being created and ready for filling.
      * this status is very short during create process.
      * because when everything is filled finished, it will change to <code>PENDING</code>
      */

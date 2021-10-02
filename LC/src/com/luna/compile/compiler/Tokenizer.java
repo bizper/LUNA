@@ -18,6 +18,7 @@ import com.luna.compile.struct.TokenSequence;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.luna.compile.constant.STATUS.OK;
@@ -204,7 +205,7 @@ public class Tokenizer extends Component {
                 if(!isFloat) isFloat = true;
                 else return new boolean[]{false, false};
             }
-            if(!Character.isDigit(c) && (!hex && c >= 'A' && c <= 'F')) {
+            if(!Character.isDigit(c) && !hex && (c <= 'A' || c >= 'F')) {
                 return new boolean[]{false, false};
             }
         }

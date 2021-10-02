@@ -6,6 +6,8 @@ import com.luna.base.kits.CommandKit;
 import com.luna.base.result.Bean;
 import com.luna.compile.utils.Env;
 
+import static com.luna.compile.constant.CONSTANT.version;
+
 public class AbstractLauncher {
 
     public static void launch(Class<? extends AbstractCore> clazz, String[] args) {
@@ -27,7 +29,7 @@ public class AbstractLauncher {
 
     private static void printBanner() {
         OUT.info("======================================================");
-        OUT.info("lc author: orange  version: 0x00.0x01");
+        OUT.info("lc author: orange  version: %s", version);
         OUT.info(" tools for compiling luna source files. ");
         OUT.info("------------------------------------------------------");
         OUT.info("TARGET COMPUTER:      " + Env.getComputerName());
