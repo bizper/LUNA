@@ -41,7 +41,6 @@ public class TypeFinalizer extends BaseFinalizer {
                         sig == Operator.NOT
                 ) {
                     Bean<TokenRepresent> bean = derive(t, cache.get(i - 1), cache.get(i + 1));
-                    OUT.debug(bean);
                     if (bean.isSuccess()) {
                         result = bean.getData().getType();
                         Token prev = cache.get(i - 1);

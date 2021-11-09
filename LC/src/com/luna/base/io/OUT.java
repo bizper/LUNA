@@ -36,8 +36,10 @@ public class OUT {
     }
 
     public static void debug(Object obj) {
-        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-        if(debug) info(String.format("%-80s %s", stack[2].toString(), obj));
+        if(debug) {
+            StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+            System.out.println("\033[33m"+String.format("%-80s %s", stack[2].toString(), obj)+"\033[0m");
+        }
     }
 
     public static void output(Bean bean) {

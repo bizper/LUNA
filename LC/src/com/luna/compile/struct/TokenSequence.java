@@ -5,6 +5,7 @@ import com.luna.base.kits.StringKit;
 import com.luna.base.result.Bean;
 import com.luna.compile.constant.TOKEN;
 import com.luna.compile.struct.intf.StringElement;
+import com.luna.compile.utils.BaseFinalizer;
 import com.luna.compile.utils.TokenUtil;
 import com.luna.compile.utils.TypeFinalizer;
 
@@ -13,7 +14,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class TokenSequence implements StringElement, Iterable<Token> {
+public class TokenSequence extends BaseFinalizer implements StringElement, Iterable<Token> {
 
     @Override
     public Iterator<Token> iterator() {
@@ -109,9 +110,12 @@ public class TokenSequence implements StringElement, Iterable<Token> {
         return this;
     }
 
-    public TOKEN getType() {
+    public Bean<TOKEN> getType() {
         Bean<TokenRepresent> bean = TypeFinalizer.derive(list);
-        return bean.getData().getType();
+        if(bean.isSuccess()) {
+            return build(true, bean.getData().getType());
+        }
+        return build(false, bean.getMessage(), null);
     }
 
     public boolean isChecked() {

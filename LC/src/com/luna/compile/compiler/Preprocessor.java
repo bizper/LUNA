@@ -1,6 +1,7 @@
 package com.luna.compile.compiler;
 
 import com.luna.base.config.Config;
+import com.luna.base.result.Bean;
 import com.luna.compile.compiler.constant.MultiSymbolOperator;
 import com.luna.compile.constant.COMPONENT;
 import com.luna.compile.constant.TOKEN;
@@ -92,7 +93,14 @@ public class Preprocessor extends Component {
                     module.remove(token.getLine());
                     break;
                 }
-                TOKEN type = prev.getType();
+                Bean<TOKEN> bean = prev.getType();
+                if(!bean.isSuccess()) {
+                    context.setCode(TOKEN_SYNTAX_ERROR);
+                    context.setMsg(PREPROCESS_ERROR);
+                    context.addErrMsg(module, token, bean.getMessage());
+                    break;
+                }
+                TOKEN type = bean.getData();
                 if(type == TOKEN.INTEGER || type == TOKEN.FLOAT || type == TOKEN.STRING || type == TOKEN.BOOLEAN) {
                     context.setCode(TOKEN_SYNTAX_ERROR);
                     context.setMsg(PREPROCESS_ERROR);
